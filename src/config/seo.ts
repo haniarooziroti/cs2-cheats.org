@@ -2,7 +2,6 @@ import type { ProductPage } from '../data/products';
 import { t } from '../i18n';
 import { SITE_DOMAIN, SITE_URL } from './site';
 import { getPageSeoEntry, type PageSeoEntry } from './pageSeo';
-import { DEFAULT_OG_IMAGE_ABSOLUTE } from './media';
 
 function normalizeOrigin(url: string): string {
   return url.replace(/\/$/, '');
@@ -23,8 +22,8 @@ export const SITE_HOSTNAME = (() => {
   }
 })();
 
-/** Default social preview image (remote WebP on Supabase). */
-export const DEFAULT_OG_IMAGE = DEFAULT_OG_IMAGE_ABSOLUTE;
+/** Default social preview — generated from `public/logo-master.png` as `og-image-v2.png` (see generate-brand-icons). */
+export const DEFAULT_OG_IMAGE = '/og-image-v2.png';
 
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
 

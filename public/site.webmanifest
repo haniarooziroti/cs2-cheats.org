@@ -10,18 +10,18 @@
   "lang": "en-US",
   "icons": [
     {
-      "src": "/favicon-cs2.png",
+      "src": "/favicon-v2-360.png",
       "sizes": "360x360",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/apple-touch-icon-v2.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/favicon-32.png",
+      "src": "/favicon-v2-32.png",
       "sizes": "32x32",
       "type": "image/png"
     }
