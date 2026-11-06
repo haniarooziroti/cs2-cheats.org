@@ -5,9 +5,7 @@ import { resolveDistRoot } from './dist-root.mjs';
 const root = process.cwd();
 const dist = resolveDistRoot(root);
 
-const siteOrigin = (
-  process.env.PUBLIC_SITE_ORIGIN ? String(process.env.PUBLIC_SITE_ORIGIN).trim().replace(/\/$/, '') : ''
-) || 'https://cs2-cheats.org';
+const siteOrigin = 'https://cs2-cheats.org';
 const source = path.join(dist, 'sitemap-0.xml');
 
 if (!fs.existsSync(source)) {

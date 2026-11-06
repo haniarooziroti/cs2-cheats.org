@@ -7,13 +7,15 @@ import WhySetupSection from '../components/WhySetupSection.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import ContentSections from '../components/ContentSections.astro';
 import { t } from '../i18n';
-import { resolvePageSeo } from '../config/seo';
+import { resolvePageSeo, canonicalUrl } from '../config/seo';
+import ShareButtons from '../components/ShareButtons.astro';
 import { faqPageSchema, organizationSchema, websiteSchema } from '../utils/schema';
 import { getLandingFaqs } from '../data/faq';
 import { SEO_MEDIA } from '../config/media';
 const seo = resolvePageSeo('/');
 const homeFaqs = getLandingFaqs();
 const heroLcpImage = SEO_MEDIA.desertCorridorEsp;
+const shareUrl = canonicalUrl('/');
 ---
 
 <BaseLayout
@@ -37,4 +39,7 @@ const heroLcpImage = SEO_MEDIA.desertCorridorEsp;
   <ProductsSection />
   <WhySetupSection />
   <ContentSections />
+  <div class="mx-auto max-w-6xl px-5 pb-12">
+    <ShareButtons shareUrl={shareUrl} shareText={seo.title} />
+  </div>
 </BaseLayout>

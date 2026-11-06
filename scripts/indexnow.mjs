@@ -9,14 +9,6 @@ const key = process.env.INDEXNOW_KEY?.trim();
 function resolveIndexNowHost() {
   const explicit = process.env.INDEXNOW_HOST?.trim();
   if (explicit) return explicit;
-  const origin = process.env.PUBLIC_SITE_ORIGIN?.trim();
-  if (origin) {
-    try {
-      return new URL(origin).hostname;
-    } catch {
-      /* fall through */
-    }
-  }
   return 'cs2-cheats.org';
 }
 

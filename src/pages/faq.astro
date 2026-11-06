@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllFaqs } from '../data/faq';
-import { resolvePageSeo } from '../config/seo';
+import { resolvePageSeo, canonicalUrl } from '../config/seo';
+import ShareButtons from '../components/ShareButtons.astro';
 import { breadcrumbSchema, faqPageSchema, webPageSchema } from '../utils/schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SiteFaqSection from '../components/SiteFaqSection.astro';
@@ -13,6 +14,7 @@ const breadcrumbs = [
 ];
 
 const faqs = getAllFaqs();
+const shareUrl = canonicalUrl('/faq/');
 ---
 
 <BaseLayout
@@ -36,4 +38,8 @@ const faqs = getAllFaqs();
   </section>
 
   <SiteFaqSection items={faqs} variant="full" titleId="faq-page-title" titleLevel="h1" />
+
+  <div class="mx-auto max-w-6xl px-5 pb-12">
+    <ShareButtons shareUrl={shareUrl} shareText={seo.title} />
+  </div>
 </BaseLayout>

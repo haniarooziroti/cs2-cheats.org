@@ -22,7 +22,7 @@ import { Badge } from '@/components/starwind/badge';
 import { Button } from '@/components/starwind/button';
 import { Prose } from '@/components/starwind/prose';
 import BlogPostCta from '../../components/BlogPostCta.astro';
-import ShareLinks from '../../components/ShareLinks.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
 import { normalizeInternalPath, ROUTES } from '../../utils/path';
 
 export function getStaticPaths() {
@@ -184,8 +184,6 @@ const sharePageUrl = canonicalUrl(postPath);
             })}
           </Prose>
 
-          <ShareLinks url={sharePageUrl} title={post.shareTitle ?? post.title} />
-
           <nav class="blog-article__actions" aria-label="Continue reading">
             <Button as="a" href={checkoutPath('cs2')} variant="primary" aria-label={t.ui.checkoutAria}>
               Checkout
@@ -209,4 +207,8 @@ const sharePageUrl = canonicalUrl(postPath);
     titleId={`blog-faq-${post.slug}`}
     class="border-t border-border bg-muted/20"
   />
+
+  <div class="mx-auto max-w-6xl px-5 pb-12">
+    <ShareButtons shareUrl={sharePageUrl} shareText={post.shareTitle ?? post.title} />
+  </div>
 </BaseLayout>

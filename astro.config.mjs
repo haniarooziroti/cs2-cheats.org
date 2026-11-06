@@ -3,10 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
-/** Must match PUBLIC_SITE_ORIGIN used at build time (see .env.example). */
-const site =
-  (process.env.PUBLIC_SITE_ORIGIN && String(process.env.PUBLIC_SITE_ORIGIN).trim().replace(/\/$/, '')) ||
-  'https://cs2-cheats.org';
+/** Production origin only — previews use Workers host but must not affect sitemap/SEO output. */
+const site = 'https://cs2-cheats.org';
 
 export default defineConfig({
   site,

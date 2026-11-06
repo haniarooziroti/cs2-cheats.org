@@ -33,9 +33,10 @@ await src
   .png({ compressionLevel: 9 })
   .toFile(path.join(publicDir, 'favicon-v2-32.png'));
 
+/** Tab / shortcut icon — 48×48 as requested */
 await src
   .clone()
-  .resize(32, 32, { fit: 'cover' })
+  .resize(48, 48, { fit: 'cover' })
   .png({ compressionLevel: 9 })
   .toFile(path.join(publicDir, 'favicon-v2.ico'));
 
@@ -84,5 +85,5 @@ for (const name of legacy) {
 }
 
 console.log(
-  `Brand icons from ${sourceLabel}: favicon-v2.ico, favicon.ico (copy), favicon-v2-32.png, favicon-v2-360.png, apple-touch-icon-v2.png, favicon-v2.svg, og-image-v2.png; removed legacy favicon/*.svg names.`,
+  `Brand icons from ${sourceLabel}: favicon-v2.ico (48px), favicon.ico (copy), favicon-v2-32.png, favicon-v2-360.png, apple-touch-icon-v2.png, favicon-v2.svg, og-image-v2.png; removed legacy favicon names.`,
 );

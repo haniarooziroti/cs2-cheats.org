@@ -6,7 +6,7 @@ import Icon from '../../components/icons/Icon.astro';
 import { forumPosts, getForumPost } from '../../data/forum';
 import { canonicalUrl, pageTitle } from '../../config/seo';
 import { breadcrumbSchema, discussionForumPostingSchema } from '../../utils/schema';
-import ShareLinks from '../../components/ShareLinks.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
 
 export function getStaticPaths() {
   return forumPosts.map((post) => ({ params: { slug: post.slug } }));
@@ -43,7 +43,6 @@ const relatedPosts = [
               {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
               <div class="forum-detail-copy">{post.body.map((paragraph) => <p>{paragraph}</p>)}</div>
               <div class="forum-post-actions forum-post-actions--detail"><a href="#comments"><Icon name="messageCircle" size={16} /> Jump to {post.commentsCount} replies</a>{post.sourcePath && post.sourceTitle ? <a href={post.sourcePath}><Icon name="navBlog" size={15} /> Open paired guide: {post.sourceTitle}</a> : null}</div>
-              <ShareLinks url={sharePageUrl} title={post.shareTitle ?? post.title} />
               <div class="forum-login-prompt"><span class="forum-user-dot">i</span><span>Preview discussion</span><span>Posting and voting are unavailable here</span></div>
               <section class="forum-comments" id="comments" aria-labelledby="comments-title">
                 <div class="forum-comments__heading"><h2 id="comments-title">Thread replies <span>{post.commentsCount}</span></h2><span>Community voices</span></div>
@@ -56,6 +55,7 @@ const relatedPosts = [
                   </article>
                 ))}
               </section>
+              <ShareButtons shareUrl={sharePageUrl} shareText={post.shareTitle ?? post.title} />
             </div>
           </article>
         </main>

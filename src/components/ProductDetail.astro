@@ -14,6 +14,9 @@ import ProductFeaturesSection from './product/ProductFeaturesSection.astro';
 import ProductDescriptionSection from './product/ProductDescriptionSection.astro';
 import ProductExperienceSection from './product/ProductExperienceSection.astro';
 import ProductRelatedGuidesSection from './product/ProductRelatedGuidesSection.astro';
+import ShareButtons from './ShareButtons.astro';
+import { canonicalUrl } from '../config/seo';
+import { productHub } from '../data/products';
 
 interface Props {
   product: ProductPage;
@@ -31,6 +34,10 @@ const descriptionBlocks = [
 ];
 
 const showDescToggle = descriptionBlocks.length > 2;
+
+const pagePath = `${productHub.path}${product.slug}/`;
+const shareUrl = canonicalUrl(pagePath);
+const shareText = `${product.title} — CS2 cheat product on cs2-cheats.org`;
 ---
 
 <div class="product-detail">
@@ -77,6 +84,10 @@ const showDescToggle = descriptionBlocks.length > 2;
   titleId={`catalog-faq-${product.slug}`}
   class="border-t border-border bg-background"
 />
+
+<div class="mx-auto max-w-6xl px-5 pb-16">
+  <ShareButtons shareUrl={shareUrl} shareText={shareText} />
+</div>
 </div>
 
 <script>

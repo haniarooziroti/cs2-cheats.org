@@ -18,7 +18,7 @@ export interface ForumPost {
   seoDescription: string;
   /** H1: include “cheats”, not identical to thread title. */
   pageHeading: string;
-  /** Social share title (passed to ShareLinks). */
+  /** Social share title (passed to ShareButtons). */
   shareTitle?: string;
   author: string;
   age: string;

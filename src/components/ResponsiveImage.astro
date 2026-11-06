@@ -32,6 +32,10 @@ const {
   desktopOnly = false,
 } = Astro.props;
 
+if (typeof alt !== 'string') {
+  throw new Error('ResponsiveImage: prop `alt` is required (string).');
+}
+
 const isRaster = isAbsoluteImageUrl(src) || /\.(png|jpe?g|webp)$/i.test(src);
 const srcSet = responsiveSrcSet(src, widths);
 const imgSrc = desktopOnly
