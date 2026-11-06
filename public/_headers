@@ -1,6 +1,8 @@
 /*
   Cache-Control: public, max-age=3600, must-revalidate
 
+# Preview host only — do not apply noindex to cs2-cheats.org.
+# Remove this rule once the workers.dev route is disabled.
 https://cs2-cheats-org.hania-rooziroti.workers.dev/*
   X-Robots-Tag: noindex, nofollow
 
