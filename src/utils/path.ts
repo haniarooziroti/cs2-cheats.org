@@ -10,7 +10,6 @@ export function withTrailingSlash(path: string): string {
   return hash ? `${normalized}#${hash}` : normalized;
 }
 
-/** Former /cheats/* URLs → current routes (301 targets match astro.config + scripts/redirects.mjs). */
 export const LEGACY_PATH_MAP: Record<string, string> = {
   '/cheats': PRODUCT_BASE,
   '/cheats/': PRODUCT_BASE,
@@ -20,8 +19,10 @@ export const LEGACY_PATH_MAP: Record<string, string> = {
   '/cheats/pro/': PRODUCT_BASE,
   '/cheats/elite': `${PRODUCT_BASE}elite/`,
   '/cheats/elite/': `${PRODUCT_BASE}elite/`,
-  '/cheats/compare': '/blog/dota-2-lite-vs-pro/',
-  '/cheats/compare/': '/blog/dota-2-lite-vs-pro/',
+  '/products/dota-2-cheats': PRODUCT_BASE,
+  '/products/dota-2-cheats/': PRODUCT_BASE,
+  '/products/dota-2-cheats/utilities': `${PRODUCT_BASE}utilities/`,
+  '/products/dota-2-cheats/utilities/': `${PRODUCT_BASE}utilities/`,
   '/contact': '/support/',
   '/contact/': '/support/',
 };
@@ -59,7 +60,6 @@ export function blogPostPath(slug: string): string {
   return `/blog/${slug}/`;
 }
 
-/** @deprecated Use productPath — cheat tier pages live under products. */
 export function cheatPath(slug: string): string {
   return productPath(slug);
 }

@@ -1,5 +1,7 @@
 ---
 import type { ProductPage } from '../../data/products';
+import { checkoutPath } from '../../config/checkout';
+import { productPath } from '../../utils/path';
 import {
   checkoutUrlWithPlan,
   formatPlanPrice,
@@ -18,6 +20,9 @@ const { product } = Astro.props;
 const plans = getProductPlans(product.slug);
 const defaultPlan = plans[0]!;
 const isSinglePlan = plans.length === 1;
+const storePath = checkoutPath('cs2');
+const showDmaSpooferRow = product.kind === 'tier' && product.slug === 'elite';
+const spooferPage = productPath('hwid-spoofer');
 ---
 
 <aside
@@ -81,6 +86,25 @@ const isSinglePlan = plans.length === 1;
         Buy now
         <Icon name="arrowRight" size={17} />
       </Button>
+
+      {
+        showDmaSpooferRow && (
+          <div class="space-y-3 border-t border-border pt-4">
+            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Add-ons</p>
+            <Button as="a" href={storePath} variant="outline" size="sm" class="w-full justify-between rounded-xl">
+              <span class="truncate">Add Cloud DMA</span>
+              <Icon name="compareCloudBackup" size={17} />
+            </Button>
+            <p class="text-xs text-muted-foreground">
+              Full feature sets on supported builds often route through Cloud DMA—select it on the same store checkout.
+            </p>
+            <Button as="a" href={spooferPage} variant="outline" size="sm" class="w-full justify-between rounded-xl">
+              <span class="truncate">HWID Spoofer (product page)</span>
+              <Icon name="arrowRight" size={17} />
+            </Button>
+          </div>
+        )
+      }
     </div>
   </div>
 </aside>

@@ -3,6 +3,14 @@ import { RSS_FEED_PATH, SITE_ORIGIN, absoluteAssetUrl, canonicalUrl } from '../c
 import { parseBlogDate } from './schema';
 import { blogPostPath } from './path';
 
+function enclosureMimeType(imageUrl: string): string {
+  if (/\.webp(\?|$)/i.test(imageUrl)) return 'image/webp';
+  if (/\.svg(\?|$)/i.test(imageUrl)) return 'image/svg+xml';
+  if (/\.(jpe?g)(\?|$)/i.test(imageUrl)) return 'image/jpeg';
+  if (/\.png(\?|$)/i.test(imageUrl)) return 'image/png';
+  return 'application/octet-stream';
+}
+
 function escapeXml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -25,7 +33,7 @@ export function buildRssFeed(): string {
       <guid isPermaLink="true">${link}</guid>
       <description>${escapeXml(post.desc)}</description>
       <pubDate>${pubDate}</pubDate>
-      <enclosure url="${escapeXml(absoluteAssetUrl(post.image))}" type="image/png" />
+      <enclosure url="${escapeXml(absoluteAssetUrl(post.image))}" type="${enclosureMimeType(post.image)}" />
     </item>`;
     })
     .join('');
@@ -33,9 +41,9 @@ export function buildRssFeed(): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DotaCheats Blog</title>
+    <title>CS2 cheat articles | cs2-cheats.org</title>
     <link>${SITE_ORIGIN}/blog/</link>
-    <description>Dota 2 cheat guides, patch notes, and setup walkthroughs from dotacheats.com.</description>
+    <description>Counter-Strike 2 cheat articles: ESP, aimbot tuning, loaders, and patch notes on cs2-cheats.org.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />

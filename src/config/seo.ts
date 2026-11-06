@@ -1,14 +1,36 @@
 import { t } from '../i18n';
-import { SITE_DOMAIN as INDEXNOW_HOST_NAME } from './site';
+import { SITE_DOMAIN } from './site';
 import { getPageSeoEntry } from './pageSeo';
+import { DEFAULT_OG_IMAGE_ABSOLUTE } from './media';
 
-export const SITE_ORIGIN = `https://${t.site.domain}`;
+function normalizeOrigin(url: string): string {
+  return url.replace(/\/$/, '');
+}
 
-export const DEFAULT_OG_IMAGE = '/images/gameplay/dota-2-map-hack.png';
+/**
+ * Canonical origin for absolute URLs (OG, JSON-LD, RSS, canonical link).
+ * Set PUBLIC_SITE_ORIGIN at build time to your live host (e.g. Cloudflare Workers preview);
+ * default is the production domain so cs2-cheats.org builds stay unchanged.
+ */
+const rawOrigin =
+  (import.meta.env.PUBLIC_SITE_ORIGIN as string | undefined)?.trim() || `https://${SITE_DOMAIN}`;
+
+export const SITE_ORIGIN = normalizeOrigin(rawOrigin);
+
+/** Hostname only — IndexNow key file location must match this host when deploying. */
+export const SITE_HOSTNAME = (() => {
+  try {
+    return new URL(SITE_ORIGIN).hostname;
+  } catch {
+    return SITE_DOMAIN;
+  }
+})();
+
+/** Default social preview image (remote WebP on Supabase). */
+export const DEFAULT_OG_IMAGE = DEFAULT_OG_IMAGE_ABSOLUTE;
 
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
 
-/** @example @dotacheats */
 export const TWITTER_SITE = import.meta.env.PUBLIC_TWITTER_SITE as string | undefined;
 
 export const TWITTER_CREATOR = import.meta.env.PUBLIC_TWITTER_CREATOR as string | undefined;
@@ -44,8 +66,8 @@ export function resolvePageSeo(pathname: string): { title: string; description: 
   return { title: t.site.title, description: t.site.description };
 }
 
-export function pageTitle(keyword: string, brand = t.site.name): string {
-  const suffix = ` | ${brand}`;
+export function pageTitle(keyword: string, suffixSite = t.site.domain): string {
+  const suffix = ` | ${suffixSite}`;
   const max = 60;
   if (`${keyword}${suffix}`.length <= max) return `${keyword}${suffix}`;
   const trimmed = keyword.slice(0, Math.max(20, max - suffix.length - 1)).trim();
@@ -58,4 +80,4 @@ export const DEFAULT_OG_IMAGE_HEIGHT = 630;
 export const RSS_FEED_PATH = '/rss.xml';
 
 /** Used by IndexNow postbuild script. */
-export const INDEXNOW_HOST = INDEXNOW_HOST_NAME;
+export const INDEXNOW_HOST = SITE_HOSTNAME;

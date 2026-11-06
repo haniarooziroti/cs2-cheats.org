@@ -1,14 +1,20 @@
 {
-  "name": "DotaCheats",
-  "short_name": "DotaCheats",
-  "description": "Dota 2 cheats with scripts, map hack, zoom hack and skin changer for PC.",
+  "name": "CS2 cheats",
+  "short_name": "CS2 cheats",
+  "description": "Counter-Strike 2 cheats: ESP, aimbot, wallhack-style overlays, and utilities for PC.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0d10",
+  "background_color": "#0D0A14",
   "theme_color": "#7f3dee",
   "lang": "en-US",
   "icons": [
+    {
+      "src": "/favicon-cs2.png",
+      "sizes": "360x360",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",

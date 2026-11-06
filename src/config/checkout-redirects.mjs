@@ -1,21 +1,15 @@
-/** Checkout destinations keyed by internal product id (no affiliate codes). */
+/** Single store destination — buy buttons use internal /go/ paths only. */
+const STORE_URL = 'https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit';
+
 export const CHECKOUT_URLS = {
-  dota2: 'https://zadeyo.com/products/dota-2',
-  skinChanger: 'https://zadeyo.com/products/skin-changer',
-  hwidSpoofer: 'https://zadeyo.com/products/hwid-spoofer',
-  ugc: 'https://zadeyo.com/products/ugc',
+  cs2: STORE_URL,
 };
 
-/** Checkout paths → external product URLs (used by Node serve + Astro middleware). */
 export const CHECKOUT_PATH_REDIRECTS = new Map([
-  ['/go/dota-2', CHECKOUT_URLS.dota2],
-  ['/go/dota-2/', CHECKOUT_URLS.dota2],
-  ['/go/skin-changer', CHECKOUT_URLS.skinChanger],
-  ['/go/skin-changer/', CHECKOUT_URLS.skinChanger],
-  ['/go/hwid-spoofer', CHECKOUT_URLS.hwidSpoofer],
-  ['/go/hwid-spoofer/', CHECKOUT_URLS.hwidSpoofer],
-  ['/go/ugc', CHECKOUT_URLS.ugc],
-  ['/go/ugc/', CHECKOUT_URLS.ugc],
+  ['/go/cs2', CHECKOUT_URLS.cs2],
+  ['/go/cs2/', CHECKOUT_URLS.cs2],
+  ['/go/store', CHECKOUT_URLS.cs2],
+  ['/go/store/', CHECKOUT_URLS.cs2],
 ]);
 
 export function resolveCheckoutPathRedirect(pathname) {

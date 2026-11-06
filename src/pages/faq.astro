@@ -5,7 +5,6 @@ import { resolvePageSeo } from '../config/seo';
 import { breadcrumbSchema, faqPageSchema, webPageSchema } from '../utils/schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SiteFaqSection from '../components/SiteFaqSection.astro';
-import SectionHeader from '../components/SectionHeader.astro';
 
 const seo = resolvePageSeo('/faq/');
 const breadcrumbs = [
@@ -21,9 +20,9 @@ const faqs = getAllFaqs();
   description={seo.description}
   jsonLd={[
     webPageSchema({
-      name: 'FAQ — Dota 2 Cheats & Products',
+      name: 'FAQ | CS2 cheats, loader & checkout',
       description:
-        'Answers about Dota 2 cheat tiers, map hack, scripts, HWID tools, blog guides and checkout at dotacheats.com.',
+        'Answers about Counter-Strike 2 cheat tiers, ESP, aimbot, HWID tools, articles, and checkout through the linked store.',
       url: '/faq/',
     }),
     faqPageSchema(faqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') }))),
@@ -33,16 +32,8 @@ const faqs = getAllFaqs();
   <section class="border-b border-border bg-muted/10 py-8 md:py-12">
     <div class="mx-auto max-w-6xl px-5">
       <Breadcrumbs items={breadcrumbs} />
-      <div class="mt-6">
-        <SectionHeader
-          eyebrow="Help center"
-          title="FAQ for cheats, products & guides"
-          desc="Everything about Lite, Pro, Elite tiers, utilities, safety and blog topics—in one place."
-          titleId="faq-page-title"
-        />
-      </div>
     </div>
   </section>
 
-  <SiteFaqSection items={faqs} variant="full" titleId="faq-page-list" />
+  <SiteFaqSection items={faqs} variant="full" titleId="faq-page-title" titleLevel="h1" />
 </BaseLayout>

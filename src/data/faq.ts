@@ -1,15 +1,7 @@
 import type { IconName } from '../components/icons/types';
 import { normalizeInternalPath, productPath, ROUTES } from '../utils/path';
 
-export type FaqTopic =
-  | 'all'
-  | 'plans'
-  | 'esp'
-  | 'scripts'
-  | 'safety'
-  | 'products'
-  | 'blog'
-  | 'setup';
+export type FaqTopic = 'all' | 'plans' | 'esp' | 'scripts' | 'safety' | 'products' | 'blog' | 'setup';
 
 export interface SiteFaqItem {
   id: string;
@@ -29,132 +21,132 @@ function link(text: string, href: string): string {
   return `<a href="${normalizeInternalPath(href)}">${text}</a>`;
 }
 
-const elite = link('Dota 2 Elite', productPath('elite'));
-const lite = link('Lite tier (map hack & ESP)', ROUTES.products);
-const pro = link('Pro tier (scripts included)', ROUTES.products);
-const productsHub = link('Dota 2 products', ROUTES.products);
+const elite = link('CS2 Elite', productPath('elite'));
+const lite = link('Lite tier (ESP & intel)', ROUTES.products);
+const pro = link('Pro tier (aim + ESP)', ROUTES.products);
+const productsHub = link('CS2 products hub', ROUTES.products);
 const hwid = link('HWID Spoofer', productPath('hwid-spoofer'));
-const ugc = link('UGC', productPath('ugc'));
-const skin = link('Skin Changer', productPath('unlock-all'));
+const ugc = link('UGC appeals', productPath('ugc'));
+const skin = link('Skin preview utility', productPath('unlock-all'));
 const faqPage = link('full FAQ', ROUTES.faq);
-const blog = link('blog guides', ROUTES.blog);
+const blog = link('articles', ROUTES.blog);
 
 export const siteFaqs: SiteFaqItem[] = [
   {
     id: 'status',
     topic: 'setup',
     icon: 'faqStatus',
-    q: 'Where do I check if Dota 2 cheats are online?',
-    a: a('The live status banner is on dotacheats.com and in the Discord #status channel. Always check after a Dota 2 or VAC update.'),
+    q: 'Where do I check if the CS2 loader is online?',
+    a: a('Use the status banner on cs2-cheats.org and your operator portal. Re-check after every Counter-Strike 2 or VAC Live update.'),
   },
   {
     id: 'after-buy',
     topic: 'setup',
     icon: 'faqAfterBuy',
     q: 'What happens after I buy?',
-    a: a('Your portal unlocks the loader, setup guide and config library via our secure checkout. Follow the guide before launching Dota 2.'),
+    a: a('The store emails a license key and portal login. Download only from that portal—never from random links or DMs.'),
   },
   {
     id: 'ban-risk',
     topic: 'safety',
     icon: 'faqBanRisk',
-    q: 'Can I get banned using third-party dota cheats?',
-    a: a('Yes—any modification carries risk. VAC and report systems evolve. Read current status and accept the risk before use.'),
+    q: 'Can I get banned using CS2 cheats?',
+    a: a('Yes. VAC Live, replays, and league clients can flag software. You accept that risk when you inject third-party tools.'),
   },
   {
     id: 'platforms',
     topic: 'setup',
     icon: 'faqPlatforms',
     q: 'Which platforms are supported?',
-    a: a('Dota 2 via Steam on Windows 10/11 64-bit only. macOS and Linux are not supported.'),
+    a: a('Counter-Strike 2 through Steam on Windows 10 or 11 64-bit. macOS and Linux are not supported here.'),
   },
   {
     id: 'license-move',
     topic: 'setup',
     icon: 'faqLicenseMove',
     q: 'Can I move my license to a new PC?',
-    a: a('Yes—use the HWID reset in your portal or open a Discord ticket. Limits depend on your tier.'),
+    a: a('Use the HWID reset in the portal or open a ticket on the linked store with your key. Limits depend on tier.'),
   },
   {
     id: 'products-page',
     topic: 'products',
     icon: 'faqProductsPage',
-    q: 'Where are products and utilities listed?',
-    a: `${productsHub} lists cheat tiers, ${hwid}, ${ugc}, and ${skin} with feature lists and checkout via our partner.`,
+    q: 'Where are tiers and utilities listed?',
+    a: `${productsHub} lists Lite, Pro, Elite, ${hwid}, ${ugc}, and ${skin}. Buy buttons open the external store.`,
   },
   {
     id: 'what-is-esp',
     topic: 'esp',
     icon: 'faqWhatIsEsp',
-    q: 'What is Dota 2 map hack / ESP?',
-    a: `Map hack and hero ESP show enemy positions, wards, runes and jungle camps through fog of war. ${lite} covers awareness overlays. ${pro} and ${elite} add script modules on top.`,
+    q: 'What is CS2 ESP?',
+    a: `ESP draws players, weapons, and bomb info on your screen. ${lite} focuses on overlays without aim automation.`,
     scopes: ['lite', 'pro', 'elite'],
   },
   {
-    id: 'esp-vs-scripts',
+    id: 'esp-vs-aim',
     topic: 'esp',
     icon: 'faqEspVsScripts',
-    q: 'What is the difference between map hack and scripts?',
-    a: `Map hack and ESP are information overlays—they do not cast abilities. Auto Combo, Orbwalker and Smart Cast are scripts on ${pro} and ${elite}. You can run awareness-only on ${lite}.`,
+    q: 'What is the difference between ESP and aim assist?',
+    a: `ESP is information only. Aim smoothing and trigger timing are combat assists on ${pro} and ${elite}.`,
   },
   {
     id: 'which-tier-esp',
     topic: 'plans',
     icon: 'faqWhichTierEsp',
-    q: 'Which tier do I need for map hack only?',
-    a: `${lite} is awareness only: hero ESP, ward locator, rune timers and zoom hack. ${pro} adds scripts. ${elite} adds bots, kill steal and Skin Changer.`,
+    q: 'Which tier is ESP-only?',
+    a: `${lite} is intel-only: boxes, bomb flags, radar hints—no aim modules. ${pro} adds aim and trigger layers.`,
     scopes: ['lite'],
   },
   {
-    id: 'which-tier-scripts',
+    id: 'which-tier-aim',
     topic: 'scripts',
     icon: 'faqWhichTierScripts',
-    q: 'Which tier includes Auto Combo scripts?',
-    a: `${pro} ships Auto Combo, Orbwalker, Smart Cast and Activator. ${elite} includes everything in Pro plus Auto Farm Bot and Auto Kill Steal. ${lite} has no script automation.`,
+    q: 'Which tier includes aimbot-style smoothing?',
+    a: `${pro} and ${elite} ship legit aim curves, FOV caps, and trigger timing. ${lite} has none of that.`,
     scopes: ['pro'],
   },
   {
     id: 'rank-lite-vs-pro',
     topic: 'plans',
     icon: 'faqRankTiers',
-    q: 'How do you rank Lite vs Pro vs Elite?',
-    a: `Map awareness only → ${lite}. Ranked gunfights with scripts → ${pro}. Full bot suite and priority patches → ${elite}. Compare on each cheat page or the ${faqPage}.`,
+    q: 'How do Lite, Pro, and Elite differ?',
+    a: `${lite} = overlays. ${pro} = overlays plus aim and trigger. ${elite} = full stack with priority rebuilds when slots are open.`,
   },
   {
     id: 'elite-slots',
     topic: 'plans',
     icon: 'faqEliteSlots',
-    q: 'Why is Elite limited slots?',
-    a: `Elite is a private build with direct dev support and priority patch delivery. Slot caps keep patch cycles fast. Check the status banner before checkout.`,
+    q: 'Why is Elite limited?',
+    a: a('Limited slots keep patch turnaround predictable. Check the banner before you pay for Elite-specific access.'),
     scopes: ['elite'],
   },
   {
     id: 'stream-proof',
     topic: 'esp',
     icon: 'faqStreamProof',
-    q: 'Can OBS capture my overlay?',
-    a: `Stream-proof mode on ${lite}, ${pro} and ${elite} hides overlays from OBS and Discord share. Test a local recording before going live.`,
+    q: 'Will OBS show my overlay?',
+    a: `Stream-safe toggles try to hide layers from capture APIs—still record a local test before you broadcast. See the ${blog} piece on stream setup.`,
   },
   {
-    id: 'undetected',
-    topic: 'safety',
-    icon: 'faqUndetected',
-    q: 'Are undetected Dota 2 cheats guaranteed?',
-    a: a('No. Undetected is current status on the product page—not a permanent guarantee. Stop if the build shows updating, testing, or detected.'),
-  },
-  {
-    id: 'esp-safer',
+    id: 'status-not-promise',
     topic: 'safety',
     icon: 'faqEspSafer',
-    q: 'Is map hack safer than scripts?',
-    a: a('ESP is quieter in replay than obvious bot patterns, but it is still a cheat. VAC does not ignore overlays because you left scripts off.'),
+    q: 'Does “online” on the banner mean I am safe forever?',
+    a: a('No. Online means the build passed current checks—Valve can ship changes any week. Stop when the banner shows testing or offline.'),
+  },
+  {
+    id: 'esp-quieter',
+    topic: 'safety',
+    icon: 'faqEspSafer',
+    q: 'Is ESP quieter than aim assist in demos?',
+    a: a('Usually, but both still violate rules when used in protected queues. Replays can still look suspicious if you spam glow.'),
   },
   {
     id: 'hwid-when',
     topic: 'products',
     icon: 'faqHwidWhen',
     q: 'When do I need the HWID Spoofer?',
-    a: `Use ${hwid} when fresh Steam accounts fail instantly on one PC but work elsewhere—hardware enforcement. Not for account-only VAC cases; see ${ugc} instead.`,
+    a: `Use ${hwid} when new Steam accounts fail on one PC but work elsewhere—hardware-level blocks. Pure account bans may need ${ugc} paperwork instead.`,
     scopes: ['hwid-spoofer'],
   },
   {
@@ -162,119 +154,51 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqUgcWhat',
     q: 'What is UGC?',
-    a: `${ugc} (Unban & Governance Control) is an appeal workspace for Steam restrictions and VAC bans—custom workflows and case tracking, not a guaranteed unban service.`,
+    a: `${ugc} is an appeal workspace—templates, uploads, timelines—not a promised overturn.`,
     scopes: ['ugc'],
   },
   {
     id: 'skin-changer',
     topic: 'products',
     icon: 'faqSkinChanger',
-    q: 'Does Skin Changer modify my Steam inventory?',
-    a: `${skin} previews cosmetics locally on your client. Other players see your real inventory. Included with ${elite}; available standalone for cosmetic preview only.`,
+    q: 'Does skin preview change Steam inventory?',
+    a: `${skin} shows cosmetics locally. Everyone else still sees your real items. Bundled into ${elite} or sold alone.`,
     scopes: ['unlock-all'],
   },
   {
     id: 'external-loader',
     topic: 'products',
     icon: 'faqExternalLoader',
-    q: 'Is the loader injected into the Steam folder?',
-    a: `DotaCheats runs external with cloud config sync—no files injected into the Dota 2 directory. VAC risk still applies. See ${productsHub}.`,
+    q: 'Is the loader external?',
+    a: a('Yes—runs alongside CS2 with overlays instead of pasting files into the game folder. Risk still exists—read the status banner.'),
   },
   {
-    id: 'blog-vs-cheats',
-    topic: 'blog',
-    icon: 'faqBlogVsCheats',
-    q: 'Are blog cheat codes the same as ranked cheats?',
-    a: `No. Blog articles about Valve console commands apply only in custom lobbies with cheats enabled. Ranked dota cheats are separate products—see ${lite}, ${pro} and ${elite}.`,
-  },
-  {
-    id: 'blog-setup',
-    topic: 'blog',
-    icon: 'faqBlogSetup',
-    q: 'Where do blog setup guides point for purchase?',
-    a: `Guides link to tier pages and ${productsHub}. Checkout runs through our secure partner—never paste loader files from random Discord DMs.`,
-  },
-  {
-    id: 'compare-plans',
-    topic: 'plans',
-    icon: 'faqComparePlans',
-    q: 'Where do I compare plans side by side?',
-    a: `Each cheat tier page includes a compare table. The ${faqPage} collects product, cheat and blog answers in one place.`,
-  },
-  {
-    id: 'who-lite',
-    topic: 'plans',
-    icon: 'faqWhoLite',
-    q: 'Who should stay on Lite?',
-    a: `Players who only want map awareness—ESP, wards, runes—and will not touch script automation. If you keep enabling combo scripts, buy ${pro} instead.`,
-    scopes: ['lite'],
-  },
-  {
-    id: 'who-pro',
-    topic: 'plans',
-    icon: 'faqWhoPro',
-    q: 'Who should buy Pro?',
-    a: `Ranked players who want Auto Combo, Orbwalker and Activator with map hack included. Pro is the most popular tier at dotacheats.com.`,
-    scopes: ['pro'],
-  },
-  {
-    id: 'who-elite',
-    topic: 'plans',
-    icon: 'faqWhoElite',
-    q: 'Who should buy Elite?',
-    a: `Operators who want Auto Farm Bot, Auto Kill Steal, Skin Changer and priority patch delivery when slots are open.`,
-    scopes: ['elite'],
+    id: 'faceit-extra',
+    topic: 'safety',
+    icon: 'faqVacUpdate',
+    q: 'What about Faceit?',
+    a: `The Faceit client adds checks beyond Steam. Read ${link('Faceit constraints article', '/blog/faceit-cs2-cheats-constraints/')} before paying only for that use case.`,
   },
   {
     id: 'vac-update',
     topic: 'safety',
     icon: 'faqVacUpdate',
-    q: 'What should I do after a VAC update?',
-    a: a('Check dotacheats.com status and Discord #status. Do not launch until the banner shows online. Load conservative presets after any patch.'),
+    q: 'What should I do after a patch?',
+    a: a('Verify CS2 files, restart Steam, wait for the banner to show online, then import a conservative preset from the portal.'),
   },
   {
     id: 'discord-help',
     topic: 'setup',
     icon: 'faqDiscordHelp',
     q: 'How do I get install help?',
-    a: a('Open Discord after purchase with your order email, Windows version and Dota 2 client build. Staff walk through loader setup live.'),
-  },
-  {
-    id: 'turbo-ranked',
-    topic: 'plans',
-    icon: 'faqTurboRanked',
-    q: 'Do tiers work in Turbo and ranked?',
-    a: `Yes—${lite}, ${pro} and ${elite} include Turbo and ranked presets in the portal. Tune distance caps and script delay before your first queue.`,
-  },
-  {
-    id: 'zoom-hack',
-    topic: 'esp',
-    icon: 'faqZoomHack',
-    q: 'Which tier includes zoom hack?',
-    a: `Zoom hack ships on ${lite} and carries through ${pro} and ${elite}. Extended camera helps lane vision without ward investment.`,
-    scopes: ['lite'],
-  },
-  {
-    id: 'auto-farm',
-    topic: 'scripts',
-    icon: 'faqAutoFarm',
-    q: 'Which tier includes Auto Farm Bot?',
-    a: `Auto Farm Bot, Lane Control AI and Auto Courier Manager are ${elite} only. ${pro} covers combat scripts without bot farming.`,
-    scopes: ['elite'],
-  },
-  {
-    id: 'private-cheats',
-    topic: 'safety',
-    icon: 'faqPrivateCheats',
-    q: 'What are private Dota 2 cheats?',
-    a: a('Private means per-user keys and maintained builds—not public zip packs. DotaCheats ships portal delivery for ESP, scripts and map hack tiers.'),
+    a: a('Open a ticket on the linked store with your order address, Windows build, and CS2 version. Avoid posting keys in public threads.'),
   },
   {
     id: 'faq-more',
     topic: 'all',
     icon: 'faqMore',
     q: 'Where is the full FAQ?',
-    a: `This site includes landing FAQs and per-page sections. See the ${faqPage} for all product, cheat and blog answers—or read ${blog} for deep guides.`,
+    a: `Use the ${faqPage} for every topic, or browse ${blog} for longer reads.`,
   },
 ];
 
@@ -288,29 +212,19 @@ export function getAllFaqs(): SiteFaqItem[] {
   return siteFaqs.filter((f) => f.topic !== 'all');
 }
 
-/** Shared FAQ block copy + filters (home, /faq/, products, blog). */
 export const SITE_FAQ_SECTION_COPY = {
-  eyebrow: 'All topics',
-  title: 'Browse by category',
-  subtitle: 'Filter cheat plans, map hack, scripts, products, setup and blog answers.',
+  eyebrow: 'Help center',
+  title: 'FAQ for cheats, products & articles',
+  subtitle:
+    'Everything about Lite, Pro, Elite tiers, utilities, safety, and on-site articles. Filter tiers, ESP, aim, safety, products, setup, and articles below.',
 } as const;
 
-export const SITE_FAQ_FILTER_TOPICS: FaqTopic[] = [
-  'all',
-  'plans',
-  'esp',
-  'scripts',
-  'safety',
-  'products',
-  'blog',
-  'setup',
-];
+export const SITE_FAQ_FILTER_TOPICS: FaqTopic[] = ['all', 'plans', 'esp', 'scripts', 'safety', 'products', 'blog', 'setup'];
 
-/** Section copy when FAQ list is scoped to the current page (not /faq/). */
 export const CONTEXTUAL_FAQ_SECTION_COPY = {
   eyebrow: 'FAQ',
   title: 'Questions about this page',
-  subtitle: 'Answers tied to what you are reading—visit the FAQ page for every topic.',
+  subtitle: 'Answers tied to what you are reading—visit the FAQ page for everything.',
 } as const;
 
 export function faqFilterTopicsForItems(items: SiteFaqItem[]): FaqTopic[] {
@@ -324,19 +238,13 @@ export function faqFilterTopicsForItems(items: SiteFaqItem[]): FaqTopic[] {
 
 export function getProductFaqs(slug: string, kind: 'tier' | 'utility'): SiteFaqItem[] {
   const general = siteFaqs.filter(
-    (f) =>
-      !f.scopes &&
-      ['setup', 'safety', 'plans', 'esp', 'scripts'].includes(f.topic),
+    (f) => !f.scopes && ['setup', 'safety', 'plans', 'esp', 'scripts'].includes(f.topic),
   );
   const scoped = siteFaqs.filter((f) => f.scopes?.includes(slug));
-  const tierCompare = siteFaqs.filter((f) =>
-    ['rank-lite-vs-pro', 'compare-plans', 'undetected', 'vac-update'].includes(f.id),
-  );
+  const tierCompare = siteFaqs.filter((f) => ['rank-lite-vs-pro', 'status-not-promise', 'vac-update'].includes(f.id));
 
   const combined =
-    kind === 'tier'
-      ? [...scoped, ...tierCompare, ...general.slice(0, 8)]
-      : [...scoped, ...general.slice(0, 6)];
+    kind === 'tier' ? [...scoped, ...tierCompare, ...general.slice(0, 8)] : [...scoped, ...general.slice(0, 6)];
 
   const seen = new Set<string>();
   return combined.filter((item) => {
@@ -347,52 +255,40 @@ export function getProductFaqs(slug: string, kind: 'tier' | 'utility'): SiteFaqI
 }
 
 const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
-  Guides: [
-    {
-      id: 'blog-guide-start',
-      topic: 'blog',
-      icon: 'faqBlogGuideStart',
-      q: 'Should I use console cheat codes in ranked?',
-      a: a('No. Valve lobby cheat codes only work in custom games with cheats enabled. Ranked requires separate dota cheats from dotacheats.com tiers.'),
-    },
-    {
-      id: 'blog-guide-tier',
-      topic: 'blog',
-      icon: 'faqBlogGuideTier',
-      q: 'Which tier matches this guide?',
-      a: `Awareness guides → ${lite}. Script and combo guides → ${pro}. Bot and kill-steal topics → ${elite}.`,
-    },
-    {
-      id: 'blog-guide-status',
-      topic: 'blog',
-      icon: 'faqBlogGuideStatus',
-      q: 'Is this guide still valid after a patch?',
-      a: a('Check the article date and the live status banner. Patch-day articles note when modules change—Discord #status has the latest build notes.'),
-    },
-  ],
   Setup: [
     {
       id: 'blog-setup-loader',
       topic: 'blog',
       icon: 'faqBlogSetupLoader',
       q: 'Where do I download the loader?',
-      a: a('Only from your operator portal after checkout—not from third-party links in comments or DMs.'),
-    },
-    {
-      id: 'blog-setup-lobby',
-      topic: 'blog',
-      icon: 'faqBlogSetupLobby',
-      q: 'Should I test in a lobby first?',
-      a: a('Yes. Load conservative presets in a lobby or Turbo before ranked. Tune script delay and ESP distance caps over several sessions.'),
+      a: a('Only from the operator portal linked in your receipt—not from forum DMs.'),
     },
   ],
-  Security: [
+  Features: [
     {
-      id: 'blog-sec-vac',
-      topic: 'blog',
+      id: 'blog-feat-esp',
+      topic: 'esp',
+      icon: 'faqBlogSlugEsp',
+      q: 'Will these ESP settings work on every map?',
+      a: a('Layouts are a starting point—tweak thickness per map and resolution after you test in deathmatch.'),
+    },
+  ],
+  Faceit: [
+    {
+      id: 'blog-faceit-risk',
+      topic: 'safety',
       icon: 'faqBlogSecVac',
-      q: 'Does this article guarantee undetected status?',
-      a: a('No article replaces the live status banner. Undetected is a point-in-time label—stop if status shows updating or detected.'),
+      q: 'Does Faceit allow these modules?',
+      a: a('No league client allows cheats. The article explains conflicts; assume league play is off-limits.'),
+    },
+  ],
+  Troubleshooting: [
+    {
+      id: 'blog-vac-article',
+      topic: 'setup',
+      icon: 'faqBlogGuideStatus',
+      q: 'VAC flagged me after I followed the setup article—why?',
+      a: a('Articles reduce mistakes; they do not remove platform risk. Stop injecting until support answers your ticket.'),
     },
   ],
 };
@@ -402,22 +298,15 @@ const defaultBlogFaqs: SiteFaqItem[] = [
     id: 'blog-default-1',
     topic: 'blog',
     icon: 'faqBlogDefault1',
-    q: 'Are blog guides official product documentation?',
-    a: `Articles explain workflows and link to ${lite}, ${pro}, ${elite} and ${productsHub}. Feature lists on product pages are authoritative for checkout.`,
+    q: 'Are these articles official manuals?',
+    a: `They explain workflows and link to ${productsHub}. Tier pages list modules for checkout decisions.`,
   },
   {
     id: 'blog-default-2',
     topic: 'blog',
     icon: 'faqBlogDefault2',
-    q: 'Need help applying this guide?',
-    a: a('Open Discord with your order email and the article slug. Staff reference the same portal presets mentioned in guides.'),
-  },
-  {
-    id: 'blog-default-3',
-    topic: 'blog',
-    icon: 'faqBlogDefault3',
-    q: 'Will settings in this article work next patch?',
-    a: a('Re-check status after every Dota 2 update. Portal presets update with patch notes—reload configs instead of copying old sliders.'),
+    q: 'Who do I contact if I am stuck?',
+    a: `Open a ticket on the linked store with your order email and CS2 build number, or read ${faqPage} and ${blog} while you wait.`,
   },
 ];
 
@@ -425,31 +314,31 @@ export function getBlogFaqs(tag: string, slug: string): SiteFaqItem[] {
   const topicFaqs = blogTopicFaqs[tag] ?? [];
   const slugHints: SiteFaqItem[] = [];
 
-  if (slug.includes('map-hack') || slug.includes('esp') || slug.includes('ward')) {
+  if (slug.includes('esp') || slug.includes('wallhack')) {
     slugHints.push({
       id: 'blog-slug-esp',
       topic: 'esp',
       icon: 'faqBlogSlugEsp',
-      q: 'Which tier covers map hack from this article?',
-      a: `${lite} includes hero ESP, ward locator and rune timers. ${pro} adds combat scripts on the same overlay stack.`,
+      q: 'Which tier matches these ESP tips?',
+      a: `${lite} is ESP-first. ${pro} keeps the same overlays and adds aim layers.`,
     });
   }
-  if (slug.includes('script') || slug.includes('combo') || slug.includes('auto-combo')) {
+  if (slug.includes('aimbot') || slug.includes('trigger')) {
     slugHints.push({
-      id: 'blog-slug-scripts',
+      id: 'blog-slug-aim',
       topic: 'scripts',
       icon: 'faqBlogSlugScripts',
-      q: 'Which tier includes the scripts in this article?',
-      a: `${pro} and ${elite} ship Auto Combo and related modules. ${lite} is map hack only.`,
+      q: 'Where is aim assist included?',
+      a: `${pro} and ${elite} include smoothing and trigger timing—not ${lite}.`,
     });
   }
-  if (slug.includes('hwid') || slug.includes('ban') || slug.includes('vac')) {
+  if (slug.includes('hwid') || slug.includes('vac')) {
     slugHints.push({
       id: 'blog-slug-hwid',
       topic: 'products',
       icon: 'faqBlogSlugHwid',
-      q: 'Does this article replace HWID or UGC products?',
-      a: `Recovery guides complement ${hwid} and ${ugc}—read product pages for workflow scope and realistic outcomes.`,
+      q: 'Does this replace HWID or UGC tools?',
+      a: `Articles complement ${hwid} and ${ugc}—read those product pages for scope.`,
     });
   }
 
@@ -457,24 +346,17 @@ export function getBlogFaqs(tag: string, slug: string): SiteFaqItem[] {
 }
 
 export const compareRows = [
-  { feature: 'Player ESP & hero boxes', icon: 'comparePlayerEsp' as const, lite: true, pro: true, elite: true },
-  { feature: 'Ward & sentry locator', icon: 'compareWardLocator' as const, lite: true, pro: true, elite: true },
-  { feature: 'Rune spawn timers', icon: 'compareRuneTimer' as const, lite: true, pro: true, elite: true },
-  { feature: 'Zoom hack', icon: 'compareZoomHack' as const, lite: true, pro: true, elite: true },
-  { feature: 'Streamproof overlay', icon: 'compareStreamproof' as const, lite: true, pro: true, elite: true },
-  { feature: 'Minimap hack overlay', icon: 'compareMinimapHack' as const, lite: true, pro: true, elite: true },
-  { feature: 'Auto Combo scripts', icon: 'compareAutoCombo' as const, lite: false, pro: true, elite: true },
-  { feature: 'Orbwalker & Smart Cast', icon: 'compareOrbwalker' as const, lite: false, pro: true, elite: true },
-  { feature: 'Target Selector', icon: 'compareTargetSelector' as const, lite: false, pro: true, elite: true },
-  { feature: 'Activator (BKB/Hex/Orchid)', icon: 'compareActivator' as const, lite: false, pro: true, elite: true },
-  { feature: 'Ability radius drawing', icon: 'compareAbilityRadius' as const, lite: false, pro: true, elite: true },
-  { feature: 'Smoke alert integration', icon: 'compareSmokeAlert' as const, lite: false, pro: true, elite: true },
-  { feature: 'Auto Farm Bot', icon: 'compareAutoFarm' as const, lite: false, pro: false, elite: true },
-  { feature: 'Auto Kill Steal', icon: 'compareAutoKillSteal' as const, lite: false, pro: false, elite: true },
-  { feature: 'Auto Dagon', icon: 'compareAutoDagon' as const, lite: false, pro: false, elite: true },
-  { feature: 'Full map hack suite', icon: 'compareFullMapHack' as const, lite: false, pro: false, elite: true },
-  { feature: 'Skin Changer (Unlock All)', icon: 'compareSkinChanger' as const, lite: false, pro: false, elite: true },
-  { feature: 'Priority patch queue', icon: 'comparePriorityPatch' as const, lite: false, pro: false, elite: true },
-  { feature: 'Direct dev Discord support', icon: 'compareDevSupport' as const, lite: false, pro: false, elite: true },
+  { feature: 'Player ESP & skeleton', icon: 'comparePlayerEsp' as const, lite: true, pro: true, elite: true },
+  { feature: 'Bomb & kit markers', icon: 'compareWardLocator' as const, lite: true, pro: true, elite: true },
+  { feature: 'Radar reinforcement', icon: 'compareRuneTimer' as const, lite: true, pro: true, elite: true },
+  { feature: 'Smoke silhouette assist', icon: 'compareZoomHack' as const, lite: true, pro: true, elite: true },
+  { feature: 'Capture / stream-safe toggles', icon: 'compareStreamproof' as const, lite: true, pro: true, elite: true },
+  { feature: 'Legit aim smoothing', icon: 'compareAutoCombo' as const, lite: false, pro: true, elite: true },
+  { feature: 'Trigger timing modes', icon: 'compareOrbwalker' as const, lite: false, pro: true, elite: true },
+  { feature: 'Recoil compensation', icon: 'compareActivator' as const, lite: false, pro: true, elite: true },
+  { feature: 'Advanced radar stacking', icon: 'compareAbilityRadius' as const, lite: false, pro: false, elite: true },
+  { feature: 'Misc movement assists', icon: 'compareSmokeAlert' as const, lite: false, pro: false, elite: true },
+  { feature: 'Priority rebuild queue', icon: 'comparePriorityPatch' as const, lite: false, pro: false, elite: true },
+  { feature: 'Cosmetic preview module', icon: 'compareSkinChanger' as const, lite: false, pro: false, elite: true },
   { feature: 'Cloud config backup', icon: 'compareCloudBackup' as const, lite: true, pro: true, elite: true },
 ];

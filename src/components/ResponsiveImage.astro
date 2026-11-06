@@ -2,6 +2,7 @@
 import {
   DEFAULT_IMAGE_WIDTHS,
   defaultWebpSrc,
+  isAbsoluteImageUrl,
   responsiveSrcSet,
 } from '../utils/responsiveImage';
 
@@ -31,7 +32,7 @@ const {
   desktopOnly = false,
 } = Astro.props;
 
-const isRaster = /\.(png|jpe?g|webp)$/i.test(src);
+const isRaster = isAbsoluteImageUrl(src) || /\.(png|jpe?g|webp)$/i.test(src);
 const srcSet = responsiveSrcSet(src, widths);
 const imgSrc = desktopOnly
   ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'

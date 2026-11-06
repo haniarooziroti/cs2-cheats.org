@@ -6,9 +6,11 @@ interface Props {
   titleId?: string;
   centered?: boolean;
   wide?: boolean;
+  /** Default h2 so marketing pages keep a single h1 in the hero; set h1 for standalone pages like FAQ. */
+  titleLevel?: 'h1' | 'h2';
 }
 
-const { eyebrow, title, desc, titleId, centered = false, wide = false } = Astro.props;
+const { eyebrow, title, desc, titleId, centered = false, wide = false, titleLevel = 'h2' } = Astro.props;
 ---
 
 <header
@@ -19,6 +21,10 @@ const { eyebrow, title, desc, titleId, centered = false, wide = false } = Astro.
   ]}
 >
   <p class="section-header__eyebrow">{eyebrow}</p>
-  <h1 id={titleId} class="section-header__title">{title}</h1>
+  {titleLevel === 'h1' ? (
+    <h1 id={titleId} class="section-header__title">{title}</h1>
+  ) : (
+    <h2 id={titleId} class="section-header__title">{title}</h2>
+  )}
   {desc ? <p class="section-header__subtitle">{desc}</p> : null}
 </header>

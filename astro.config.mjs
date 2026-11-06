@@ -3,15 +3,21 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
+/** Must match PUBLIC_SITE_ORIGIN used at build time (see .env.example). */
+const site =
+  (process.env.PUBLIC_SITE_ORIGIN && String(process.env.PUBLIC_SITE_ORIGIN).trim().replace(/\/$/, '')) ||
+  'https://cs2-cheats.org';
+
 export default defineConfig({
-  site: 'https://dotacheats.com',
+  site,
   trailingSlash: 'always',
   redirects: {
-    '/cheats/': '/products/dota-2-cheats/',
-    '/cheats/lite/': '/products/dota-2-cheats/',
-    '/cheats/pro/': '/products/dota-2-cheats/',
-    '/cheats/elite/': '/products/dota-2-cheats/elite/',
-    '/cheats/compare/': '/blog/dota-2-lite-vs-pro/',
+    '/cheats/': '/products/cs2-cheats/',
+    '/cheats/lite/': '/products/cs2-cheats/',
+    '/cheats/pro/': '/products/cs2-cheats/',
+    '/cheats/elite/': '/products/cs2-cheats/elite/',
+    '/products/dota-2-cheats/': '/products/cs2-cheats/',
+    '/products/dota-2-cheats/utilities/': '/products/cs2-cheats/utilities/',
     '/contact/': '/support/',
   },
   compressHTML: true,

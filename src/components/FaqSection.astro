@@ -22,6 +22,7 @@ interface Props {
   contentAlign?: 'left' | 'center';
   id?: string;
   class?: string;
+  titleLevel?: 'h1' | 'h2';
 }
 
 const {
@@ -36,16 +37,17 @@ const {
   contentAlign = 'center',
   id: sectionId,
   class: className,
+  titleLevel = 'h2',
 } = Astro.props;
 
 const topicLabels: Record<FaqTopic, string> = {
   all: 'All',
   plans: 'Plans',
-  esp: 'Map hack / ESP',
-  scripts: 'Scripts',
+  esp: 'ESP',
+  scripts: 'Aim & scripts',
   safety: 'Safety',
   products: 'Products',
-  blog: 'Blog',
+  blog: 'Articles',
   setup: 'Setup',
 };
 
@@ -66,6 +68,7 @@ const filters = filterTopics ?? (['all', 'plans', 'esp', 'scripts', 'safety', 'p
       desc={subtitle}
       titleId={titleId}
       centered={centered}
+      titleLevel={titleLevel}
     />
 
     {

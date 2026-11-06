@@ -1,3 +1,5 @@
+import { blogPostPath } from '../utils/path';
+
 export interface ForumComment {
   author: string;
   age: string;
@@ -25,226 +27,279 @@ export interface ForumPost {
 
 export const forumCategories = [
   { name: 'General', tone: 'purple', icon: 'users' },
-  { name: 'Guides & Builds', tone: 'blue', icon: 'navBlog' },
-  { name: 'Patch Talk', tone: 'orange', icon: 'refresh' },
-  { name: 'Community', tone: 'green', icon: 'messageCircle' },
+  { name: 'Setup & loaders', tone: 'blue', icon: 'settings' },
+  { name: 'Patch & VAC', tone: 'orange', icon: 'refresh' },
+  { name: 'Faceit & leagues', tone: 'green', icon: 'shield' },
 ] as const;
 
-function guideDiscussion(input: {
+function thread(input: {
   slug: string;
   title: string;
   excerpt: string;
   category: string;
   categoryTone: ForumPost['categoryTone'];
-  sourceTitle: string;
-  sourcePath: string;
+  flair?: string;
+  sourceTitle?: string;
+  sourcePath?: string;
   upvotes: number;
-  answer: string;
-  detail: string;
-  tip: string;
+  age: string;
+  body: string[];
+  comments: ForumComment[];
 }): ForumPost {
-  const { answer, detail, tip, ...post } = input;
+  const totalReplies = input.comments.reduce((acc, c) => acc + 1 + (c.replies?.length ?? 0), 0);
   return {
-    ...post,
-    author: 'guide_team',
-    age: '2 days ago',
-    commentsCount: 1,
-    upvotes: 14,
-    flair: 'Guide Q&A',
-    body: [answer, detail],
-    comments: [{ author: 'guide_team', age: 'From the guide', score: 0, body: tip }],
+    ...input,
+    author: 'mods',
+    commentsCount: totalReplies,
   };
 }
 
-const additionalGuidePosts: ForumPost[] = [
-  guideDiscussion({
-    slug: 'what-does-dota-map-awareness-include', title: 'What does map awareness include in the guide?', upvotes: 73,
-    excerpt: 'A quick breakdown of hero, ward, rune, and smoke information covered by the map awareness guide.',
-    category: 'Guides & Builds', categoryTone: 'blue', sourceTitle: 'Dota 2 map hack setup guide', sourcePath: '/blog/dota-2-map-hack-setup/',
-    answer: 'The guide covers hero ESP, ward and sentry markers, rune information, smoke alerts, and last-seen positions. The exact options depend on the selected product tier.',
-    detail: 'It recommends starting with a restrained layout and enabling only the information you can read comfortably during a team fight.',
-    tip: 'Keep the overlay uncluttered: begin with the core indicators, then adjust the range and visibility settings one at a time.',
-  }),
-  guideDiscussion({
-    slug: 'how-to-set-up-map-overlay', title: 'How should I set up the map overlay for the first time?', upvotes: 58,
-    excerpt: 'Start with the basic display options, confirm the overlay in a practice session, then adjust one setting at a time.',
-    category: 'Guides & Builds', categoryTone: 'blue', sourceTitle: 'Dota 2 map hack setup guide', sourcePath: '/blog/dota-2-map-hack-setup/',
-    answer: 'Use the setup guide to enable the overlay, choose readable colors, and check that the indicators do not cover important parts of the game interface.',
-    detail: 'Test your layout in a bot lobby before relying on it in a live match. A simple configuration is easier to understand than turning on every option immediately.',
-    tip: 'If the screen feels crowded, reduce the number of indicators before changing their size or position.',
-  }),
-  guideDiscussion({
-    slug: 'what-zoom-settings-are-comfortable', title: 'What camera zoom settings are comfortable to play with?', upvotes: 44,
-    excerpt: 'The zoom guide focuses on finding a view that improves map context without making your hero hard to control.',
-    category: 'Guides & Builds', categoryTone: 'blue', sourceTitle: 'Dota 2 zoom hack guide', sourcePath: '/blog/dota-2-zoom-hack-guide/',
-    answer: 'There is no single ideal zoom value for every player. The guide recommends adjusting gradually and checking that you can still track your hero, spell ranges, and nearby fights.',
-    detail: 'Keep a quick reset to the default camera view available so you can compare the wider view and return to familiar framing.',
-    tip: 'Change one step at a time and play a short practice session before settling on a new camera distance.',
-  }),
-  guideDiscussion({
-    slug: 'how-to-tune-script-delay-settings', title: 'How do delay settings affect hero scripts?', upvotes: 32,
-    excerpt: 'A practical question about timing, combo readability, and why the scripts guide recommends conservative tuning.',
-    category: 'Guides & Builds', categoryTone: 'blue', sourceTitle: 'Dota 2 scripts for ranked MMR', sourcePath: '/blog/dota-2-scripts-ranked-mmr/',
-    answer: 'Delay settings control the spacing between automated actions. The guide recommends starting with slower timings and testing them in a practice setting before making changes.',
-    detail: 'A consistent sequence is easier to review and tune than changing several timing values at once.',
-    tip: 'Keep a note of each configuration you try so you can return to the last setup that behaved as expected.',
-  }),
-  guideDiscussion({
-    slug: 'how-to-practice-auto-combos', title: 'What is a good way to practice an auto combo?', upvotes: 29,
-    excerpt: 'Use a repeatable hero setup, learn the sequence, and check each spell and item timing in a controlled lobby.',
-    category: 'Guides & Builds', categoryTone: 'blue', sourceTitle: 'Dota 2 auto combo hero scripts', sourcePath: '/blog/dota-2-auto-combo-hero-scripts/',
-    answer: 'Choose one hero and one combo to practice at a time. The guide walks through example sequences and explains how target selection and ability order fit together.',
-    detail: 'A custom lobby lets you repeat the sequence and see which steps need adjustment without the pressure of a live match.',
-    tip: 'Learn the manual sequence first; that makes it much easier to spot when a configuration is mistimed.',
-  }),
-  guideDiscussion({
-    slug: 'what-is-in-the-elite-tier', title: 'What additional tools are included in the Elite tier?', upvotes: 67,
-    excerpt: 'The Elite guide explains how its extra utility modules compare with the Lite and Pro feature sets.',
-    category: 'General', categoryTone: 'purple', sourceTitle: 'Dota 2 Elite tier guide', sourcePath: '/blog/dota-2-elite-tier-guide/',
-    answer: 'The guide describes Elite as including the Lite and Pro feature sets plus additional utilities such as Auto Farm Bot, Auto Kill Steal, Auto Dagon, and Skin Changer.',
-    detail: 'It also covers who may benefit from the extra modules and why it makes sense to understand the simpler feature set first.',
-    tip: 'Compare the included features against your needs before choosing a tier; the full comparison is linked in the guide.',
-  }),
-  guideDiscussion({
-    slug: 'how-do-lite-and-pro-differ', title: 'How do Lite and Pro differ in practice?', upvotes: 53,
-    excerpt: 'Lite centers on awareness features, while Pro adds hero script tools; here is the short version.',
-    category: 'General', categoryTone: 'purple', sourceTitle: 'Dota 2 Lite vs Pro: which tier fits you', sourcePath: '/blog/dota-2-lite-vs-pro/',
-    answer: 'The comparison guide describes Lite as focused on awareness tools such as ESP, ward and rune information, and zoom. Pro adds script automation features on top of that foundation.',
-    detail: 'The right choice depends on whether you need map information alone or also want the additional script modules described in the comparison.',
-    tip: 'Use the full side-by-side comparison to check specific modules before making a decision.',
-  }),
-  guideDiscussion({
-    slug: 'what-to-know-about-skin-changer', title: 'What should I know about the Skin Changer utility?', upvotes: 38,
-    excerpt: 'The product guide explains how cosmetic previews work and what to expect from the utility.',
-    category: 'General', categoryTone: 'purple', sourceTitle: 'Dota 2 Skin Changer guide', sourcePath: '/blog/dota-2-skin-changer-guide/',
-    answer: 'The guide describes Skin Changer as a local cosmetic preview utility. It explains setup, supported options, and how to restore the default appearance.',
-    detail: 'Review the compatibility notes and follow the current setup instructions before using the utility.',
-    tip: 'Cosmetic changes are local previews; check the guide for current limitations and setup steps.',
-  }),
-  guideDiscussion({
-    slug: 'what-to-do-if-vac-cannot-verify', title: 'What should I do if VAC cannot verify my Dota 2 install?', upvotes: 24,
-    excerpt: 'Start with Steam file verification and a clean restart before assuming the issue is an account restriction.',
-    category: 'Patch Talk', categoryTone: 'orange', sourceTitle: 'Valve Anti-Cheat unable to verify Dota 2', sourcePath: '/blog/valve-anti-cheat-unable-to-verify/',
-    answer: 'The troubleshooting guide says the message can result from game-file problems or software conflicts and does not always mean an account ban. First verify Dota 2 files through Steam.',
-    detail: 'It also recommends fully exiting Steam, restarting the PC, and checking for conflicting overlays before trying more disruptive steps.',
-    tip: 'Test a normal Steam launch before starting other software so you can narrow down the cause.',
-  }),
-  guideDiscussion({
-    slug: 'how-does-an-external-loader-work', title: 'What does “external loader” mean?', upvotes: 46,
-    excerpt: 'The external software guide explains the term and outlines the general setup described on the site.',
-    category: 'General', categoryTone: 'purple', sourceTitle: 'Dota 2 external cheat guide', sourcePath: '/blog/dota-2-external-cheat-guide/',
-    answer: 'The article uses “external” to describe software that runs separately from the Dota 2 process and presents its interface as an overlay.',
-    detail: 'It discusses the architecture at a high level and explains setup, patch updates, and the differences described between external and internal tools.',
-    tip: 'Check compatibility and current status information whenever Dota 2 receives an update.',
-  }),
-  guideDiscussion({
-    slug: 'how-to-check-stream-proof-capture', title: 'How can I check whether OBS captures an overlay?', upvotes: 21,
-    excerpt: 'The stream-proof setup guide recommends recording a short test and checking the playback before streaming.',
-    category: 'Guides & Builds', categoryTone: 'blue', sourceTitle: 'Stream-proof overlay setup for Dota 2', sourcePath: '/blog/dota-2-stream-proof-setup/',
-    answer: 'Record a short local test with the exact OBS scene and capture mode you plan to use, then review the playback for any overlay elements.',
-    detail: 'The guide recommends testing game capture and display capture separately, since capture methods and multi-monitor setups can behave differently.',
-    tip: 'Do not rely on the preview alone; review a saved recording from the same scene you intend to stream.',
-  }),
-  guideDiscussion({
-    slug: 'what-to-do-after-hwid-change', title: 'What should I check after changing PCs or hardware?', upvotes: 33,
-    excerpt: 'The HWID guide covers common setup checks and when to contact support for an account or device reset.',
-    category: 'General', categoryTone: 'purple', sourceTitle: 'Dota 2 HWID spoofer after ban', sourcePath: '/blog/dota-2-hwid-spoofer-after-ban/',
-    answer: 'Start by checking the account and device instructions for your product. The guide explains common HWID questions and when a reset request may be needed.',
-    detail: 'Avoid changing several system settings at once. If the product does not recognize your device, contact support with the relevant error details.',
-    tip: 'Use the official support path for device resets instead of relying on unrelated third-party tools.',
-  }),
-  guideDiscussion({
-    slug: 'what-to-check-before-installing-tools', title: 'What should I review before installing a new tool?', upvotes: 18,
-    excerpt: 'Check the official setup steps, current compatibility notes, and support information before proceeding.',
-    category: 'Community', categoryTone: 'green', sourceTitle: 'Dota 2 cheats features guide', sourcePath: '/blog/dota-2-cheats-features-guide/',
-    answer: 'Read the feature and setup information first, confirm that it matches your system, and check the current update/status notes.',
-    detail: 'The site guide describes the available feature groups and links to more specific setup articles for individual modules.',
-    tip: 'Use the linked product and support pages as the source of truth for current availability and compatibility.',
-  }),
-  guideDiscussion({
-    slug: 'how-to-choose-dota-2-product-tier', title: 'How do I choose the right Dota 2 product tier?', upvotes: 48,
-    excerpt: 'Compare the feature sets first, then follow the official checkout and setup instructions for your selection.',
-    category: 'Community', categoryTone: 'green', sourceTitle: 'How to buy Dota 2 cheats in 2026', sourcePath: '/blog/how-to-buy-dota-2-cheats-2026/',
-    answer: 'The buying guide recommends comparing included features and choosing the tier that fits your needs before continuing through the official checkout.',
-    detail: 'It covers the purchase flow, account access, downloading the current build, and checking setup instructions before launching.',
-    tip: 'If you have a payment or account question, use the site support page and avoid sharing purchase details publicly.',
-  }),
-];
-
 export const forumPosts: ForumPost[] = [
-  {
-    slug: 'can-custom-lobby-cheat-codes-be-used-in-ranked', category: 'General', categoryTone: 'purple',
-    title: 'Can I use Dota 2 cheat codes in ranked matchmaking?',
-    excerpt: 'Quick answer from the practice lobby guide: built-in lobby commands only work in custom matches with cheats enabled.',
-    author: 'guide_team', age: '2 hours ago', commentsCount: 3, upvotes: 128, flair: 'Guide Q&A',
-    sourceTitle: 'Dota 2 cheat codes guide: console commands for practice lobbies', sourcePath: '/blog/dota-2-cheat-codes-guide/',
-    body: ['No. Valve-approved console commands such as -gold, -refresh, and -allvision are for custom lobbies where the host enables cheats. They do not carry into ranked matchmaking or Turbo.', 'Use a practice lobby to learn hero combos, item timings, and ward positions. The guide also explains the difference between those built-in practice commands and third-party tools.'],
-    comments: [
-      { author: 'mid_or_feed', age: '1 hour ago', score: 24, body: 'Correct: create a lobby, enable cheats in lobby settings, and make sure the console is enabled in Advanced Options.' },
-      { author: 'ancient_archivist', age: '48 min. ago', score: 11, body: 'The guide lists -refresh, -wtf, and vision commands for drills. Remember -disablewtf before testing real cooldowns.' },
-      { author: 'blink_first', age: '35 min. ago', score: 8, body: 'Useful distinction. Practice lobby commands are not ranked features.' },
+  thread({
+    slug: 'aimbot-settings-what-level-buy-risk',
+    title: 'Aimbot settings: what level should I run so I do not look blatant?',
+    excerpt: 'Trading FOV for trust in Premier—what worked and what got me roasted in downloaded replays.',
+    category: 'General',
+    categoryTone: 'purple',
+    flair: 'Purchase intent',
+    upvotes: 214,
+    age: '3h ago',
+    sourceTitle: 'Aimbot smoothing for CS2 ranked queues',
+    sourcePath: blogPostPath('cs2-aimbot-smoothing-ranked'),
+    body: [
+      'I bumped from 2.3 to 4.1 FOV on my Pro tier and immediately felt/snaps look sharper in demos—looking for someone to sanity-check where they stop.',
+      'Not asking for “safe forever” talk—just how others pair smoothing with trigger delay on pistol rounds.',
     ],
-  },
-  {
-    slug: 'how-to-enable-the-dota-2-console', category: 'General', categoryTone: 'purple',
-    title: 'How do I turn on the Dota 2 developer console?',
-    excerpt: 'Open Settings → Options → Advanced and enable the console. Here is the quick setup from our walkthrough.',
-    author: 'guide_team', age: '4 hours ago', commentsCount: 2, upvotes: 86, flair: 'Guide Q&A',
-    sourceTitle: 'How to use cheat codes in Dota 2', sourcePath: '/blog/how-to-use-dota-2-cheat-codes/',
-    body: ['Open Settings, choose Options, then open Advanced Options and enable the developer console. In a custom lobby, press the console key (usually tilde) and enter the command. You also need the host to enable cheats in the lobby settings.', 'If a command does nothing, first confirm cheats are enabled for that lobby and check the command syntax.'],
     comments: [
-      { author: 'pos4_roamer', age: '3 hours ago', score: 17, body: 'You can also bind the console key in the hotkey settings if tilde is unavailable on your keyboard layout.' },
-      { author: 'carry_curious', age: '2 hours ago', score: 9, body: 'Commands need the right lobby permissions; spectators may not be able to use economy commands.' },
+      {
+        author: 'slow_peek',
+        age: '2h ago',
+        score: 38,
+        body: 'I keep legit FOV around 3.2 on 16:9 with extra smoothing on AK. When I went to 5 it looked fine in-game but horrible in replay.',
+      },
+      {
+        author: 'tilted_twice',
+        age: '2h ago',
+        score: 21,
+        body: 'Honestly I regret maxing snap speed. Got called out by a friend reviewing my clip—dialed back same night.',
+      },
+      {
+        author: 'mods',
+        age: '1h ago',
+        score: 12,
+        body: 'We link buyers to the aim article above—start with defaults, then move sliders once per day, not mid-match.',
+        replies: [
+          { author: 'slow_peek', age: '55m ago', score: 6, body: 'Yeah the “one slider per session” line in that post actually helped me chill out.' },
+        ],
+      },
+      {
+        author: 'anchor_city',
+        age: '40m ago',
+        score: 9,
+        body: 'Trigger delay matters more than FOV for me—0 ms on deagle looks sus even if aim is soft.',
+      },
     ],
-  },
-  {
-    slug: 'practice-dota-2-ward-spots-safely', category: 'Guides & Builds', categoryTone: 'blue',
-    title: 'What is the safest way to practice ward spots?',
-    excerpt: 'Use a private lobby and vision toggles to study sight lines, then restore normal fog and check the result.',
-    author: 'guide_team', age: '6 hours ago', commentsCount: 2, upvotes: 64, flair: 'Guide Q&A',
-    sourceTitle: 'All Dota 2 console cheats and tips', sourcePath: '/blog/dota-2-console-cheats-tips/',
-    body: ['Practice in a custom lobby. Use -allvision to inspect terrain and possible ward positions, then switch back with -normalvision to see what the ward actually reveals under normal fog.', 'You can use -killwards to clear the map and repeat the same smoke or ward scenario. This is a repeatable way to compare sight lines without waiting for normal match timing.'],
+  }),
+  thread({
+    slug: 'how-to-install-loader-first-boot',
+    title: 'Loader first boot: what did you turn off in antivirus?',
+    excerpt: 'Windows Security kept quarantining the DLL—want to know what folders people excluded without nuking whole drives.',
+    category: 'Setup & loaders',
+    categoryTone: 'blue',
+    flair: 'Setup',
+    upvotes: 178,
+    age: '5h ago',
+    sourceTitle: 'How to install CS2 cheats from the portal',
+    sourcePath: blogPostPath('how-to-install-cs2-cheats'),
+    body: [
+      'Followed the article but Defender still snagged the injector until I added the portal folder. Sharing what worked on Win11 23H2.',
+    ],
     comments: [
-      { author: 'stack_and_pull', age: '5 hours ago', score: 13, body: 'I toggle between allvision and normalvision to check the actual line of sight. Helpful for learning high-ground coverage.' },
-      { author: 'map_reader', age: '4 hours ago', score: 6, body: 'And -killwards is handy when you want to replay the same path with a clean map.' },
+      { author: 'defend_me_not', age: '4h ago', score: 44, body: 'Excluded the whole portal directory plus the temp unpack path. No full-disk exclusions—too risky.' },
+      { author: 'fresh_win', age: '3h ago', score: 28, body: 'Worked fine until an Edge update reboot—had to re-allow. Annoying but not the cheat’s fault.' },
+      {
+        author: 'mods',
+        age: '3h ago',
+        score: 15,
+        body: 'If Defender still grabs files after exclusions, pause real-time once, restore, then add the path—support needs the exact detection name.',
+      },
+      { author: 'paranoid_pete', age: '2h ago', score: -2, body: 'I nuked the download and bought a different site key instead. Probably overreacted.' },
     ],
-  },
-  {
-    slug: 'what-to-check-after-a-dota-2-patch', category: 'Patch Talk', categoryTone: 'orange',
-    title: 'What should I check before playing after a Dota patch?',
-    excerpt: 'The patch-day checklist recommends checking build status, updating, and testing in a bot lobby before queueing.',
-    author: 'guide_team', age: '9 hours ago', commentsCount: 2, upvotes: 42, flair: 'Guide Q&A',
-    sourceTitle: 'VAC patch day checklist', sourcePath: '/blog/vac-patch-day-checklist/',
-    body: ['Check the current build/status notice first. After a game update, wait for a compatible build, update the loader, then verify the setup in a bot or Turbo lobby before returning to ranked.', 'If anything behaves unexpectedly, stop and review the status notes rather than assuming the old setup still applies. The checklist covers the patch-day routine in more detail.'],
+  }),
+  thread({
+    slug: 'faceit-client-worth-extra-price',
+    title: 'Faceit + CS2 cheats: is the extra client honestly worth paying for?',
+    excerpt: 'VAC scares me less than league software—did anyone stay subscribed mainly for Faceit?',
+    category: 'Faceit & leagues',
+    categoryTone: 'green',
+    flair: 'Faceit',
+    upvotes: 305,
+    age: '1d ago',
+    sourceTitle: 'Faceit CS2 cheats: client constraints to know',
+    sourcePath: blogPostPath('faceit-cs2-cheats-constraints'),
+    body: [
+      'I queue Faceit maybe 30% of the time. Article says some ESP layers conflict—wondering if I should stay Steam-only.',
+    ],
     comments: [
-      { author: 'farm_pattern', age: '8 hours ago', score: 12, body: 'Testing after the update before ranked is the part I used to skip. Now I check the build note and run a quick bot lobby.' },
-      { author: 'support_main_5', age: '7 hours ago', score: 7, body: 'Agree. If the build/status has not caught up, wait. A checklist is better than guessing.' },
+      { author: 'hub_only', age: '22h ago', score: 67, body: 'I stopped Faceit entirely after one anticheat update. Steam Premier is stressful enough.' },
+      { author: 'league_dream', age: '20h ago', score: 41, body: 'Still testing minimal ESP there—not worth the stress if you treat it like matchmaking.' },
+      { author: 'angry_bracket', age: '18h ago', score: 12, body: 'Got a 30-day cooldown unrelated to cheats and blamed the software anyway. Probably unfair of me.' },
+      { author: 'mods', age: '17h ago', score: 20, body: 'We do not promise any third-party client compatibility—read the article before you pay for that alone.' },
+      { author: 'microwave', age: '15h ago', score: 8, body: 'Main account only on Steam, smurf experiments on Faceit—still sweaty.' },
     ],
-  },
-  {
-    slug: 'dota-2-lite-or-pro-hero-scripts', category: 'Community', categoryTone: 'green',
-    title: 'Lite or Pro: which tier includes hero scripts?',
-    excerpt: 'Our comparison guide breaks down the difference: Lite focuses on vision tools; Pro adds script modules.',
-    author: 'guide_team', age: '12 hours ago', commentsCount: 1, upvotes: 31, flair: 'Guide Q&A',
-    sourceTitle: 'Dota 2 Lite vs Pro: feature comparison', sourcePath: '/blog/dota-2-lite-vs-pro/',
-    body: ['According to the comparison guide, Lite centers on map awareness features such as hero ESP, ward and rune information, zoom, and stream-proof options. Pro includes those features and adds hero scripts such as Auto Combo, Orbwalker, Smart Cast, Target Selector, and Activator.', 'The best fit depends on which features you need. Read the full comparison before choosing.'],
+  }),
+  thread({
+    slug: 'esp-clutter-smoke-sites',
+    title: 'ESP clutter on execute-heavy maps—how do you keep smokes readable?',
+    excerpt: 'Mirage A execs flood my screen; looking for layout ideas from the wallhack article.',
+    category: 'Setup & loaders',
+    categoryTone: 'blue',
+    upvotes: 141,
+    age: '6h ago',
+    sourceTitle: 'Wallhack-style vision without blocking your crosshair',
+    sourcePath: blogPostPath('cs2-wallhack-crosshair-layout'),
+    body: [
+      'Glow + skeleton together chokes me during fast swaps. Anyone else run box-only on T side?',
+    ],
     comments: [
-      { author: 'one_more_game', age: '10 hours ago', score: 10, body: 'The comparison page is useful because it shows which modules are included in each tier instead of only listing headlines.' },
+      { author: 'retake_junkie', age: '5h ago', score: 33, body: 'Box + distance text only. Skeleton on a second profile for clutch watchdog.' },
+      { author: 'glow_hard', age: '5h ago', score: 19, body: 'I actually like glow thick on Ancient—maybe I am weird.' },
+      { author: 'mods', age: '4h ago', score: 11, body: 'Try pushing glow opacity down 20% before deleting layers—you might just need contrast fixes.' },
     ],
-  },
-  {
-    slug: 'how-to-learn-hero-combos-in-practice-lobbies', category: 'Guides & Builds', categoryTone: 'blue',
-    title: 'How can I practice hero combos without waiting for a real match?',
-    excerpt: 'Create a cheats-enabled custom lobby, spawn a target, and use cooldown tools for repeatable drills.',
-    author: 'guide_team', age: '1 day ago', commentsCount: 2, upvotes: 27, flair: 'Guide Q&A',
-    sourceTitle: 'Dota 2 cheat codes guide: console commands for practice lobbies', sourcePath: '/blog/dota-2-cheat-codes-guide/',
-    body: ['Create a custom lobby and enable cheats in its settings. The host can then use commands such as -createhero to add a target and -refresh to reset cooldowns between attempts.', 'For realistic timing practice, disable WTF mode before drilling. These commands are for custom lobbies; the linked guide has the full command list and setup steps.'],
+  }),
+  thread({
+    slug: 'trigger-delay-duel-tips',
+    title: 'Trigger delay for pistol duels—ms ranges people swear by?',
+    excerpt: 'Ancient doorway jiggle wars—article mentions delay vs burst; need numbers from humans.',
+    category: 'General',
+    categoryTone: 'purple',
+    upvotes: 96,
+    age: '12h ago',
+    sourceTitle: 'Triggerbot timing for CS2 duel peeks',
+    sourcePath: blogPostPath('cs2-triggerbot-peek-timing'),
+    body: [
+      'Running Pro tier, deagle feels either too slow or instant laser—looking for middle ground anecdotes.',
+    ],
     comments: [
-      { author: 'mid_or_feed', age: '20 hours ago', score: 10, body: 'Start with a bot target and repeat the same combo until the item and spell order feels automatic.' },
-      { author: 'ancient_archivist', age: '18 hours ago', score: 5, body: 'Use -disablewtf when you want to practice with normal mana and cooldown constraints.' },
+      { author: 'jiggle_fest', age: '11h ago', score: 27, body: '12–18 ms on deag, 6–8 on rifles. Trash on long-range pistols though.' },
+      { author: 'trust_issues', age: '10h ago', score: 14, body: 'Turned trigger off entirely last week—felt cleaner mentally even if stats dipped.' },
+      { author: 'mods', age: '9h ago', score: 7, body: 'Note your ping in tickets—delay should scale slightly upward on high ping routes.' },
+      { author: 'lag_meme', age: '8h ago', score: 5, body: '80 ping crew: I add ~5 ms vs what NA players post.' },
     ],
-  },
-  ...additionalGuidePosts,
+  }),
+  thread({
+    slug: 'vac-error-after-patch-stories',
+    title: 'VAC pop-up after patch—did verify actually fix it for you?',
+    excerpt: 'Following the VAC article but Steam still complains intermittently.',
+    category: 'Patch & VAC',
+    categoryTone: 'orange',
+    upvotes: 88,
+    age: '2d ago',
+    sourceTitle: 'VAC error messages after a CS2 patch',
+    sourcePath: blogPostPath('cs2-vac-error-after-patch'),
+    body: [
+      'I stopped injections until the banner flipped green—curious how many people rushed anyway.',
+    ],
+    comments: [
+      { author: 'patient_one', age: '1d ago', score: 31, body: 'Verify + reboot fixed it. Did not touch cheats for two days—boring but worked.' },
+      { author: 'impulse_buy', age: '1d ago', score: 4, body: 'Rushed back in and got a second error. Deserved it tbh.' },
+      { author: 'mods', age: '1d ago', score: 18, body: 'If verify fails twice, open a ticket with the exact error string—do not paraphrase.' },
+    ],
+  }),
+  thread({
+    slug: 'hwid-spoof-order-matters',
+    title: 'HWID spoof order: restore point first or driver wipe first?',
+    excerpt: 'New Steam account kept dying until I cold rebooted—compare notes with the HWID article.',
+    category: 'Setup & loaders',
+    categoryTone: 'blue',
+    upvotes: 74,
+    age: '3d ago',
+    sourceTitle: 'HWID spoofing before a new CS2 account',
+    sourcePath: blogPostPath('hwid-spoof-new-cs2-account'),
+    body: [
+      'Worried I skipped a step—want a second opinion before I try again on a laptop.',
+    ],
+    comments: [
+      { author: 'fresh_ssd', age: '2d ago', score: 22, body: 'Restore point → uninstall old spoof → apply new → cold boot. Article order matches what support told me.' },
+      { author: 'laptop_sigh', age: '2d ago', score: 9, body: 'Laptop BIOS blocked one step—had to bail. Not the software’s fault but still frustrating.' },
+      { author: 'mods', age: '2d ago', score: 11, body: 'DM serial diffs through email only—do not paste them in public threads.' },
+    ],
+  }),
+  thread({
+    slug: 'radar-or-ears-primary',
+    title: 'Radar assist vs headphone audio—which do you lean on?',
+    excerpt: 'Trying not to stare at minimap during executes—talking about the radar/audio article.',
+    category: 'General',
+    categoryTone: 'purple',
+    upvotes: 63,
+    age: '4d ago',
+    sourceTitle: 'CS2 radar hack overlays vs audio',
+    sourcePath: blogPostPath('cs2-radar-hack-audio'),
+    body: [
+      'I hear footsteps fine but choke under pressure—wonder if radar is crutch or tool.',
+    ],
+    comments: [
+      { author: 'audio_main', age: '3d ago', score: 19, body: 'Radar is insurance when stacks are loud. Still trust ears first.' },
+      { author: 'map_glued', age: '3d ago', score: 8, body: 'I stare at radar too much and die to corners—working on disabling it every other round.' },
+      { author: 'mods', age: '3d ago', score: 6, body: 'Try deathmatch with radar off one session per week to rebuild instincts.' },
+    ],
+  }),
+  thread({
+    slug: 'stream-proof-obs-nightmare',
+    title: 'Stream proof mode still leaked once in OBS—anyone else?',
+    excerpt: 'Followed stream article but Browser Source pickoff caught a menu flicker.',
+    category: 'Setup & loaders',
+    categoryTone: 'blue',
+    upvotes: 112,
+    age: '1d ago',
+    sourceTitle: 'Stream proof setup for CS2 overlays',
+    sourcePath: blogPostPath('cs2-stream-proof-overlays'),
+    body: [
+      'Not blaming the tool—probably my scene collection—but sharing so others triple-check nested scenes.',
+    ],
+    comments: [
+      { author: 'obs_grumpy', age: '20h ago', score: 35, body: 'Nested scenes + studio mode off spilled once. Flattened layers like the article warned.' },
+      { author: 'offline_only', age: '19h ago', score: 14, body: 'I stopped streaming ranked entirely. Safer mentally.' },
+      { author: 'mods', age: '18h ago', score: 12, body: 'Send a short OBS log if it happens twice—we track capture APIs case by case.' },
+      { author: 'clip_farm', age: '17h ago', score: 6, body: 'Capture looked clean but Discord screenshare caught menu. Embarrassing in VC.' },
+    ],
+  }),
+  thread({
+    slug: 'elite-slot-wait-real',
+    title: 'Elite slot wait—how long did approvals actually take?',
+    excerpt: 'Trying to decide if priority rebuild queue hype is real.',
+    category: 'General',
+    categoryTone: 'purple',
+    flair: 'Commercial',
+    upvotes: 54,
+    age: '5d ago',
+    body: [
+      'Support said “a few hours” but it became overnight for me—still faster than freeware discord chaos.',
+    ],
+    comments: [
+      { author: 'night_owl', age: '4d ago', score: 16, body: 'Mine was six hours after a small patch—acceptable.' },
+      { author: 'impatient_kid', age: '4d ago', score: -4, body: 'Waited two days and flipped out in DMs. They were calm, I was not. My bad.' },
+      { author: 'mods', age: '4d ago', score: 9, body: 'Peak patch weeks stretch waits—banner will say if queues spike.' },
+    ],
+  }),
+  thread({
+    slug: 'esp-colors-colorblind',
+    title: 'ESP colors for colorblind modes—any presets worth copying?',
+    excerpt: 'Using the ESP clutch article palette but reds/greens still blend.',
+    category: 'Setup & loaders',
+    categoryTone: 'blue',
+    upvotes: 47,
+    age: '6d ago',
+    sourceTitle: 'CS2 ESP settings that stay readable in clutches',
+    sourcePath: blogPostPath('cs2-esp-settings-clutches'),
+    body: [
+      'Swapped enemy to cyan per article—teammates still look too close to wall colors for me.',
+    ],
+    comments: [
+      { author: 'cyan_fan', age: '5d ago', score: 14, body: 'Cyan enemy + mustard dormant saved me on Inferno.' },
+      { author: 'mods', age: '5d ago', score: 8, body: 'We can suggest palettes if you email deuteranopia/protanopia—no promises on perfection.' },
+    ],
+  }),
 ];
 
 export function getForumPost(slug: string): ForumPost | undefined {

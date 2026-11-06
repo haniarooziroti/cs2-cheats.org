@@ -117,22 +117,23 @@
 }
 
 .dark {
-  --background: var(--color-neutral-950);
-  --foreground: var(--color-neutral-50);
-  --card: var(--color-neutral-900);
-  --card-foreground: var(--color-neutral-50);
-  --popover: var(--color-neutral-900);
-  --popover-foreground: var(--color-neutral-50);
-  --primary: #7f3dee;
+  /* CS2 site palette */
+  --background: #0d0a14;
+  --foreground: oklch(0.96 0.01 280);
+  --card: #0f0c18;
+  --card-foreground: oklch(0.96 0.01 280);
+  --popover: #0f0c19;
+  --popover-foreground: oklch(0.96 0.01 280);
+  --primary: #8b6cff;
   --primary-foreground: #ffffff;
-  --primary-accent: #9654ff;
-  --secondary: var(--color-neutral-800);
-  --secondary-foreground: var(--color-neutral-50);
-  --secondary-accent: var(--color-neutral-50);
-  --muted: var(--color-neutral-800);
-  --muted-foreground: var(--color-neutral-400);
-  --accent: var(--color-neutral-700);
-  --accent-foreground: var(--color-neutral-50);
+  --primary-accent: #a084ff;
+  --secondary: #0e0b17;
+  --secondary-foreground: oklch(0.96 0.01 280);
+  --secondary-accent: oklch(0.96 0.01 280);
+  --muted: #0f0c19;
+  --muted-foreground: oklch(0.72 0.02 280);
+  --accent: #0e0b17;
+  --accent-foreground: oklch(0.96 0.01 280);
   --info: var(--color-sky-300);
   --info-foreground: var(--color-sky-950);
   --success: var(--color-green-300);
@@ -141,19 +142,19 @@
   --warning-foreground: var(--color-amber-950);
   --error: var(--color-red-800);
   --error-foreground: var(--color-neutral-50);
-  --border: --alpha(var(--color-neutral-50) / 10%);
-  --input: --alpha(var(--color-neutral-50) / 15%);
-  --outline: var(--color-neutral-500);
+  --border: color-mix(in oklch, #ffffff 10%, #040306);
+  --input: color-mix(in oklch, #ffffff 14%, #040306);
+  --outline: oklch(0.55 0.02 280);
 
   /* sidebars variables */
-  --sidebar-background: var(--color-neutral-900);
-  --sidebar-foreground: var(--color-neutral-50);
-  --sidebar-primary: #7f3dee;
+  --sidebar-background: #0f0c18;
+  --sidebar-foreground: oklch(0.96 0.01 280);
+  --sidebar-primary: #8b6cff;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: var(--color-neutral-800);
-  --sidebar-accent-foreground: var(--color-neutral-100);
-  --sidebar-border: var(--color-neutral-800);
-  --sidebar-outline: var(--color-neutral-600);
+  --sidebar-accent: #0e0b17;
+  --sidebar-accent-foreground: oklch(0.92 0.02 280);
+  --sidebar-border: color-mix(in oklch, #ffffff 8%, #040306);
+  --sidebar-outline: oklch(0.55 0.02 280);
 }
 
 @layer base {

@@ -19,7 +19,7 @@ const sourceTimestamp = (path?: string) => {
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={[
-  collectionPageSchema({ name: 'DotaCheats Community Forum', description: seo.description, url: '/forum/' }),
+  collectionPageSchema({ name: 'CS2 cheat forums', description: seo.description, url: '/forum/' }),
   breadcrumbSchema(breadcrumbs),
 ]}>
   <section class="forum-page py-8 md:py-12">
@@ -27,11 +27,11 @@ const sourceTimestamp = (path?: string) => {
       <Breadcrumbs items={breadcrumbs} />
       <header class="forum-hero">
         <div>
-          <p class="section-header__eyebrow">Dota 2 community forum</p>
-          <h1>Dota 2 Community Forum</h1>
-          <p class="forum-hero__copy">Practical answers on console setup, map awareness, patch updates, and hero builds.</p>
+          <p class="section-header__eyebrow">Counter-Strike 2 forums</p>
+          <h1>CS2 cheat forums</h1>
+          <p class="forum-hero__copy">Loader tips, aimbot and ESP tuning, Faceit caveats, and purchase threads—text only, no image dumps.</p>
         </div>
-        <a class="forum-create" href="/blog/"><Icon name="messageCircle" size={17} /> Explore the guides</a>
+        <a class="forum-create" href="/blog/"><Icon name="navBlog" size={17} /> Read related articles</a>
       </header>
 
       <div class="forum-layout">
@@ -55,7 +55,7 @@ const sourceTimestamp = (path?: string) => {
               <button type="button" data-forum-filter={categoryKey(category.name)} aria-pressed="false"><Icon name={category.icon} size={14} /> {category.name}</button>
             ))}
           </div>
-          <p class="forum-results-count" data-forum-visible-count>{forumPosts.length} guide discussions</p>
+          <p class="forum-results-count" data-forum-visible-count>{forumPosts.length} forum threads</p>
 
           <div class="forum-post-list" aria-live="polite">
             {forumPosts.map((post, index) => (
@@ -68,12 +68,12 @@ const sourceTimestamp = (path?: string) => {
                 <div class="forum-post-card__body">
                   <div class="forum-post-meta">
                     <span class={`forum-community-avatar tone-${post.categoryTone}`}><Icon name="users" size={15} /></span>
-                    <a href="#communities" class="forum-community-name">d/{post.category.toLowerCase().replaceAll(' ', '')}</a>
-                    <span>·</span><span><Icon name="userRound" size={13} /> DotaCheats guide team</span><span>Guide-based Q&amp;A</span>
+                    <a href="#communities" class="forum-community-name">c/{post.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}</a>
+                    <span>·</span><span><Icon name="userRound" size={13} /> CS2 forum mods</span><span>Buyer Q&amp;A</span>
                   </div>
                   <a class="forum-post-title" href={`/forum/${post.slug}/`}>{post.title}</a>
                   <p class="forum-post-excerpt">{post.excerpt}</p>
-                  {post.sourceTitle && <p class="forum-source">From the guide: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}
+                  {post.sourceTitle && post.sourcePath && <p class="forum-source">Related article: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}
                   <div class="forum-post-actions">
                     {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
                     <a href={`/forum/${post.slug}/`}><Icon name="messageCircle" size={15} /> {post.commentsCount} comments</a>
@@ -96,10 +96,10 @@ const sourceTimestamp = (path?: string) => {
           <section class="forum-side-card forum-about" id="community-guidelines">
             <div class="forum-side-card__banner"></div>
             <div class="forum-about__content">
-              <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/logo.svg" alt="" width="34" height="34" /></span><h2>DotaCheats Community</h2></div>
-              <p>A home for Dota players to trade ideas, learn together, and celebrate the game.</p>
-              <div class="forum-stats"><span><b>{forumPosts.length}</b> guide discussions</span><span><b>{forumCategories.length}</b> topics</span></div>
-              <a class="forum-join" href="/blog/">Explore all guides</a>
+              <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/logo.svg" alt="CS2 cheats hub mark" width="34" height="34" /></span><h2>CS2 cheat talk</h2></div>
+              <p>Buyer threads on loaders, ESP clutter, aim curves, and league rules—kept separate from the article library.</p>
+              <div class="forum-stats"><span><b>{forumPosts.length}</b> threads</span><span><b>{forumCategories.length}</b> topics</span></div>
+              <a class="forum-join" href="/blog/">Open the article library</a>
             </div>
           </section>
           <section class="forum-side-card" id="communities">
@@ -116,7 +116,7 @@ const sourceTimestamp = (path?: string) => {
             <ol><li>Keep it friendly and constructive</li><li>Stay on topic and add context</li><li>Mark spoilers and sensitive content</li></ol>
             <a href="#community-guidelines">Read the full guidelines <Icon name="arrowRight" size={14} /></a>
           </section>
-          <p class="forum-sidebar-foot">About · Guidelines · Privacy · Terms<br />© {new Date().getFullYear()} DotaCheats Community</p>
+          <p class="forum-sidebar-foot">About · Guidelines · Privacy · Terms<br />© {new Date().getFullYear()} cs2-cheats.org</p>
         </aside>
       </div>
     </div>

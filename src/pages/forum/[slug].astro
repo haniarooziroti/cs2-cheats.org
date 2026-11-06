@@ -14,6 +14,7 @@ export function getStaticPaths() {
 const post = getForumPost(Astro.params.slug!);
 if (!post) return Astro.redirect('/forum/');
 const path = `/forum/${post.slug}/`;
+const categorySlug = post.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'general';
 const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Forum', path: '/forum/' }, { name: post.category, path: '/forum/' }, { name: post.title, path }];
 const relatedPosts = [
   ...forumPosts.filter((item) => item.slug !== post.slug && item.category === post.category),
@@ -35,19 +36,19 @@ const relatedPosts = [
               <button class="forum-vote__up" type="button" data-vote-up aria-label="Upvote this discussion"><Icon name="chevronDown" size={17} /></button><strong data-vote-count>{post.upvotes}</strong><button type="button" disabled aria-label="Downvoting is unavailable"><Icon name="chevronDown" size={17} /></button>
             </div>
             <div class="forum-detail-content">
-              <div class="forum-post-meta"><span class={`forum-community-avatar tone-${post.categoryTone}`}><Icon name="users" size={15} /></span><a href="/forum/" class="forum-community-name">d/{post.category.toLowerCase().replaceAll(' ', '')}</a><span>·</span><span><Icon name="userRound" size={13} /> DotaCheats guide team</span><span>Guide-based Q&amp;A</span></div>
+              <div class="forum-post-meta"><span class={`forum-community-avatar tone-${post.categoryTone}`}><Icon name="users" size={15} /></span><a href="/forum/" class="forum-community-name">c/{categorySlug}</a><span>·</span><span><Icon name="userRound" size={13} /> CS2 forum mods</span><span>Buyer Q&amp;A</span></div>
               <h1>{post.title}</h1>
               {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
               <div class="forum-detail-copy">{post.body.map((paragraph) => <p>{paragraph}</p>)}</div>
               {post.sourceTitle && <p class="forum-source forum-source--detail">Based on: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}
-              <div class="forum-post-actions forum-post-actions--detail"><a href="#comments"><Icon name="messageCircle" size={16} /> {post.commentsCount} guide replies</a><a href={post.sourcePath}><Icon name="navBlog" size={15} /> Read source guide</a></div>
+              <div class="forum-post-actions forum-post-actions--detail"><a href="#comments"><Icon name="messageCircle" size={16} /> {post.commentsCount} replies</a>{post.sourcePath && post.sourceTitle ? <a href={post.sourcePath}><Icon name="navBlog" size={15} /> Related article</a> : null}</div>
               <div class="forum-login-prompt"><span class="forum-user-dot">i</span><span>Preview discussion</span><span>Posting and voting are unavailable here</span></div>
               <section class="forum-comments" id="comments" aria-labelledby="comments-title">
-                <div class="forum-comments__heading"><h2 id="comments-title">Guide replies <span>{post.commentsCount}</span></h2><span>From the source article</span></div>
+                <div class="forum-comments__heading"><h2 id="comments-title">Thread replies <span>{post.commentsCount}</span></h2><span>Community voices</span></div>
                 {post.comments.map((comment) => (
                   <article class="forum-comment">
                     <div class="forum-comment__rail"><span class="forum-comment__avatar"><Icon name="userRound" size={14} /></span><span class="forum-comment__line"></span></div>
-                    <div class="forum-comment__body"><div class="forum-comment__meta"><b>Guide answer</b></div><p>{comment.body}</p>
+                    <div class="forum-comment__body"><div class="forum-comment__meta"><b>u/{comment.author}</b><span>·</span><span>{comment.age}</span></div><p>{comment.body}</p>
                     {comment.replies?.map((reply) => <div class="forum-comment forum-comment--reply"><div class="forum-comment__rail"><span class="forum-comment__avatar">{reply.author.slice(0, 1).toUpperCase()}</span></div><div class="forum-comment__body"><div class="forum-comment__meta"><b>u/{reply.author}</b><span>·</span><span>{reply.age}</span></div><p>{reply.body}</p></div></div>)}
                     </div>
                   </article>
@@ -57,7 +58,7 @@ const relatedPosts = [
           </article>
         </main>
         <aside class="forum-sidebar">
-          <section class="forum-side-card forum-about"><div class="forum-side-card__banner"></div><div class="forum-about__content"><div class="forum-about__title"><span class={`forum-community-avatar tone-${post.categoryTone}`}>d</span><h2>d/{post.category.toLowerCase().replaceAll(' ', '')}</h2></div><p>Browse answers summarized from DotaCheats guides.</p><div class="forum-stats"><span><b>{forumPosts.length}</b> guide discussions</span><span><b>{forumPosts.filter((item) => item.category === post.category).length}</b> in this topic</span></div><a class="forum-join" href="/forum/">Browse discussions</a></div></section>
+          <section class="forum-side-card forum-about"><div class="forum-side-card__banner"></div><div class="forum-about__content"><div class="forum-about__title"><span class={`forum-community-avatar tone-${post.categoryTone}`}>c</span><h2>c/{categorySlug}</h2></div><p>Threads on CS2 cheats, loaders, and purchase questions—no screenshots here.</p><div class="forum-stats"><span><b>{forumPosts.length}</b> threads</span><span><b>{forumPosts.filter((item) => item.category === post.category).length}</b> in this topic</span></div><a class="forum-join" href="/forum/">Back to forums</a></div></section>
           <section class="forum-side-card forum-related-card" aria-labelledby="forum-related-title">
             <h2 class="forum-side-heading" id="forum-related-title">More discussions</h2>
             <ul class="forum-related-list">
@@ -66,7 +67,7 @@ const relatedPosts = [
                   <a href={`/forum/${item.slug}/`}>
                     <span class="forum-related-list__category">{item.category}</span>
                     <b>{item.title}</b>
-                    <span class="forum-related-list__meta">{item.commentsCount} guide answers <Icon name="arrowRight" size={14} /></span>
+                    <span class="forum-related-list__meta">{item.commentsCount} replies <Icon name="arrowRight" size={14} /></span>
                   </a>
                 </li>
               ))}

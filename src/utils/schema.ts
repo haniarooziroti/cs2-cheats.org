@@ -1,5 +1,4 @@
 import type { FaqItem } from '../i18n/types';
-import { SUPPORT_EMAIL } from '../config/site';
 import { SITE_ORIGIN, absoluteAssetUrl, canonicalUrl, getOrganizationSameAs } from '../config/seo';
 
 export interface BreadcrumbItem {
@@ -24,11 +23,11 @@ export function websiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'DotaCheats',
+    name: 'cs2-cheats.org',
     url: `${SITE_ORIGIN}/`,
     inLanguage: 'en-US',
     description:
-      'Dota 2 cheats with scripts, map hack, zoom hack, Skin Changer and ranked-safe tiers for PC.',
+      'Counter-Strike 2 cheat tiers with ESP, aim assist, and wallhack-style overlays—plus articles and forums about setup.',
   };
 }
 
@@ -38,16 +37,14 @@ export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'DotaCheats',
+    name: 'cs2-cheats.org',
     url: `${SITE_ORIGIN}/`,
     logo: `${SITE_ORIGIN}/logo.svg`,
-    email: SUPPORT_EMAIL,
     ...(sameAs.length > 0 ? { sameAs } : {}),
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'customer support',
-        email: SUPPORT_EMAIL,
         url: canonicalUrl('/support/'),
         availableLanguage: ['English'],
         areaServed: 'Worldwide',
@@ -66,7 +63,7 @@ export function collectionPageSchema(input: { name: string; description: string;
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
-      name: 'DotaCheats',
+      name: 'cs2-cheats.org',
       url: `${SITE_ORIGIN}/`,
     },
   };
@@ -82,7 +79,7 @@ export function webPageSchema(input: { name: string; description: string; url: s
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
-      name: 'DotaCheats',
+      name: 'cs2-cheats.org',
       url: `${SITE_ORIGIN}/`,
     },
   };
@@ -131,7 +128,7 @@ export function discussionForumPostingSchema(input: {
     url: canonicalUrl(input.url),
     author: { '@type': 'Person', name: input.author },
     commentCount: input.comments,
-    isPartOf: { '@type': 'CollectionPage', name: 'DotaCheats Community Forum', url: canonicalUrl('/forum/') },
+    isPartOf: { '@type': 'CollectionPage', name: 'CS2 cheat forums', url: canonicalUrl('/forum/') },
   };
 }
 
@@ -156,7 +153,7 @@ export function productSchema(input: {
     sku: input.sku ?? input.url.replace(/\//g, '-'),
     brand: {
       '@type': 'Brand',
-      name: 'DotaCheats',
+      name: 'cs2-cheats.org',
     },
     ...(input.image ? { image: absoluteAssetUrl(input.image) } : {}),
     offers: {
@@ -166,7 +163,7 @@ export function productSchema(input: {
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',
-        name: 'DotaCheats',
+        name: 'cs2-cheats.org',
       },
     },
   };
@@ -209,11 +206,11 @@ export function articleSchema(input: {
     inLanguage: 'en-US',
     author: {
       '@type': 'Organization',
-      name: 'DotaCheats',
+      name: 'cs2-cheats.org',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'DotaCheats',
+      name: 'cs2-cheats.org',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_ORIGIN}/logo.svg`,

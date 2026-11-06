@@ -1,6 +1,5 @@
 /**
  * Central titles/descriptions for high-traffic routes.
- * After Search Console shows impressions, edit the matching path here and redeploy.
  */
 
 export interface PageSeoEntry {
@@ -10,59 +9,59 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    // gscNote: Keep primary keyword "dota 2 cheats" near front; trim if title truncates in SERP.
-    title: 'Dota 2 Cheats & Hacks | Scripts, Map Hack & ESP',
+    title: 'Counter-Strike 2 Cheats & Hacks | CS2 Aimbot & ESP',
     description:
-      'Dota 2 cheats for PC ranked: scripts, map hack, zoom hack, and skin changer tiers updated every patch at dotacheats.com.',
+      'CS2 cheats with aimbot, ESP, wallhack-style overlays, and radar for PC—Premier and Competitive on Steam. Faceit’s client adds its own checks. Compare modules on cs2-cheats.org, then open the linked store for access.',
   },
-  '/products/dota-2-cheats/': {
-    title: 'Dota 2 Elite Cheats & Utility Products',
+  '/products/cs2-cheats/': {
+    title: 'CS2 Cheats | Faceit-Ready ESP, Aimbot & More',
     description:
-      'Elite dota 2 cheats plus HWID spoofer, UGC tools, and Skin Changer utilities for Steam ranked on dotacheats.com.',
+      'Paid CS2 cheat tiers for Steam: ESP, aimbot, radar hack, triggerbot, and optional skin changer utility. Subscription-style access depends on the store—review each card, then checkout.',
   },
-  '/products/dota-2-cheats/elite/': {
-    title: 'Dota 2 Elite Cheats | Bots & Full Map Hack',
+  '/products/cs2-cheats/elite/': {
+    title: 'CS2 Elite Cheats | Full ESP & Aimbot Suite',
     description:
-      'Elite tier: auto farm bot, kill steal, skin changer, full map hack suite, and priority patch delivery.',
+      'Elite CS2 build with full ESP, aimbot tuning, radar, trigger assist, and priority loader updates.',
   },
-  '/products/dota-2-cheats/utilities/': {
-    title: 'Dota 2 Utilities | HWID, UGC & Skin Changer',
+  '/products/cs2-cheats/utilities/': {
+    title: 'CS2 Utilities | HWID & Companion Tools',
     description:
-      'Choose HWID Spoofer, UGC, or Skin Changer—when each utility fits and links to full product pages.',
+      'CS2 cheat utilities: HWID tools, appeals workspace, and a local skin changer preview—pair with the main loader subscription from the product hub.',
   },
   '/blog/': {
-    title: 'Dota 2 Cheats Guides & Patch Notes',
+    title: 'CS2 Cheat Articles | ESP, Aimbot & Setup',
     description:
-      'Setup guides, Lite vs Pro comparisons, VAC patch checklists, and ranked config tips for dota cheats.',
+      'CS2 hack and cheat guides: ESP, aimbot, wallhack layout, radar hack vs audio, triggerbot timing, Premier queues, and Faceit client caveats.',
   },
   '/forum/': {
-    title: 'Dota 2 Community Forum | DotaCheats',
-    description: 'Join Dota players to discuss heroes, builds, patch changes, guides, and community moments.',
+    title: 'CS2 Cheat Forums | Setup & Feature Talk',
+    description:
+      'CS2 cheats forum: loader first boot, aimbot levels, ESP clutter, paid tier questions, Faceit vs Premier play, and subscription or key handoffs.',
   },
   '/faq/': {
-    title: 'FAQ | Dota 2 Cheats, Products & Setup',
+    title: 'FAQ | CS2 Cheats, Loader & Checkout',
     description:
-      'Answers on cheat tiers, map hack, scripts, HWID tools, checkout, and blog guides at dotacheats.com.',
+      'FAQ on CS2 cheats: VAC is never “safe”—we explain risk, paid access, cheat loader problems, ESP and aimbot scope, and how to buy CS2 cheats through the store.',
   },
   '/terms/': {
-    title: 'Terms & Conditions | DotaCheats',
+    title: 'Terms | cs2-cheats.org',
     description:
-      'Purchase terms, license use, and refund policy for DotaCheats products sold through dotacheats.com.',
+      'Terms of use, checkout disclaimers, and refund policy for visitors of cs2-cheats.org.',
   },
   '/privacy/': {
-    title: 'Privacy Policy | DotaCheats',
+    title: 'Privacy | cs2-cheats.org',
     description:
-      'How dotacheats.com uses analytics, cookies, and contact data when you browse or request support.',
+      'How cs2-cheats.org uses analytics and cookies when you browse, and how store-side tickets work after purchase.',
   },
   '/about/': {
-    title: 'About DotaCheats',
+    title: 'About | Counter-Strike 2 Cheat Resource',
     description:
-      'What DotaCheats publishes: Dota 2 cheat tiers, utilities, guides, and status notes at dotacheats.com.',
+      'What cs2-cheats.org covers: CS2 ESP, aimbot, wallhack-style overlays, utilities, and articles—no unrelated games.',
   },
   '/support/': {
-    title: 'Support | DotaCheats',
+    title: 'Support | cs2-cheats.org',
     description:
-      'Get help with loader setup, HWID, and checkout for Dota 2 cheat tiers and utilities.',
+      'Contact support for loader, checkout, or HWID questions related to CS2 cheat access from cs2-cheats.org.',
   },
 };
 

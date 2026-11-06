@@ -1,3 +1,8 @@
+/** Must match PRODUCT_BASE in src/config/site.ts */
+const PRODUCT_BASE = '/products/cs2-cheats/';
+const productsBase = PRODUCT_BASE.replace(/\/$/, '');
+const utilitiesPath = `${productsBase}/utilities/`;
+
 /** Static path redirects (301). Keys are pathname without query/hash. */
 export const PATH_REDIRECTS = new Map([
   ['/blog', '/blog/'],
@@ -8,20 +13,23 @@ export const PATH_REDIRECTS = new Map([
   ['/privacy', '/privacy/'],
   ['/terms', '/terms/'],
   ['/faq', '/faq/'],
-  ['/cheats', '/products/dota-2-cheats/'],
-  ['/cheats/', '/products/dota-2-cheats/'],
-  ['/cheats/lite', '/products/dota-2-cheats/'],
-  ['/cheats/lite/', '/products/dota-2-cheats/'],
-  ['/cheats/pro', '/products/dota-2-cheats/'],
-  ['/cheats/pro/', '/products/dota-2-cheats/'],
-  ['/cheats/elite', '/products/dota-2-cheats/elite/'],
-  ['/cheats/elite/', '/products/dota-2-cheats/elite/'],
-  ['/cheats/compare', '/blog/dota-2-lite-vs-pro/'],
-  ['/cheats/compare/', '/blog/dota-2-lite-vs-pro/'],
-  ['/products/dota-2-cheats/utilities', '/products/dota-2-cheats/utilities/'],
-  ['/products/dota-2-cheats', '/products/dota-2-cheats/'],
-  ['/products/dota-2-cheats/account-recovery', '/products/dota-2-cheats/ugc/'],
-  ['/products/dota-2-cheats/account-recovery/', '/products/dota-2-cheats/ugc/'],
+  ['/forum', '/forum/'],
+  ['/cheats', PRODUCT_BASE],
+  ['/cheats/', PRODUCT_BASE],
+  ['/cheats/lite', PRODUCT_BASE],
+  ['/cheats/lite/', PRODUCT_BASE],
+  ['/cheats/pro', PRODUCT_BASE],
+  ['/cheats/pro/', PRODUCT_BASE],
+  [`/cheats/elite`, `${productsBase}/elite/`],
+  [`/cheats/elite/`, `${productsBase}/elite/`],
+  ['/cheats/compare', '/blog/cs2-esp-settings-clutches/'],
+  ['/cheats/compare/', '/blog/cs2-esp-settings-clutches/'],
+  ['/products/dota-2-cheats/utilities', utilitiesPath],
+  ['/products/dota-2-cheats/utilities/', utilitiesPath],
+  ['/products/dota-2-cheats', PRODUCT_BASE],
+  ['/products/dota-2-cheats/', PRODUCT_BASE],
+  ['/products/dota-2-cheats/account-recovery', `${productsBase}/ugc/`],
+  ['/products/dota-2-cheats/account-recovery/', `${productsBase}/ugc/`],
 ]);
 
 /** Paths that should not receive a forced trailing slash. */

@@ -1,15 +1,13 @@
 import type { IconName } from '../components/icons/types';
 
 export const featureIcons: Record<string, IconName> = {
-  Scripts: 'stepCrosshair',
-  'Map Hack / ESP': 'featureEsp',
-  'Minimap & Runes': 'featureRadar',
-  'Auto Combo': 'featureAimbot',
-  'Utility Suite': 'featureUtilitySuite',
-  'Auto Farm Bot': 'compareAutoFarm',
-  'Stream Proof': 'streamProof',
-  'Zoom Hack': 'compareZoomHack',
-  'Cloud Config & Updates': 'compareCloudBackup',
+  'Aimbot & recoil': 'featureAimbot',
+  'ESP / wallhack intel': 'featureEsp',
+  'Radar & sound': 'featureRadar',
+  'Trigger & auto-fire': 'triggerBot',
+  'Misc movement': 'toolkitMovement',
+  'Stream-safe layer': 'streamProof',
+  'Cloud profiles': 'compareCloudBackup',
 };
 
 export const whyUsIcons: IconName[] = ['whyShield', 'whyUsers', 'whyMonitor', 'whyHeadphones'];
@@ -35,32 +33,29 @@ export const workflowIcons: IconName[] = [
 export const fieldNoteIcons: IconName[] = ['fieldCalendar', 'fieldShield', 'fieldHeadphones'];
 
 export const blogTagIcons: Record<string, IconName> = {
-  Guides: 'navBlog',
+  Articles: 'navBlog',
   Setup: 'settings',
   Features: 'layers',
   Updates: 'refresh',
   Troubleshooting: 'alert',
+  Faceit: 'shield',
 };
 
 export const heroStatusPills: { icon: IconName; label: string }[] = [
-  { icon: 'espActive', label: 'ESP Active' },
-  { icon: 'radarOnline', label: 'Radar Online' },
-  { icon: 'seasonBuild', label: 'Season Build' },
-  { icon: 'undetected', label: 'Undetected' },
-  { icon: 'softAim', label: 'Soft Aim Ready' },
-  { icon: 'noRecoil', label: 'No Recoil' },
-  { icon: 'streamProof', label: 'Stream Proof' },
-  { icon: 'lootEsp', label: 'Loot ESP' },
+  { icon: 'espActive', label: 'ESP active' },
+  { icon: 'radarOnline', label: 'Radar online' },
+  { icon: 'seasonBuild', label: 'Patch build' },
+  { icon: 'shieldCheck', label: 'Status checked' },
+  { icon: 'softAim', label: 'Soft aim ready' },
+  { icon: 'noRecoil', label: 'Recoil assist' },
+  { icon: 'streamProof', label: 'Capture-aware' },
   { icon: 'skeletonEsp', label: 'Skeleton ESP' },
-  { icon: 'uavRadar', label: 'UAV Radar' },
-  { icon: 'mapHack', label: 'Map Hack' },
-  { icon: 'support247', label: '24/7 Support' },
-  { icon: 'instantDelivery', label: 'Instant Delivery' },
-  { icon: 'rankedSafe', label: 'Ranked Safe' },
-  { icon: 'triggerBot', label: 'Trigger Bot' },
-  { icon: 'boneSelect', label: 'Bone Select' },
-  { icon: 'liveStatus', label: 'Live Status' },
-  { icon: 'autoUpdates', label: 'Auto Updates' },
+  { icon: 'support247', label: '24/7 support' },
+  { icon: 'instantDelivery', label: 'Fast delivery' },
+  { icon: 'triggerBot', label: 'Trigger assist' },
+  { icon: 'boneSelect', label: 'Bone select' },
+  { icon: 'liveStatus', label: 'Live status' },
+  { icon: 'autoUpdates', label: 'Auto updates' },
 ];
 
 export const heroStatIcons: IconName[] = [

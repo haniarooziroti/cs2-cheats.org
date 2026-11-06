@@ -1,13 +1,16 @@
 ---
+import type { ProductFeatureGroup } from '../../data/products';
 import SectionHeader from '../SectionHeader.astro';
 import Icon from '../icons/Icon.astro';
 
 interface Props {
   features: string[];
   productName: string;
+  featureGroups?: ProductFeatureGroup[];
 }
 
-const { features, productName } = Astro.props;
+const { features, productName, featureGroups } = Astro.props;
+const hasGroups = Boolean(featureGroups && featureGroups.length > 0);
 ---
 
 <section id="product-features" class="py-12 md:py-16" aria-labelledby="product-features-title">
@@ -17,19 +20,36 @@ const { features, productName } = Astro.props;
       title="What's included"
       desc={`Every module and overlay shipped with ${productName}—toggle and tune in the operator portal.`}
       titleId="product-features-title"
+      titleLevel="h2"
     />
 
-    <ul class="product-detail__features mt-10 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        features.map((feature) => (
-          <li
-            class="flex items-start gap-2.5 rounded-xl border border-border/80 bg-muted/15 px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary/25 hover:bg-muted/30"
-          >
-            <Icon name="check" size={15} class="product-feature-check mt-0.5 shrink-0 icon-app--primary" />
-            <span>{feature}</span>
-          </li>
-        ))
-      }
-    </ul>
+    {
+      hasGroups ? (
+        <div class="mt-10 space-y-10">
+          {featureGroups!.map((group) => (
+            <div>
+              <h3 class="font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">{group.heading}</h3>
+              <ul class="product-detail__features mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {group.items.map((feature) => (
+                  <li class="flex items-start gap-2.5 rounded-xl border border-border/80 bg-muted/15 px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary/25 hover:bg-muted/30">
+                    <Icon name="check" size={15} class="product-feature-check mt-0.5 shrink-0 icon-app--primary" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <ul class="product-detail__features mt-10 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
+            <li class="flex items-start gap-2.5 rounded-xl border border-border/80 bg-muted/15 px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary/25 hover:bg-muted/30">
+              <Icon name="check" size={15} class="product-feature-check mt-0.5 shrink-0 icon-app--primary" />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
   </div>
 </section>

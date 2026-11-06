@@ -57,7 +57,11 @@ const showDescToggle = descriptionBlocks.length > 2;
   showToggle={showDescToggle}
 />
 
-<ProductFeaturesSection features={product.fullFeatures} productName={product.name} />
+<ProductFeaturesSection
+  features={product.fullFeatures}
+  productName={product.name}
+  featureGroups={product.featureGroups}
+/>
 
 <ProductExperienceSection
   images={product.images}

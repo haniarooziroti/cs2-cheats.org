@@ -16,13 +16,13 @@ const { posts, productName } = Astro.props;
 
 {
   posts.length > 0 && (
-    <section class="border-t border-border bg-muted/20 py-16 md:py-24" aria-labelledby="related-guides-heading">
+    <section class="border-t border-border bg-muted/20 py-16 md:py-24" aria-labelledby="related-articles-heading">
       <div class="mx-auto max-w-6xl px-5">
         <SectionHeader
-          eyebrow="Guides"
+          eyebrow="Articles"
           title={`Learn more about ${productName}`}
           desc="Curated articles for setup, tuning, and patch-day checks that match this product."
-          titleId="related-guides-heading"
+          titleId="related-articles-heading"
         />
 
         <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-10">
@@ -33,7 +33,7 @@ const { posts, productName } = Astro.props;
 
         <div class="mt-12 flex justify-start lg:justify-center">
           <Button as="a" href={ROUTES.blog} variant="outline" class="rounded-full">
-            Browse all guides
+            Browse all articles
             <Icon name="arrowRight" size={17} />
           </Button>
         </div>
