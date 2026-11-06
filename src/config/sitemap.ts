@@ -26,7 +26,9 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
     path === '/products/cs2-cheats/lite/' ||
     path === '/products/cs2-cheats/pro/' ||
     path === '/products/cs2-cheats/elite/' ||
-    path === '/products/cs2-cheats/unlock-all/'
+    path === '/products/cs2-cheats/unlock-all/' ||
+    path === '/forum/' ||
+    path.startsWith('/forum/')
   ) {
     return undefined;
   }
@@ -41,18 +43,6 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
 
   if (path === '/blog/') {
     item.priority = 0.9;
-    item.changefreq = 'weekly';
-    return item;
-  }
-
-  if (path === '/forum/') {
-    item.priority = 0.8;
-    item.changefreq = 'daily';
-    return item;
-  }
-
-  if (path.startsWith('/forum/')) {
-    item.priority = 0.6;
     item.changefreq = 'weekly';
     return item;
   }

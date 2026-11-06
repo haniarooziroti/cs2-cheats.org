@@ -113,25 +113,6 @@ export function itemListSchema(items: { name: string; url: string }[]) {
   };
 }
 
-export function discussionForumPostingSchema(input: {
-  name: string;
-  text: string;
-  url: string;
-  author: string;
-  comments: number;
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'DiscussionForumPosting',
-    headline: input.name,
-    articleBody: input.text,
-    url: canonicalUrl(input.url),
-    author: { '@type': 'Person', name: input.author },
-    commentCount: input.comments,
-    isPartOf: { '@type': 'CollectionPage', name: 'CS2 cheat forums', url: canonicalUrl('/forum/') },
-  };
-}
-
 function offerUrl(path: string): string {
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
   return canonicalUrl(path);

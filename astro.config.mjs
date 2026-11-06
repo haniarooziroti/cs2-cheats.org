@@ -30,7 +30,8 @@ export default defineConfig({
         !page.includes('/products/cs2-cheats/lite/') &&
         !page.includes('/products/cs2-cheats/pro/') &&
         !page.includes('/products/cs2-cheats/elite/') &&
-        !page.includes('/products/cs2-cheats/unlock-all/'),
+        !page.includes('/products/cs2-cheats/unlock-all/') &&
+        !page.includes('/forum/'),
       serialize: sitemapSerialize,
     }),
   ],

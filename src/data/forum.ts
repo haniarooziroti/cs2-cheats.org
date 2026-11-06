@@ -1,34 +1,17 @@
 import { blogPostPath } from '../utils/path';
 
-export interface ForumComment {
-  author: string;
-  age: string;
-  score: number;
-  body: string;
-  replies?: ForumComment[];
-}
-
 export interface ForumPost {
   slug: string;
   category: string;
   categoryTone: 'purple' | 'blue' | 'green' | 'orange';
   title: string;
   excerpt: string;
-  /** Meta description (120–155 chars). */
   seoDescription: string;
-  /** H1: include “cheats”, not identical to thread title. */
   pageHeading: string;
-  /** Complete 50–60 character `<title>`. */
   seoTitle: string;
-  /** Social share title (passed to ShareButtons). */
   shareTitle?: string;
-  author: string;
-  age: string;
-  commentsCount: number;
-  upvotes: number;
   flair?: string;
   body: string[];
-  comments: ForumComment[];
   sourceTitle?: string;
   sourcePath?: string;
 }
@@ -40,322 +23,207 @@ export const forumCategories = [
   { name: 'Faceit & leagues', tone: 'green', icon: 'shield' },
 ] as const;
 
-function thread(input: {
-  slug: string;
-  title: string;
-  excerpt: string;
-  seoDescription: string;
-  pageHeading: string;
-  seoTitle: string;
-  shareTitle?: string;
-  category: string;
-  categoryTone: ForumPost['categoryTone'];
-  flair?: string;
-  sourceTitle?: string;
-  sourcePath?: string;
-  upvotes: number;
-  age: string;
-  body: string[];
-  comments: ForumComment[];
-}): ForumPost {
-  const totalReplies = input.comments.reduce((acc, c) => acc + 1 + (c.replies?.length ?? 0), 0);
-  return {
-    ...input,
-    author: 'mods',
-    commentsCount: totalReplies,
-  };
-}
-
 export const forumPosts: ForumPost[] = [
-  thread({
+  {
     slug: 'aimbot-settings-what-level-buy-risk',
     title: 'Aimbot settings: what level should I run so I do not look blatant?',
-    excerpt: 'Trading FOV for trust in Premier—what worked and what got me roasted in downloaded replays.',
+    excerpt: 'Editorial note on FOV versus smoothing in Premier demos—start tight, then move one slider per session.',
     seoDescription:
-      'Forum thread on CS2 cheat aimbot FOV for Premier—buyers compare presets, demo reviews, and what looks blatant before you pay for a tier.',
+      'Editorial note on CS2 cheat aimbot FOV for Premier—how presets, demo review, and trigger delay interact before you pay for a tier.',
     pageHeading: 'CS2 cheats forum: aimbot FOV without looking blatant',
     seoTitle: 'CS2 aimbot FOV without looking blatant | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
     flair: 'Purchase intent',
-    upvotes: 214,
-    age: '3h ago',
     sourceTitle: 'Aimbot smoothing for CS2 ranked queues',
     sourcePath: blogPostPath('cs2-aimbot-smoothing-ranked'),
     body: [
-      'I bumped from 2.3 to 4.1 FOV on my Pro tier and immediately felt/snaps look sharper in demos—looking for someone to sanity-check where they stop.',
-      'Not asking for “safe forever” talk—just how others pair smoothing with trigger delay on pistol rounds.',
+      'These pages are editorial discussions, not live user posts. Aim assist in Counter-Strike 2 is FOV, smoothing, bone priority, and sometimes a separate pistol profile—not a single “safe” number.',
+      'A tight FOV with extra smoothing on the AK is easier to explain in a downloaded demo than a wide snap. If a clip looks magnetic, drop first-bullet snap before you widen the cone.',
+      'Trigger delay on pistols often shows more than FOV. Change one control per session and re-watch a deathmatch demo before you queue Premier.',
     ],
-    comments: [
-      {
-        author: 'slow_peek',
-        age: '2h ago',
-        score: 38,
-        body: 'I keep legit FOV around 3.2 on 16:9 with extra smoothing on AK. When I went to 5 it looked fine in-game but horrible in replay.',
-      },
-      {
-        author: 'tilted_twice',
-        age: '2h ago',
-        score: 21,
-        body: 'Honestly I regret maxing snap speed. Got called out by a friend reviewing my clip—dialed back same night.',
-      },
-      {
-        author: 'mods',
-        age: '1h ago',
-        score: 12,
-        body: 'We link buyers to the aim article above—start with defaults, then move sliders once per day, not mid-match.',
-        replies: [
-          { author: 'slow_peek', age: '55m ago', score: 6, body: 'Yeah the “one slider per session” line in that post actually helped me chill out.' },
-        ],
-      },
-      {
-        author: 'anchor_city',
-        age: '40m ago',
-        score: 9,
-        body: 'Trigger delay matters more than FOV for me—0 ms on deagle looks sus even if aim is soft.',
-      },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'how-to-install-loader-first-boot',
     title: 'Loader first boot: what did you turn off in antivirus?',
-    excerpt: 'Windows Security kept quarantining the DLL—want to know what folders people excluded without nuking whole drives.',
+    excerpt: 'Editorial checklist for Defender exclusions on first loader boot—narrow folders, not whole drives.',
     seoDescription:
-      'Q&A on first CS2 cheat loader boot—Defender exclusions, safe folder paths, and what to avoid so antivirus does not eat your DLL on Windows.',
+      'Editorial CS2 cheat loader first-boot notes: Defender exclusion paths, restore-from-quarantine order, and what to send if the DLL still vanishes.',
     pageHeading: 'CS2 cheats loader thread: antivirus exclusions on first boot',
     seoTitle: 'CS2 loader first boot: antivirus exclusions | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     flair: 'Setup',
-    upvotes: 178,
-    age: '5h ago',
     sourceTitle: 'How to install CS2 cheats from the portal',
     sourcePath: blogPostPath('how-to-install-cs2-cheats'),
     body: [
-      'Followed the article but Defender still snagged the injector until I added the portal folder. Sharing what worked on Win11 23H2.',
+      'Windows Security commonly flags unsigned loaders. Exclude the portal directory and the temp unpack path—not an entire drive.',
+      'If a file is already quarantined, restore it once, add the path, then turn real-time protection back on. Reboots after browser or Windows updates can drop an exclusion; re-check the list.',
+      'When you open a store ticket, send the exact detection name. Guessing “Defender hates it” slows the reply.',
     ],
-    comments: [
-      { author: 'defend_me_not', age: '4h ago', score: 44, body: 'Excluded the whole portal directory plus the temp unpack path. No full-disk exclusions—too risky.' },
-      { author: 'fresh_win', age: '3h ago', score: 28, body: 'Worked fine until an Edge update reboot—had to re-allow. Annoying but not the cheat’s fault.' },
-      {
-        author: 'mods',
-        age: '3h ago',
-        score: 15,
-        body: 'If Defender still grabs files after exclusions, pause real-time once, restore, then add the path—support needs the exact detection name.',
-      },
-      { author: 'paranoid_pete', age: '2h ago', score: -2, body: 'I nuked the download and bought a different site key instead. Probably overreacted.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'faceit-client-worth-extra-price',
     title: 'Faceit + CS2 cheats: is the extra client honestly worth paying for?',
-    excerpt: 'VAC scares me less than league software—did anyone stay subscribed mainly for Faceit?',
+    excerpt: 'Editorial Faceit note: league rules prohibit cheats; Steam Premier is the common fit described on this site.',
     seoDescription:
-      'Debate on CS2 cheats with Faceit client risk vs Steam—threads weigh cost, ESP limits, and when league queue is worth the extra client.',
+      'Editorial note on CS2 cheats with the Faceit client versus Steam—cost, ESP limits, and why league queue is a poor reason to pay by itself.',
     pageHeading: 'CS2 cheats on Faceit: is the extra client worth paying for?',
     seoTitle: 'Faceit CS2 extra client: worth paying for | cs2-cheats.org',
     category: 'Faceit & leagues',
     categoryTone: 'green',
     flair: 'Faceit',
-    upvotes: 305,
-    age: '1d ago',
     sourceTitle: 'Faceit CS2 cheats: client constraints to know',
     sourcePath: blogPostPath('faceit-cs2-cheats-constraints'),
     body: [
-      'I queue Faceit maybe 30% of the time. Article says some ESP layers conflict—wondering if I should stay Steam-only.',
+      'Faceit adds its own client checks on top of Steam. This site does not promise compatibility with that client. League rules prohibit cheats wherever we mention Faceit.',
+      'If you only queue Faceit, read the paired article before you pay. Steam Premier and scrims are the use cases described in the catalog.',
+      'Treat Faceit as higher scrutiny than casual matchmaking even when a portal banner says a build is online.',
     ],
-    comments: [
-      { author: 'hub_only', age: '22h ago', score: 67, body: 'I stopped Faceit entirely after one anticheat update. Steam Premier is stressful enough.' },
-      { author: 'league_dream', age: '20h ago', score: 41, body: 'Still testing minimal ESP there—not worth the stress if you treat it like matchmaking.' },
-      { author: 'angry_bracket', age: '18h ago', score: 12, body: 'Got a 30-day cooldown unrelated to cheats and blamed the software anyway. Probably unfair of me.' },
-      { author: 'mods', age: '17h ago', score: 20, body: 'We do not promise any third-party client compatibility—read the article before you pay for that alone.' },
-      { author: 'microwave', age: '15h ago', score: 8, body: 'Main account only on Steam, smurf experiments on Faceit—still sweaty.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'esp-clutter-smoke-sites',
     title: 'ESP clutter on execute-heavy maps—how do you keep smokes readable?',
-    excerpt: 'Mirage A execs flood my screen; looking for layout ideas from the wallhack article.',
+    excerpt: 'Editorial ESP layout note for Mirage-style executes: boxes first, skeleton on a clutch profile.',
     seoDescription:
-      'CS2 cheat ESP clutter on execute maps—buyers share box-only presets, glow tweaks, and layouts so overlays stay readable mid-round on Mirage-style hits.',
+      'Editorial CS2 cheat ESP note for execute maps—box-only presets, glow opacity, and why skeleton plus glow together crowd mid-round swaps.',
     pageHeading: 'CS2 cheats ESP clutter: readable overlays on execute maps',
     seoTitle: 'CS2 ESP clutter on execute-heavy maps | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
-    upvotes: 141,
-    age: '6h ago',
     sourceTitle: 'Wallhack-style vision without blocking your crosshair',
     sourcePath: blogPostPath('cs2-wallhack-crosshair-layout'),
     body: [
-      'Glow + skeleton together chokes me during fast swaps. Anyone else run box-only on T side?',
+      'Glow plus skeleton at once often chokes fast swaps on execute-heavy T rounds. A box-and-distance preset keeps the crosshair gap readable.',
+      'Save skeleton for a second clutch profile instead of stacking every layer on the live competitive cfg.',
+      'Drop glow opacity a step before you delete layers—contrast problems look like clutter.',
     ],
-    comments: [
-      { author: 'retake_junkie', age: '5h ago', score: 33, body: 'Box + distance text only. Skeleton on a second profile for clutch watchdog.' },
-      { author: 'glow_hard', age: '5h ago', score: 19, body: 'I actually like glow thick on Ancient—maybe I am weird.' },
-      { author: 'mods', age: '4h ago', score: 11, body: 'Try pushing glow opacity down 20% before deleting layers—you might just need contrast fixes.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'trigger-delay-duel-tips',
     title: 'Trigger delay for pistol duels—ms ranges people swear by?',
-    excerpt: 'Ancient doorway jiggle wars—article mentions delay vs burst; need numbers from humans.',
+    excerpt: 'Editorial trigger-delay note: separate pistol and rifle profiles; scale delay with ping.',
     seoDescription:
-      'CS2 cheat trigger delay for pistol duels—posts compare millisecond ranges, ping scaling, and when to disable trigger for calmer, more manual play.',
+      'Editorial CS2 cheat trigger-delay note for pistol duels—why one delay for every weapon looks robotic, and how ping changes the feel.',
     pageHeading: 'CS2 cheats forum: trigger delay settings for pistol duels',
     seoTitle: 'CS2 trigger delay for pistol duels | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
-    upvotes: 96,
-    age: '12h ago',
     sourceTitle: 'Triggerbot timing for CS2 duel peeks',
     sourcePath: blogPostPath('cs2-triggerbot-peek-timing'),
     body: [
-      'Running Pro tier, deagle feels either too slow or instant laser—looking for middle ground anecdotes.',
+      'A single trigger delay for deagle, CZ, and rifles tends to feel either instant or late. Split pistol and rifle profiles.',
+      'What feels crisp at 30 ms ping can prefire at 80 ms. Add a few milliseconds on high-ping routes and log duels offline before ranked.',
+      'Turning trigger off for a week is a valid test if the assist is teaching bad crosshair placement.',
     ],
-    comments: [
-      { author: 'jiggle_fest', age: '11h ago', score: 27, body: '12–18 ms on deag, 6–8 on rifles. Trash on long-range pistols though.' },
-      { author: 'trust_issues', age: '10h ago', score: 14, body: 'Turned trigger off entirely last week—felt cleaner mentally even if stats dipped.' },
-      { author: 'mods', age: '9h ago', score: 7, body: 'Note your ping in tickets—delay should scale slightly upward on high ping routes.' },
-      { author: 'lag_meme', age: '8h ago', score: 5, body: '80 ping crew: I add ~5 ms vs what NA players post.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'vac-error-after-patch-stories',
     title: 'VAC pop-up after patch—did verify actually fix it for you?',
-    excerpt: 'Following the VAC article but Steam still complains intermittently.',
+    excerpt: 'Editorial VAC-after-patch order: stop injecting, verify files, wait for matching banners.',
     seoDescription:
-      'After-patch VAC errors with CS2 cheats—stories on verify, reboot timing, and when to pause injections until Steam clears the banner safely.',
+      'Editorial note on VAC errors after CS2 patches—verify, reboot, and pause injections until Steam and the portal agree on the live build.',
     pageHeading: 'CS2 cheats after patches: fixing intermittent VAC pop-ups',
     seoTitle: 'CS2 VAC pop-ups after a game patch | cs2-cheats.org',
     category: 'Patch & VAC',
     categoryTone: 'orange',
-    upvotes: 88,
-    age: '2d ago',
     sourceTitle: 'VAC error messages after a CS2 patch',
     sourcePath: blogPostPath('cs2-vac-error-after-patch'),
     body: [
-      'I stopped injections until the banner flipped green—curious how many people rushed anyway.',
+      'A VAC error after a patch is sometimes corrupted files, not an instant ban. Still stop injecting until this site’s banner and the operator portal agree the loader matches the live client.',
+      'Exit CS2, verify integrity in Steam, reboot if the error persists, then repair Steam or VAC components if Valve prompts you to.',
+      'Tickets need the exact error string, CS2 build, and whether antivirus quarantined a file. Paraphrasing slows everyone down.',
     ],
-    comments: [
-      { author: 'patient_one', age: '1d ago', score: 31, body: 'Verify + reboot fixed it. Did not touch cheats for two days—boring but worked.' },
-      { author: 'impulse_buy', age: '1d ago', score: 4, body: 'Rushed back in and got a second error. Deserved it tbh.' },
-      { author: 'mods', age: '1d ago', score: 18, body: 'If verify fails twice, open a ticket with the exact error string—do not paraphrase.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'hwid-spoof-order-matters',
     title: 'HWID spoof order: restore point first or driver wipe first?',
-    excerpt: 'New Steam account kept dying until I cold rebooted—compare notes with the HWID article.',
+    excerpt: 'Editorial HWID order: restore point, remove old spoof, apply, then a cold boot—not a quick restart.',
     seoDescription:
-      'HWID spoof order for CS2 buyers—restore vs driver wipe, cold reboot tips, and laptop BIOS caveats before you bind a new Steam account.',
+      'Editorial HWID spoof order for CS2—restore point, old-driver wipe, cold boot, and why laptop BIOS or firmware locks can block a step.',
     pageHeading: 'CS2 cheats HWID spoof thread: restore point vs driver order',
     seoTitle: 'CS2 HWID spoof order: restore vs wipe | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
-    upvotes: 74,
-    age: '3d ago',
     sourceTitle: 'HWID spoofing before a new CS2 account',
     sourcePath: blogPostPath('hwid-spoof-new-cs2-account'),
     body: [
-      'Worried I skipped a step—want a second opinion before I try again on a laptop.',
+      'Hardware identifiers can tie a restriction to a machine. A spoofer helps when a fresh account fails on one PC and works elsewhere—not when only the Steam account is burned.',
+      'Typical order: restore point, uninstall the old spoof, apply the new one, then a cold boot. Check identifiers after that boot, not after a quick restart.',
+      'Laptop BIOS or firmware locks can block a step. Do not paste serial diffs in public pages; send them through the store ticket if support asks.',
     ],
-    comments: [
-      { author: 'fresh_ssd', age: '2d ago', score: 22, body: 'Restore point → uninstall old spoof → apply new → cold boot. Article order matches what support told me.' },
-      { author: 'laptop_sigh', age: '2d ago', score: 9, body: 'Laptop BIOS blocked one step—had to bail. Not the software’s fault but still frustrating.' },
-      { author: 'mods', age: '2d ago', score: 11, body: 'DM serial diffs through email only—do not paste them in public threads.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'radar-or-ears-primary',
     title: 'Radar assist vs headphone audio—which do you lean on?',
-    excerpt: 'Trying not to stare at minimap during executes—talking about the radar/audio article.',
+    excerpt: 'Editorial radar note: treat audio as primary and radar as backup when stacks get loud.',
     seoDescription:
-      'CS2 cheat radar vs audio—players debate minimap assist vs headset-first habits and how to avoid staring at overlays on fast executes.',
+      'Editorial CS2 cheat radar versus audio note—height-offset dots on stacked maps, and why staring at the minimap loses corner fights.',
     pageHeading: 'CS2 cheats discussion: radar assist vs headphone-first play',
     seoTitle: 'CS2 radar assist vs headphone audio | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
-    upvotes: 63,
-    age: '4d ago',
     sourceTitle: 'CS2 radar hack overlays vs audio',
     sourcePath: blogPostPath('cs2-radar-hack-audio'),
     body: [
-      'I hear footsteps fine but choke under pressure—wonder if radar is crutch or tool.',
+      'Radar layers and ESP both fight information overload. Treat headset audio as primary intel and radar as reinforcement when a site execute is loud.',
+      'Multi-level maps need a vertical bias on radar dots or you rotate toward the wrong floor. Cross-check with ESP distance before you throw utility.',
+      'A deathmatch session with radar off rebuilds the habit of not staring at the minimap during an execute.',
     ],
-    comments: [
-      { author: 'audio_main', age: '3d ago', score: 19, body: 'Radar is insurance when stacks are loud. Still trust ears first.' },
-      { author: 'map_glued', age: '3d ago', score: 8, body: 'I stare at radar too much and die to corners—working on disabling it every other round.' },
-      { author: 'mods', age: '3d ago', score: 6, body: 'Try deathmatch with radar off one session per week to rebuild instincts.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'stream-proof-obs-nightmare',
     title: 'Stream proof mode still leaked once in OBS—anyone else?',
-    excerpt: 'Followed stream article but Browser Source pickoff caught a menu flicker.',
+    excerpt: 'Editorial capture note: flatten nested OBS scenes and test with a local recording, not a live broadcast.',
     seoDescription:
-      'Stream proof CS2 overlays leaking in OBS—nested scenes and browser sources with fixes from buyers who reproduced capture slips on stream.',
+      'Editorial CS2 stream-proof note—nested OBS scenes, browser sources, and Discord screenshare can leak menus even when Game Capture looks clean.',
     pageHeading: 'CS2 cheats stream proof thread: OBS and capture leaks',
     seoTitle: 'CS2 stream proof leaks in OBS capture | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
-    upvotes: 112,
-    age: '1d ago',
     sourceTitle: 'Stream proof setup for CS2 overlays',
     sourcePath: blogPostPath('cs2-stream-proof-overlays'),
     body: [
-      'Not blaming the tool—probably my scene collection—but sharing so others triple-check nested scenes.',
+      'Capture-aware modes try to hide overlays from recording APIs. Nested OBS scenes and desktop browser sources still leak menus.',
+      'Use Game Capture on the CS2 window only. Turn studio mode off while you test. Record locally before you go live.',
+      'Discord screenshare is a separate capture path. A clean OBS preview does not prove a call is clean.',
     ],
-    comments: [
-      { author: 'obs_grumpy', age: '20h ago', score: 35, body: 'Nested scenes + studio mode off spilled once. Flattened layers like the article warned.' },
-      { author: 'offline_only', age: '19h ago', score: 14, body: 'I stopped streaming ranked entirely. Safer mentally.' },
-      { author: 'mods', age: '18h ago', score: 12, body: 'Send a short OBS log if it happens twice—we track capture APIs case by case.' },
-      { author: 'clip_farm', age: '17h ago', score: 6, body: 'Capture looked clean but Discord screenshare caught menu. Embarrassing in VC.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'elite-slot-wait-real',
     title: 'Elite slot wait—how long did approvals actually take?',
-    excerpt: 'Trying to decide if priority rebuild queue hype is real.',
+    excerpt: 'Editorial note: this site does not publish approval-hour guarantees; read the store listing and status banner.',
     seoDescription:
-      'CS2 cheat Elite wait times—buyers share real approval hours, patch-week queues, and when support banners spike after checkout.',
+      'Editorial CS2 cheat Elite wait note—this site does not invent approval hours. Check the store listing and status banner after checkout.',
     pageHeading: 'CS2 cheats forum: Elite tier slot and approval wait times',
     seoTitle: 'CS2 Elite slot wait after checkout | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
     flair: 'Commercial',
-    upvotes: 54,
-    age: '5d ago',
     body: [
-      'Support said “a few hours” but it became overnight for me—still faster than freeware discord chaos.',
+      'This site does not have measured approval times for any tier. If a listing mentions a queue, that promise belongs to the store, not to cs2-cheats.org.',
+      'After you pay, watch the operator portal and the status banner on this domain. Patch weeks can pause loaders even when checkout already completed.',
+      'Do not treat forum-style wait stories as a service-level agreement.',
     ],
-    comments: [
-      { author: 'night_owl', age: '4d ago', score: 16, body: 'Mine was six hours after a small patch—acceptable.' },
-      { author: 'impatient_kid', age: '4d ago', score: -4, body: 'Waited two days and flipped out in DMs. They were calm, I was not. My bad.' },
-      { author: 'mods', age: '4d ago', score: 9, body: 'Peak patch weeks stretch waits—banner will say if queues spike.' },
-    ],
-  }),
-  thread({
+  },
+  {
     slug: 'esp-colors-colorblind',
     title: 'ESP colors for colorblind modes—any presets worth copying?',
-    excerpt: 'Using the ESP clutch article palette but reds/greens still blend.',
+    excerpt: 'Editorial ESP palette note: cyan or gold enemies when reds blend into molotovs; desaturate teammates.',
     seoDescription:
-      'Colorblind CS2 cheat ESP palettes—cyan and mustard presets, Inferno contrast tips, and mod ideas when stock red and green enemy colors blend.',
+      'Editorial colorblind CS2 cheat ESP note—cyan and gold enemy colors, Inferno contrast, and why stock red/green pairs fail under fire.',
     pageHeading: 'CS2 cheats ESP colors for colorblind-readable overlays',
     seoTitle: 'CS2 ESP colors for colorblind modes | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
-    upvotes: 47,
-    age: '6d ago',
     sourceTitle: 'CS2 ESP settings that stay readable in clutches',
     sourcePath: blogPostPath('cs2-esp-settings-clutches'),
     body: [
-      'Swapped enemy to cyan per article—teammates still look too close to wall colors for me.',
+      'Stock red/green ESP pairs blend into molotovs and Inferno brick. Cyan or gold enemies with a desaturated teammate color are the starting point described in the ESP article.',
+      'Dormant players need a second tint so late rotators do not look like active peeks.',
+      'There is no guaranteed palette for every type of color vision. Test in deathmatch on the maps you actually play.',
     ],
-    comments: [
-      { author: 'cyan_fan', age: '5d ago', score: 14, body: 'Cyan enemy + mustard dormant saved me on Inferno.' },
-      { author: 'mods', age: '5d ago', score: 8, body: 'We can suggest palettes if you email deuteranopia/protanopia—no promises on perfection.' },
-    ],
-  }),
+  },
 ];
 
 export function getForumPost(slug: string): ForumPost | undefined {

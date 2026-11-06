@@ -7,7 +7,7 @@ import { forumCategories, forumPosts } from '../../data/forum';
 import { blogPosts, getBlogPostTimestamp } from '../../data/blog';
 import { canonicalUrl, resolvePageSeo } from '../../config/seo';
 import ShareButtons from '../../components/ShareButtons.astro';
-import { breadcrumbSchema, collectionPageSchema } from '../../utils/schema';
+import { breadcrumbSchema, webPageSchema } from '../../utils/schema';
 
 const seo = resolvePageSeo('/forum/');
 const sharePageUrl = canonicalUrl('/forum/');
@@ -20,29 +20,35 @@ const sourceTimestamp = (path?: string) => {
 };
 ---
 
-<BaseLayout title={seo.title} description={seo.description} jsonLd={[
-  collectionPageSchema({ name: 'CS2 cheat forums', description: seo.description, url: '/forum/' }),
-  breadcrumbSchema(breadcrumbs),
-]}>
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  robots="noindex, follow"
+  jsonLd={[
+    webPageSchema({ name: 'CS2 cheat editorial notes', description: seo.description, url: '/forum/' }),
+    breadcrumbSchema(breadcrumbs),
+  ]}
+>
   <section class="forum-page py-8 md:py-12">
     <div class="mx-auto max-w-6xl px-5">
       <Breadcrumbs items={breadcrumbs} />
       <header class="forum-hero">
         <div>
-          <p class="section-header__eyebrow">Counter-Strike 2 forums</p>
+          <p class="section-header__eyebrow">Editorial notes</p>
           <h1>CS2 cheat forums</h1>
-          <p class="forum-hero__copy">Loader tips, aimbot and ESP tuning, Faceit caveats, and purchase threads—text only, no image dumps.</p>
+          <p class="forum-hero__copy">
+            These pages are editorial discussions, not live user posts. There are no votes, usernames, or reply counts.
+          </p>
         </div>
         <a class="forum-create" href="/blog/"><Icon name="navBlog" size={17} /> CS2 cheat guides from the article hub</a>
       </header>
 
       <div class="forum-layout">
-        <main class="forum-main" aria-label="Community posts">
+        <main class="forum-main" aria-label="Editorial discussions">
           <div class="forum-toolbar">
-            <div class="forum-sort" role="group" aria-label="Post sorting">
-              <button class="is-active" type="button" data-forum-sort="popular" aria-pressed="true">Popular</button>
-              <button type="button" data-forum-sort="latest" aria-pressed="false">Latest</button>
-              <button type="button" data-forum-sort="top" aria-pressed="false">Most discussed</button>
+            <div class="forum-sort" role="group" aria-label="Discussion sorting">
+              <button class="is-active" type="button" data-forum-sort="editorial" aria-pressed="true">Editorial order</button>
+              <button type="button" data-forum-sort="latest" aria-pressed="false">Linked article date</button>
             </div>
             <label class="forum-search">
               <Icon name="search" size={16} />
@@ -57,41 +63,29 @@ const sourceTimestamp = (path?: string) => {
               <button type="button" data-forum-filter={categoryKey(category.name)} aria-pressed="false"><Icon name={category.icon} size={14} /> {category.name}</button>
             ))}
           </div>
-          <p class="forum-results-count" data-forum-visible-count>{forumPosts.length} forum threads</p>
+          <p class="forum-results-count" data-forum-visible-count>{forumPosts.length} editorial notes</p>
 
           <div class="forum-post-list" aria-live="polite">
             {forumPosts.map((post, index) => (
-              <article class="forum-post-card" data-forum-card data-post-slug={post.slug} data-upvotes={post.upvotes} data-category={categoryKey(post.category)} data-comments={post.commentsCount} data-published={sourceTimestamp(post.sourcePath)} data-order={index}>
-                <div class="forum-vote" aria-label="Discussion voting">
-                  <button class="forum-vote__up" type="button" data-vote-up aria-label="Upvote this discussion"><Icon name="chevronDown" size={16} /></button>
-                  <strong data-vote-count>{post.upvotes}</strong>
-                  <button type="button" disabled aria-label="Downvoting is unavailable"><Icon name="chevronDown" size={16} /></button>
-                </div>
+              <article class="forum-post-card" data-forum-card data-post-slug={post.slug} data-category={categoryKey(post.category)} data-published={sourceTimestamp(post.sourcePath)} data-order={index}>
                 <div class="forum-post-card__body">
                   <div class="forum-post-meta">
                     <span class={`forum-community-avatar tone-${post.categoryTone}`}><Icon name="users" size={15} /></span>
-                    <a href="#communities" class="forum-community-name">c/{post.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}</a>
-                    <span>·</span><span><Icon name="userRound" size={13} /> CS2 forum mods</span><span>Buyer Q&amp;A</span>
+                    <a href="#communities" class="forum-community-name">{post.category}</a>
+                    <span>·</span><span>Editorial note</span>
                   </div>
                   <a class="forum-post-title" href={`/forum/${post.slug}/`}>{post.title}</a>
                   <p class="forum-post-excerpt">{post.excerpt}</p>
                   {post.sourceTitle && post.sourcePath && <p class="forum-source">Related article: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}
                   <div class="forum-post-actions">
                     {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
-                    <a href={`/forum/${post.slug}/`}><Icon name="messageCircle" size={15} /> {post.commentsCount} replies on this thread</a>
-                    <a href={`/forum/${post.slug}/`}><Icon name="arrowRight" size={15} /> Open full thread: {post.title.slice(0, 42)}{post.title.length > 42 ? '…' : ''}</a>
+                    <a href={`/forum/${post.slug}/`}><Icon name="arrowRight" size={15} /> Open full note: {post.title.slice(0, 42)}{post.title.length > 42 ? '…' : ''}</a>
                   </div>
                 </div>
               </article>
             ))}
           </div>
           <p class="forum-empty" data-forum-empty hidden>No discussions match. Try another search or topic.</p>
-          <nav class="forum-pagination" aria-label="Discussion pages" data-forum-pagination hidden>
-            <button type="button" data-page-previous aria-label="Previous page">Previous</button>
-            <div class="forum-pagination__pages" data-page-buttons></div>
-            <button type="button" data-page-next aria-label="Next page">Next</button>
-            <span class="forum-pagination__status" data-page-status aria-live="polite"></span>
-          </nav>
           <ShareButtons shareUrl={sharePageUrl} shareText={seo.title} class="mt-8" />
         </main>
 
@@ -100,26 +94,20 @@ const sourceTimestamp = (path?: string) => {
             <div class="forum-side-card__banner"></div>
             <div class="forum-about__content">
               <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/favicon-v2-32.png" alt="cs2-cheats.org brand icon: soldier silhouette on orange and blue" width="34" height="34" /></span><h2>CS2 cheat talk</h2></div>
-              <p>Buyer threads on loaders, ESP clutter, aim curves, and league rules—kept separate from the article library.</p>
-              <div class="forum-stats"><span><b>{forumPosts.length}</b> threads</span><span><b>{forumCategories.length}</b> topics</span></div>
+              <p>Editorial notes on loaders, ESP clutter, aim curves, and league rules—kept separate from the article library. Not a live forum.</p>
+              <div class="forum-stats"><span><b>{forumPosts.length}</b> notes</span><span><b>{forumCategories.length}</b> topics</span></div>
               <a class="forum-join" href="/blog/">CS2 cheat article library (setup & features)</a>
             </div>
           </section>
           <section class="forum-side-card" id="communities">
-            <h2 class="forum-side-heading">Communities</h2>
+            <h2 class="forum-side-heading">Topics</h2>
             <ul class="forum-community-list">
-              {forumCategories.map((category, index) => (
-                <li><a href={`/forum/?category=${categoryKey(category.name)}`}><span class={`forum-community-avatar tone-${category.tone}`} aria-hidden="true"><Icon name={category.icon} size={15} /></span><span><b>{category.name}</b><small>Filter forum by {category.name}</small></span><Icon name="chevronRight" size={15} /></a></li>
+              {forumCategories.map((category) => (
+                <li><a href={`/forum/?category=${categoryKey(category.name)}`}><span class={`forum-community-avatar tone-${category.tone}`} aria-hidden="true"><Icon name={category.icon} size={15} /></span><span><b>{category.name}</b><small>Filter notes by {category.name}</small></span><Icon name="chevronRight" size={15} /></a></li>
               ))}
             </ul>
-            <a class="forum-text-link" href="#communities">Jump to community filters <Icon name="arrowRight" size={14} /></a>
           </section>
-          <section class="forum-side-card forum-rules">
-            <h2 class="forum-side-heading">Community guidelines</h2>
-            <ol><li>Keep it friendly and constructive</li><li>Stay on topic and add context</li><li>Mark spoilers and sensitive content</li></ol>
-            <a href="#community-guidelines">Open community guidelines at top <Icon name="arrowRight" size={14} /></a>
-          </section>
-          <p class="forum-sidebar-foot">About · Guidelines · Privacy · Terms<br />© {new Date().getFullYear()} cs2-cheats.org</p>
+          <p class="forum-sidebar-foot">About · Privacy · Terms<br />© {new Date().getFullYear()} cs2-cheats.org</p>
         </aside>
       </div>
     </div>
@@ -130,64 +118,32 @@ const sourceTimestamp = (path?: string) => {
     const filterButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-forum-filter]')];
     const searchInput = document.querySelector<HTMLInputElement>('[data-forum-search]');
     const list = document.querySelector<HTMLElement>('.forum-post-list');
-    const pagination = document.querySelector<HTMLElement>('[data-forum-pagination]');
-    const pageButtons = document.querySelector<HTMLElement>('[data-page-buttons]');
-    const pageStatus = document.querySelector<HTMLElement>('[data-page-status]');
     const countStatus = document.querySelector<HTMLElement>('[data-forum-count]');
     const visibleCount = document.querySelector<HTMLElement>('[data-forum-visible-count]');
     const emptyState = document.querySelector<HTMLElement>('[data-forum-empty]');
-    const previousButton = document.querySelector<HTMLButtonElement>('[data-page-previous]');
-    const nextButton = document.querySelector<HTMLButtonElement>('[data-page-next]');
-    const pageSize = 20;
-    let currentPage = 1;
     let activeFilter = new URLSearchParams(window.location.search).get('category') ?? 'all';
 
     function updateForum() {
-      const sort = sortButtons.find((button) => button.getAttribute('aria-pressed') === 'true')?.dataset.forumSort ?? 'popular';
+      const sort = sortButtons.find((button) => button.getAttribute('aria-pressed') === 'true')?.dataset.forumSort ?? 'editorial';
       const query = searchInput?.value.trim().toLocaleLowerCase() ?? '';
       const ordered = [...cards].sort((a, b) => {
         if (sort === 'latest') return Number(b.dataset.published) - Number(a.dataset.published);
-        if (sort === 'top') return Number(b.dataset.comments) - Number(a.dataset.comments);
         return Number(a.dataset.order) - Number(b.dataset.order);
       });
       const matching = ordered.filter((card) => {
         const matchesCategory = activeFilter === 'all' || card.dataset.category === activeFilter;
         return matchesCategory && (!query || card.textContent?.toLocaleLowerCase().includes(query));
       });
-      const pageCount = Math.max(1, Math.ceil(matching.length / pageSize));
-      currentPage = Math.min(currentPage, pageCount);
-      const firstVisible = (currentPage - 1) * pageSize;
-      const visibleCards = new Set(matching.slice(firstVisible, firstVisible + pageSize));
+      const visibleCards = new Set(matching);
 
       ordered.forEach((card) => {
         card.hidden = !visibleCards.has(card);
         list?.append(card);
       });
 
-      if (countStatus) countStatus.textContent = `${matching.length} ${matching.length === 1 ? 'discussion' : 'discussions'}`;
-      if (visibleCount) visibleCount.textContent = `${matching.length} ${matching.length === 1 ? 'discussion' : 'discussions'}`;
+      if (countStatus) countStatus.textContent = `${matching.length} ${matching.length === 1 ? 'note' : 'notes'}`;
+      if (visibleCount) visibleCount.textContent = `${matching.length} ${matching.length === 1 ? 'editorial note' : 'editorial notes'}`;
       if (emptyState) emptyState.hidden = matching.length > 0;
-      if (pagination) pagination.hidden = matching.length <= pageSize;
-      if (pageStatus) pageStatus.textContent = matching.length
-        ? `Showing ${firstVisible + 1}–${Math.min(firstVisible + pageSize, matching.length)} of ${matching.length}`
-        : '0 discussions';
-      if (previousButton) previousButton.disabled = currentPage <= 1;
-      if (nextButton) nextButton.disabled = currentPage >= pageCount;
-      if (pageButtons) {
-        pageButtons.replaceChildren(...Array.from({ length: pageCount }, (_, index) => {
-          const button = document.createElement('button');
-          const page = index + 1;
-          button.type = 'button';
-          button.textContent = String(page);
-          button.setAttribute('aria-label', `Page ${page}`);
-          if (page === currentPage) button.setAttribute('aria-current', 'page');
-          button.addEventListener('click', () => {
-            currentPage = page;
-            updateForum();
-          });
-          return button;
-        }));
-      }
     }
 
     sortButtons.forEach((button) => button.addEventListener('click', () => {
@@ -196,7 +152,6 @@ const sourceTimestamp = (path?: string) => {
         item.classList.toggle('is-active', active);
         item.setAttribute('aria-pressed', String(active));
       });
-      currentPage = 1;
       updateForum();
     }));
 
@@ -207,22 +162,10 @@ const sourceTimestamp = (path?: string) => {
         item.classList.toggle('is-active', active);
         item.setAttribute('aria-pressed', String(active));
       });
-      currentPage = 1;
       updateForum();
     }));
 
-    searchInput?.addEventListener('input', () => {
-      currentPage = 1;
-      updateForum();
-    });
-    previousButton?.addEventListener('click', () => {
-      currentPage = Math.max(1, currentPage - 1);
-      updateForum();
-    });
-    nextButton?.addEventListener('click', () => {
-      currentPage += 1;
-      updateForum();
-    });
+    searchInput?.addEventListener('input', () => updateForum());
 
     const initialFilter = filterButtons.find((button) => button.dataset.forumFilter === activeFilter);
     if (initialFilter) {
@@ -235,9 +178,5 @@ const sourceTimestamp = (path?: string) => {
       activeFilter = 'all';
     }
     updateForum();
-  </script>
-  <script>
-    import { initForumVotes } from '../../scripts/forum-votes.ts';
-    initForumVotes();
   </script>
 </BaseLayout>
