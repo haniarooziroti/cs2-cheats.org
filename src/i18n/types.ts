@@ -272,6 +272,9 @@ export interface Translations {
     browseCheatsMobile: string;
     homeAria: string;
     checkoutAria: string;
+    /** Navbar primary CTA → affiliate checkout */
+    navTryNow: string;
+    navTryNowAria: string;
     discordAria: string;
     menuOpen: string;
     menuClose: string;

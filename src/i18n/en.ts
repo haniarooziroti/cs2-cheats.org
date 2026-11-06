@@ -692,6 +692,8 @@ export const en: Translations = {
     browseCheatsMobile: 'Checkout',
     homeAria: 'cs2-cheats.org home',
     checkoutAria: 'Open store checkout',
+    navTryNow: 'Try Now',
+    navTryNowAria: 'Open affiliate checkout for CS2 cheats',
     discordAria: 'Join our Discord server',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
