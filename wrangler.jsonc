@@ -1,7 +1,13 @@
 {
+  // Static assets only. Do not add "main" — there is no Worker script.
+  // Do not add @astrojs/cloudflare; Astro must keep emitting dist/ + dist/sitemap-0.xml.
   "name": "cs2-cheats-org",
   "compatibility_date": "2026-11-01",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    // Match astro trailingSlash: 'always' so /foo serves /foo/index.html.
+    "html_handling": "auto-trailing-slash",
+    // Unknown paths serve dist/404.html instead of a platform error.
+    "not_found_handling": "404-page"
   }
 }
