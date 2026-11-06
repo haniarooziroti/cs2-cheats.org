@@ -39,17 +39,9 @@
   gap: 0.75rem;
 }
 
-@media (min-width: 640px) {
-  .blog-card__footer {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-}
-
 .blog-card__footer-meta {
   display: inline-flex;
+  flex-shrink: 0;
   flex-wrap: nowrap;
   align-items: center;
   gap: 0.4rem;
@@ -68,14 +60,12 @@
 
 .blog-card__read {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   justify-content: center;
-}
-
-@media (min-width: 640px) {
-  .blog-card__read {
-    width: auto;
-    justify-content: flex-start;
-  }
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .blog-featured {

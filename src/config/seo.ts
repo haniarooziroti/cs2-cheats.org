@@ -1,7 +1,7 @@
 import type { ProductPage } from '../data/products';
 import { t } from '../i18n';
 import { SITE_DOMAIN, SITE_URL } from './site';
-import { getPageSeoEntry } from './pageSeo';
+import { getPageSeoEntry, type PageSeoEntry } from './pageSeo';
 import { DEFAULT_OG_IMAGE_ABSOLUTE } from './media';
 
 function normalizeOrigin(url: string): string {
@@ -57,7 +57,7 @@ export function absoluteAssetUrl(path: string): string {
   return `${SITE_ORIGIN}${normalized}`;
 }
 
-export function resolvePageSeo(pathname: string): { title: string; description: string } {
+export function resolvePageSeo(pathname: string): PageSeoEntry {
   const entry = getPageSeoEntry(pathname);
   if (entry) return entry;
   return { title: t.site.title, description: t.site.description };
@@ -92,11 +92,14 @@ export function pageTitle(keyword: string, suffixSite = t.site.domain): string {
   return out;
 }
 
-/** Product detail `<title>` — 50–60 chars with tier vs utility phrasing. */
-export function productPageTitle(product: Pick<ProductPage, 'title' | 'kind'>): string {
+/** Product detail `<title>` — 50–60 chars with main cheat page vs utility phrasing. */
+export function productPageTitle(product: Pick<ProductPage, 'title' | 'kind' | 'slug'>): string {
+  if (product.slug === 'cs2-store') {
+    return pageTitle('CS2 cheats: ESP, aim modules & checkout');
+  }
   const phrase =
     product.kind === 'tier'
-      ? `${product.title}: cheat tier modules & scope`
+      ? `${product.title}: CS2 cheat modules`
       : `${product.title}: CS2 cheat utility overview`;
   return pageTitle(phrase);
 }

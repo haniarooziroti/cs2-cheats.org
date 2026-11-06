@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getAllProductSlugs, getProductPage, productHub } from '../../../data/products';
-import { productPageTitle } from '../../../config/seo';
+import { productPageTitle, resolvePageSeo } from '../../../config/seo';
 import { breadcrumbSchema, productSchema } from '../../../utils/schema';
 import ProductDetail from '../../../components/ProductDetail.astro';
 
@@ -17,6 +17,7 @@ if (!product) {
 }
 
 const pagePath = `${productHub.path}${product.slug}/`;
+const pageSeo = resolvePageSeo(pagePath);
 const breadcrumbs = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: productHub.path },
@@ -27,6 +28,7 @@ const breadcrumbs = [
 <BaseLayout
   title={productPageTitle(product)}
   description={product.seoDescription}
+  keywords={pageSeo.keywords}
   jsonLd={[
     productSchema({
       name: product.title,

@@ -4,3 +4,9 @@
 /go/cs2/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 /go/store https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 /go/store/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
+
+# Legacy product URLs → current pages (match astro.config.mjs + middleware)
+/products/cs2-cheats/lite/ /products/cs2-cheats/cs2-store/ 302
+/products/cs2-cheats/pro/ /products/cs2-cheats/cs2-store/ 302
+/products/cs2-cheats/elite/ /products/cs2-cheats/cs2-store/ 302
+/products/cs2-cheats/unlock-all/ /products/cs2-cheats/cloud-dma/ 302

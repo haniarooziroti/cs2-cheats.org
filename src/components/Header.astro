@@ -1,6 +1,5 @@
 ---
 import { t } from '../i18n';
-import { checkoutPath } from '../config/checkout';
 import { Button } from '@/components/starwind/button';
 import AnimatedThemeSwitch from './AnimatedThemeSwitch.astro';
 import {
@@ -11,8 +10,6 @@ import {
   SheetTrigger,
 } from '@/components/starwind/sheet';
 import Icon from './icons/Icon.astro';
-import SlideRevealButton from './SlideRevealButton.astro';
-
 import type { IconName } from './icons/types';
 
 const navIcons: Record<string, IconName> = {
@@ -23,7 +20,6 @@ const navIcons: Record<string, IconName> = {
   Support: 'navSupport',
 };
 
-const purchaseUrl = checkoutPath('cs2');
 ---
 
 <header class="pointer-events-none fixed inset-x-0 top-0 z-50">
@@ -32,8 +28,7 @@ const purchaseUrl = checkoutPath('cs2');
       class="pointer-events-auto relative flex h-14 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border border-border/40 bg-background/35 px-4 text-foreground shadow-md shadow-black/5 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/25 dark:border-white/10 dark:bg-background/20 dark:shadow-black/25 sm:px-5 lg:h-[3.75rem]"
     >
     <a href="/" class="inline-flex min-w-0 items-center font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide" aria-label={t.ui.homeAria}>
-      <img src="/logo.svg" alt="Counter-Strike 2 cheats hub mark" width="34" height="34" class="mr-2 shrink-0 rounded-lg" />
-      <span class="truncate" aria-hidden="true">{t.site.name}</span>
+      <span class="truncate">{t.site.name}</span>
     </a>
 
     <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex" aria-label="Primary">
@@ -52,12 +47,6 @@ const purchaseUrl = checkoutPath('cs2');
 
     <div class="flex items-center gap-2">
       <div class="hidden items-center sm:flex">
-        <SlideRevealButton href={purchaseUrl} class="hidden lg:inline-flex" ariaLabel={t.ui.checkoutAria}>
-          {t.ui.browseCheats}
-        </SlideRevealButton>
-        <div class="nav-action-divider hidden items-center px-3 lg:flex" aria-hidden="true">
-          <span class="block h-9 w-px bg-border"></span>
-        </div>
         <AnimatedThemeSwitch size="md" ariaLabel={t.ui.themeLight} class="inline-flex" />
       </div>
 
@@ -85,9 +74,6 @@ const purchaseUrl = checkoutPath('cs2');
               </a>
             ))}
           </nav>
-          <Button as="a" href={purchaseUrl} variant="primary" class="w-full justify-center" aria-label={t.ui.checkoutAria}>
-            {t.ui.browseCheatsMobile}
-          </Button>
           <div class="flex justify-center pt-1">
             <AnimatedThemeSwitch size="sm" ariaLabel={t.ui.themeLight} />
           </div>

@@ -13,6 +13,7 @@ export const blogPosts: BlogPostFull[] = [
     featured: true,
     tag: 'Setup',
     title: 'How to install CS2 cheats from the portal',
+    pageHeading: 'Counter-Strike 2 cheats: install from the portal',
     slug: 'how-to-install-cs2-cheats',
     image: SEO_MEDIA.sunnyMiddleEasternStreet,
     desc: 'Portal download, SmartScreen, and first-launch order for Counter-Strike 2 cheats on Windows.',
@@ -46,7 +47,7 @@ export const blogPosts: BlogPostFull[] = [
         items: [
           'Close CS2 and Steam overlay-heavy tools if support tells you to.',
           'Run the loader as administrator only when the portal readme says so.',
-          'Inject after you pick a **Lite** preset if you only need ESP—move to [Pro tier (aim + ESP)](/products/cs2-cheats/pro/) curves later.',
+          'Inject after you pick an **ESP-first** preset if you only need intel—enable aim smoothing on the [CS2 cheat modules page](/products/cs2-cheats/cs2-store/) only after deathmatch tests.',
         ],
       },
       storeCta('Ready for a key?', 'Open the store checkout for CS2 Faceit-related access when your setup is clean.'),
@@ -60,7 +61,7 @@ export const blogPosts: BlogPostFull[] = [
     image: SEO_MEDIA.underpassSmokeGraffiti,
     desc: 'Thickness, glow, and teammate colors for Counter-Strike 2 retakes without blocking your crosshair.',
     seoDescription:
-      'Tune CS2 ESP glow and team colors for readable wallhack boxes in clutches. Adjust contrast before ranked; pair aim when upgrading from Lite.',
+      'Tune CS2 ESP glow and team colors for readable wallhack boxes in clutches. Adjust contrast before ranked; add aim layers only after intel feels stable.',
     date: 'Oct 25, 2025',
     readTime: '8 min read',
     body: [
@@ -83,9 +84,9 @@ export const blogPosts: BlogPostFull[] = [
       { type: 'h2', text: 'Box versus skeleton' },
       {
         type: 'p',
-        text: 'Skeletons help prefires but crowd mid duels. Run **boxes only** on execute-heavy rounds; enable skeleton in clutch presets saved as a second profile inside [Lite cheat tier (ESP)](/products/cs2-cheats/lite/) or [Pro cheat tier](/products/cs2-cheats/pro/).',
+        text: 'Skeletons help prefires but crowd mid duels. Run **boxes only** on execute-heavy rounds; enable skeleton in clutch presets saved as a second profile—scope modules on the [CS2 cheat modules page](/products/cs2-cheats/cs2-store/) before checkout.',
       },
-      storeCta('Need ESP without aim?', 'Lite tier keeps overlays only while you test readability.'),
+      storeCta('Need ESP without aim?', 'The modules page lists intel-first scope before you enable combat assists.'),
     ],
   },
   {
@@ -102,7 +103,7 @@ export const blogPosts: BlogPostFull[] = [
     body: [
       {
         type: 'p',
-        text: 'Aim assist in Counter-Strike 2 is not a single slider—it is FOV, smoothing, bone priority, and sometimes separate pistol profiles. Start from the [Pro tier defaults page](/products/cs2-cheats/pro/) and move **one** control per session.',
+        text: 'Aim assist in Counter-Strike 2 is not a single slider—it is FOV, smoothing, bone priority, and sometimes separate pistol profiles. Read module scope on the [CS2 cheat modules page](/products/cs2-cheats/cs2-store/) and move **one** control per session.',
       },
       { type: 'h2', text: 'FOV guardrails' },
       {
@@ -114,15 +115,16 @@ export const blogPosts: BlogPostFull[] = [
         type: 'p',
         text: 'If a friend says crosshair movement looks “magnetic,” drop smoothing variance slightly and reduce snap on first bullet only. [Trigger peek timing article](/blog/cs2-triggerbot-peek-timing/) pairs with aim smoothing—tune both together.',
       },
-      storeCta('Bundle ESP + aim', 'Pro tier stacks intel layers with legit aim curves.'),
+      storeCta('Bundle ESP + aim', 'Same modules page explains intel plus combat-assist layers.'),
     ],
   },
   {
     tag: 'Faceit',
     title: 'Faceit CS2 cheats: client constraints to know',
+    pageHeading: 'Counter-Strike 2 cheats on Faceit: client constraints',
     slug: 'faceit-cs2-cheats-constraints',
     image: SEO_MEDIA.desertCorridorEsp,
-    desc: 'What changes when the Faceit client wraps Counter-Strike 2 and why storefront keywords still mention Faceit.',
+    desc: 'What changes when the Faceit client wraps Counter-Strike 2 and why module listings still mention Faceit.',
     seoDescription:
       'How Faceit client changes CS2 cheat overlays vs Steam. Module limits explained—not approval—so you buy tiers with realistic expectations.',
     date: 'Oct 19, 2025',
@@ -169,7 +171,7 @@ export const blogPosts: BlogPostFull[] = [
         type: 'p',
         text: 'When executes flood smokes, drop glow opacity before you remove skeletons—you still want thickness cues for spam-through fights mentioned in the [ESP clutch settings article](/blog/cs2-esp-settings-clutches/).',
       },
-      storeCta('Start with Lite', 'ESP-only tier keeps overlays without aim automation.'),
+      storeCta('Start ESP-first', 'Module copy spells out intel-only presets before aim.'),
     ],
   },
   {
@@ -193,7 +195,7 @@ export const blogPosts: BlogPostFull[] = [
         type: 'p',
         text: 'Add a few milliseconds when your ping spikes—what feels crisp at 30 ms can prefire at 80 ms. Log a handful of duels offline before trusting anything in ranked.',
       },
-      storeCta('Pro unlocks triggers', 'Add timing layers once ESP feels stable.'),
+      storeCta('Add trigger timing', 'Enable delay layers in the module stack once ESP feels stable.'),
     ],
   },
   {
@@ -275,7 +277,7 @@ export const blogPosts: BlogPostFull[] = [
         type: 'p',
         text: 'Multi-level maps need vertical bias on radar dots—otherwise you over-rotate toward Cat when enemies sit under Balcony. Cross-check with the ESP distance numbers before committing utility.',
       },
-      storeCta('Stack intel layers', 'Compare Lite vs Pro on the product hub before checkout.'),
+      storeCta('Stack intel layers', 'Read module scope on the product hub before checkout.'),
     ],
   },
   {
@@ -303,7 +305,7 @@ export const blogPosts: BlogPostFull[] = [
           'Remove browser sources that mirror the entire desktop.',
         ],
       },
-      storeCta('Need capture-safe ESP?', 'Lite through Elite expose toggles—confirm in offline tests.'),
+      storeCta('Need capture-safe ESP?', 'The modules page lists capture toggles—confirm in offline tests before ranked.'),
     ],
   },
 ];

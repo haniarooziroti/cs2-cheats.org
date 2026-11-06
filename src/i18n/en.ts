@@ -27,9 +27,9 @@ export const en: Translations = {
     titleLine1: 'CS2',
     titleLine2: 'CHEATS',
     subtitle:
-      'CS2 ESP, aim tuning, wallhack-style intel, radar hack hints, and trigger timing for Steam matches—Premier and Competitive presets included. See tiers here; paid subscription terms are on the store when you buy CS2 cheats.',
-    ctaPrimary: 'See CS2 cheat tiers',
-    ctaDiscord: 'Checkout via linked store',
+      'CS2 ESP, aim tuning, wallhack-style intel, radar hack hints, and trigger timing for Steam matches—Premier and Competitive presets included. See modules here; paid subscription terms are on the store when you buy CS2 cheats.',
+    ctaPrimary: 'See CS2 cheat modules',
+    ctaDiscord: 'Join Discord',
     modesLabel: 'CS2 modes',
     modes: ['Premier', 'Competitive', 'Wingman', 'Deathmatch'],
     metrics: [
@@ -100,7 +100,7 @@ export const en: Translations = {
       {
         title: 'Cloud profiles',
         subtitle: 'Patch day iterations.',
-        desc: 'Export Lite presets, Pro ranked stacks, and Elite LAN copies from the same loader login.',
+        desc: 'Export ranked and Faceit presets from the same loader login—back up before majors and after hotfixes.',
         bullets: ['Snapshot backups before majors', 'Patch notes channel', 'Cross-PC sync'],
         tags: ['cs2 cheat config', 'cloud cfg', 'loader'],
         bento: 'sm:col-span-2 lg:col-span-4 lg:col-start-9 lg:row-start-2',
@@ -137,7 +137,7 @@ export const en: Translations = {
       },
       {
         title: 'Hardware tools when accounts fray',
-        desc: 'Spoofer and appeal tools sit beside tiers so you can match software to your situation.',
+        desc: 'Spoofer and appeal tools sit beside the main cheat page so you can match software to your situation.',
       },
     ],
     metrics: [
@@ -203,52 +203,53 @@ export const en: Translations = {
     ],
   },
   cheats: {
-    eyebrow: 'Cheat tiers',
-    title: 'CS2 cheat lineup',
+    eyebrow: 'Modules',
+    title: 'CS2 cheat modules',
     subtitle:
-      'Steam Premier and Competitive (Lite / Pro) or the Faceit-oriented Elite stack—HVCI, TPM, and secure boot expectations ship with the portal checklist.',
-    viewAll: 'View tiers',
+      'One linked seller covers ESP, aim, triggers, and Faceit-facing options—HVCI, TPM, and secure boot checks ship with the portal checklist.',
+    viewAll: 'Open CS2 cheat page',
     explore: 'Explore',
     items: [
       {
-        badge: 'Awareness',
-        tier: 'Starter',
-        name: 'Lite',
-        title: 'CS2 Lite',
-        desc: 'Steam CS2 intel tier: player ESP, bomb and kit markers, radar reinforcement—no aim or trigger automation.',
+        badge: 'Intel',
+        tier: 'ESP focus',
+        name: 'CS2',
+        title: 'ESP & radar first',
+        desc: 'Thin boxes, bomb markers, and radar reinforcement before you add combat assists—keep reads clean in Premier.',
         features: ['Player ESP boxes', 'Bomb & kit flags', 'Radar reinforcement', 'Stream-proof overlay where supported'],
         more: 14,
-        href: `${productBase}lite/`,
+        href: `${productBase}cs2-store/`,
         variant: 'essential',
       },
       {
-        badge: 'Popular',
-        tier: 'Core',
-        name: 'Pro',
-        title: 'CS2 Pro',
-        desc: 'Everything in Lite plus legit aim smoothing, trigger delay, and recoil assist for Premier and Competitive on Steam.',
-        features: ['Smooth aim + FOV caps', 'Bone selection', 'Visible check', 'Player ESP & skeleton'],
+        badge: 'Combat',
+        tier: 'Aim + triggers',
+        name: 'CS2',
+        title: 'Legit aim stack',
+        desc: 'FOV-limited smoothing, trigger delay, and recoil assist layered on full ESP when you are ready for ranked duels.',
+        features: ['Smooth aim + FOV caps', 'Bone selection', 'Visible check', 'Trigger delay'],
         more: 22,
-        href: `${productBase}pro/`,
+        href: `${productBase}cs2-store/`,
         variant: 'popular',
       },
       {
-        badge: 'Faceit build',
-        tier: 'Full stack',
-        name: 'Elite',
-        title: 'CS2 Elite',
-        desc: 'Faceit-client-oriented build when you need the full aim, ESP, and misc stack—official Faceit rules still prohibit cheats; trim modules before queueing.',
-        features: ['Faceit-tier scope', 'Aimbot + visuals + misc', 'Cloud DMA add-on on store', 'Config save & hotkeys'],
+        badge: 'Faceit note',
+        tier: 'Full scope',
+        name: 'CS2',
+        title: 'Faceit-aware options',
+        desc: 'Full module scope when the portal lists it—official Faceit rules still prohibit cheats; trim overlays before queueing.',
+        features: ['Faceit build notes', 'Full aim + visuals', 'Cloud DMA on store', 'Priority rebuild slots'],
         more: 28,
-        href: `${productBase}elite/`,
+        href: `${productBase}cs2-store/`,
         variant: 'limited',
       },
     ],
   },
   products: {
     eyebrow: 'Products',
-    title: 'CS2 cheat tiers & utilities',
-    subtitle: 'CS2 cheat tiers plus HWID tools, account help, and an optional skin changer utility beside the loader.',
+    title: 'CS2 cheats & utilities',
+    subtitle:
+      'Compare Counter-Strike 2 cheat modules with HWID tools, UGC appeals, and Cloud DMA notes before you checkout.',
     viewAll: 'View catalog',
     get: 'Get',
     explore: 'Explore',
@@ -256,7 +257,7 @@ export const en: Translations = {
       {
         badge: 'Available',
         category: 'System utility',
-        title: 'HWID Spoofer',
+        title: 'CS2 HWID spoofer',
         subtitle: 'Fresh fingerprints',
         desc: 'Rebuild disk and MAC identifiers after hardware flags—follow the portal checklist before returning to CS2.',
         features: ['Serial rotation', 'Restore-point walkthrough', 'Conflict scan', 'Post-spoof verifier'],
@@ -266,7 +267,7 @@ export const en: Translations = {
       {
         badge: 'Available',
         category: 'Account recovery',
-        title: 'UGC appeals',
+        title: 'CS2 UGC appeals',
         subtitle: 'Structured recovery',
         desc: 'Workspace for VAC and trade-lock paperwork—organizes evidence, not a promised overturn.',
         features: ['Appeal templates', 'Timeline tracking', 'Secure uploads', 'Multi-platform notes'],
@@ -274,14 +275,14 @@ export const en: Translations = {
         href: `${productBase}ugc/`,
       },
       {
-        badge: 'Available',
-        category: 'Cosmetic',
-        title: 'Skin preview',
-        subtitle: 'Local loadouts',
-        desc: 'CS2 skin changer style preview—inspect knives and gloves client-side for thumbnails; Steam inventory stays unchanged serverside.',
-        features: ['Loadout inspector', 'Favorite lists', 'Export for content', 'Lite on FPS'],
+        badge: 'Info',
+        category: 'DMA hardware',
+        title: 'CS2 Cloud DMA',
+        subtitle: 'External read path',
+        desc: 'What Cloud DMA add-ons are: second PC, cabling, and firmware expectations on the linked store before you buy hardware.',
+        features: ['Seller listing alignment', 'Cabling checklist', 'BIOS / IOMMU notes', 'Risk disclaimer'],
         more: 6,
-        href: `${productBase}unlock-all/`,
+        href: `${productBase}cloud-dma/`,
       },
     ],
   },
@@ -439,8 +440,8 @@ export const en: Translations = {
       {
         num: '01',
         phase: 'Choose',
-        title: 'Pick a tier',
-        desc: 'Lite for ESP-only nights, Pro when you want aim assist, Elite for the full stack.',
+        title: 'Pick your module set',
+        desc: 'Start with ESP-first presets, add aim and triggers only after DM tests—Faceit queues need the constraints article first.',
       },
       {
         num: '02',
@@ -485,13 +486,13 @@ export const en: Translations = {
   },
   support: {
     eyebrow: 'Support',
-    title: 'Help with loaders & keys',
+    title: 'CS2 help with loaders & keys',
     subtitle: 'Use the linked store for post-purchase tickets and keys—this page keeps only on-site resources.',
     channels: [
       {
         icon: 'users',
         title: 'Before checkout',
-        desc: 'Questions about modules or tiers.',
+        desc: 'Questions about modules or hardware add-ons.',
         linkLabel: 'Checkout',
         href: PRIMARY_CHECKOUT_PATH,
       },
@@ -520,7 +521,7 @@ export const en: Translations = {
   faq: {
     eyebrow: 'FAQ',
     title: 'Clear answers before you pay',
-    subtitle: 'Risk, platforms, and what each tier tends to cover.',
+    subtitle: 'Risk, platforms, and what the listed CS2 cheat modules usually cover.',
     items: [
       {
         num: '01',
@@ -545,12 +546,12 @@ export const en: Translations = {
       {
         num: '05',
         q: 'Can I move my license to a new PC?',
-        a: 'Use the HWID reset flow in the portal or open a ticket on the linked store with your key—limits depend on tier.',
+        a: 'Use the HWID reset flow in the portal or open a ticket on the linked store with your key—limits depend on your license type.',
       },
       {
         num: '06',
-        q: 'Where are tiers listed?',
-        a: 'All Counter-Strike 2 cheat cards sit on the products hub with module lists and store buttons.',
+        q: 'Where are products listed?',
+        a: 'The Counter-Strike 2 cheat catalog, utilities, and Cloud DMA notes sit on the products hub with module lists and checkout buttons.',
       },
       {
         num: '07',
@@ -569,8 +570,8 @@ export const en: Translations = {
     explore: 'Explore',
     exploreLinks: [
       { href: '/', label: 'Home feature tour', ariaLabel: 'Features', scrollTarget: 'features' },
-      { href: `${productBase}elite/`, label: 'Elite CS2 cheat tier', ariaLabel: 'Elite cheats' },
-      { href: productBase, label: 'Full tier & utility hub', ariaLabel: 'Products' },
+      { href: `${productBase}cs2-store/`, label: 'CS2 cheat catalog page', ariaLabel: 'CS2 cheats' },
+      { href: productBase, label: 'Product catalog hub', ariaLabel: 'Products' },
       { href: '/forum/', label: 'CS2 cheat forum threads', ariaLabel: 'Forums' },
       { href: '/blog/', label: 'Article library', ariaLabel: 'Articles' },
       { href: '/faq/', label: 'FAQ for buyers', ariaLabel: 'FAQ' },
@@ -583,14 +584,14 @@ export const en: Translations = {
   },
   legalPages: {
     about: {
-      title: 'About cs2-cheats.org',
+      title: 'About CS2 cheats on cs2-cheats.org',
       description: 'Editorial and catalog pages about Counter-Strike 2 cheats, loaders, and utilities.',
       sections: [
         {
           heading: 'Purpose',
           paragraphs: [
             'This domain publishes product explanations, articles, and community forum summaries for Counter-Strike 2 players evaluating ESP, aim assist, and related modules.',
-            'Checkout happens only on the linked external store; we do not name the operator behind that storefront.',
+            'Checkout happens only on the linked external store; we do not name the operator behind that seller.',
           ],
         },
         {
@@ -608,7 +609,7 @@ export const en: Translations = {
       ],
     },
     privacy: {
-      title: 'Privacy Policy',
+      title: 'CS2 site privacy policy',
       description: 'How cs2-cheats.org uses analytics and cookies when you browse.',
       sections: [
         {
@@ -633,7 +634,7 @@ export const en: Translations = {
       ],
     },
     terms: {
-      title: 'Terms & Conditions',
+      title: 'CS2 site terms & conditions',
       description: 'Using cs2-cheats.org content, forums, and outbound store links.',
       sections: [
         {
@@ -663,7 +664,7 @@ export const en: Translations = {
       ],
     },
     support: {
-      title: 'Support',
+      title: 'CS2 buyer support hub',
       description: 'Use the support hub and the linked store for loader keys, HWID rotation, and checkout handoffs.',
     },
   },
@@ -673,7 +674,7 @@ export const en: Translations = {
     browseCheatsMobile: 'Checkout',
     homeAria: 'cs2-cheats.org home',
     checkoutAria: 'Open store checkout',
-    discordAria: 'Open the affiliate store in a new tab',
+    discordAria: 'Join the CS2 community Discord (opens in a new tab)',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     themeLight: 'Switch to light mode',

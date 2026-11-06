@@ -6,28 +6,42 @@
 export interface PageSeoEntry {
   title: string;
   description: string;
+  /** Optional comma-separated keywords for high-traffic templates. */
+  keywords?: string;
 }
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
     title: 'CS2 Cheats: ESP, Aim, Wallhack for Steam | cs2-cheats.org',
     description:
-      'Compare CS2 cheats with ESP, aim, and wallhack-style overlays for Steam. Read modules here, then open the linked store checkout when you want paid access.',
+      'Compare CS2 cheats: ESP, aim, wallhack-style intel, triggers for Steam. Read modules on-site, then use affiliate checkout for paid keys.',
+    keywords:
+      'cs2 cheats, counter strike 2 cheats, cs2 esp, cs2 aimbot, cs2 wallhack, cs2 radar hack, cs2 triggerbot, cs2 hack, faceit cs2, steam cs2 cheats, cs2 cheat buy',
   },
   '/products/cs2-cheats/': {
-    title: 'CS2 Cheat Shop: ESP, Aim Tiers One Page | cs2-cheats.org',
+    title: 'CS2 Cheat Catalog: Modules, DMA, HWID | cs2-cheats.org',
     description:
-      'Browse CS2 cheat tiers with ESP, aim, radar, triggers in one catalog. Pick a queue, then open the external store for pricing, keys, delivery.',
+      'CS2 cheat catalog: ESP & aim modules, HWID spoofer, UGC, Cloud DMA. Pick tools for your queue, then open affiliate checkout for keys.',
+    keywords:
+      'cs2 cheat modules, cs2 esp buy, cs2 aim cheat, cloud dma cs2, hwid spoofer cs2, cs2 vac appeal, cs2 utilities',
   },
-  '/products/cs2-cheats/elite/': {
-    title: 'CS2 Elite Cheats: Full Aim and ESP Stack | cs2-cheats.org',
+  '/products/cs2-cheats/cs2-store/': {
+    title: 'CS2 Cheats Catalog Page: ESP, Aim & Buy | cs2-cheats.org',
     description:
-      'Elite stacks ESP, aim, radar, and priority loader updates. Read Faceit limits here, then use the store checkout when the portal shows open slots.',
+      'CS2 cheat modules: ESP, aim, triggers, Faceit notes. Read scope on-site, then open affiliate checkout for store pricing and keys.',
+    keywords:
+      'cs2 cheat buy, cs2 esp, cs2 aim assist, cs2 wallhack, cs2 triggerbot, faceit cs2 cheat, cs2 cheat modules, zadeyo cs2',
+  },
+  '/products/cs2-cheats/cloud-dma/': {
+    title: 'CS2 Cloud DMA: Hardware Add-On Before Buy | cs2-cheats.org',
+    description:
+      'Cloud DMA basics for CS2: second PC, firmware, cabling expectations. Read risks here before you add hardware on the linked affiliate store checkout.',
+    keywords: 'cloud dma cs2, dma cheat cs2, external dma cs2, cs2 dma hardware, cs2 second pc dma',
   },
   '/products/cs2-cheats/utilities/': {
-    title: 'CS2 Utilities: HWID, UGC, Skin Preview | cs2-cheats.org',
+    title: 'CS2 Utilities: HWID Spoofer & UGC Appeals | cs2-cheats.org',
     description:
-      'Compare HWID spoofing, UGC appeals, and local skin previews beside the loader. Match each add-on to your issue here, then open the store listing to buy.',
+      'Compare HWID spoofing and UGC appeals beside the CS2 cheat catalog. Match each utility to your issue here, then open affiliate store checkout to buy.',
   },
   '/blog/': {
     title: 'CS2 Guides: ESP, Aim, Loader Articles | cs2-cheats.org',
@@ -40,9 +54,9 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Threads on loaders, aim, ESP clutter, Faceit notes, and VAC after patches—text only. Open a thread or follow article links when you need more context.',
   },
   '/faq/': {
-    title: 'CS2 Cheat FAQ: Risk, Tiers, Checkout | cs2-cheats.org',
+    title: 'CS2 Cheat FAQ: Risk, VAC, Store & Checkout | cs2-cheats.org',
     description:
-      'FAQ on cheat risk, VAC rules, tier picks, HWID tools, and linked store checkout. Scan answers first, then open support or articles before you buy.',
+      'FAQ on CS2 cheat risk, VAC rules, cheat modules, HWID tools, Cloud DMA, and affiliate checkout. Scan answers first, then open support or articles.',
   },
   '/terms/': {
     title: 'Site Terms: Content, Store Links, Liability | cs2-cheats.org',

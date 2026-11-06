@@ -70,41 +70,32 @@ export interface ProductPage {
 }
 
 export const productRelatedBlogSlugs: Record<string, string[]> = {
-  lite: ['cs2-esp-settings-clutches', 'cs2-wallhack-crosshair-layout', 'cs2-radar-hack-audio', 'cs2-vac-error-after-patch'],
-  pro: [
-    'cs2-aimbot-smoothing-ranked',
-    'cs2-triggerbot-peek-timing',
-    'cs2-stream-proof-overlays',
-    'faceit-cs2-cheats-constraints',
-  ],
-  elite: [
-    'faceit-cs2-cheats-constraints',
-    'cs2-aimbot-smoothing-ranked',
+  'cs2-store': [
     'cs2-esp-settings-clutches',
+    'cs2-wallhack-crosshair-layout',
+    'cs2-radar-hack-audio',
     'cs2-vac-error-after-patch',
+    'cs2-aimbot-smoothing-ranked',
+    'faceit-cs2-cheats-constraints',
     'how-to-install-cs2-cheats',
   ],
   'hwid-spoofer': ['hwid-spoof-new-cs2-account', 'cs2-vac-error-after-patch', 'how-to-install-cs2-cheats'],
   ugc: ['cs2-vac-error-after-patch', 'hwid-spoof-new-cs2-account', 'how-to-install-cs2-cheats'],
-  'unlock-all': ['cs2-stream-proof-overlays', 'cs2-esp-settings-clutches', 'how-to-install-cs2-cheats'],
+  'cloud-dma': ['faceit-cs2-cheats-constraints', 'how-to-install-cs2-cheats', 'cs2-vac-error-after-patch'],
 };
 
 const productBase = PRODUCT_BASE;
 
 /** SERP snippets for product detail pages (`npm run seo:check` enforces length). */
 const productPageSeoDescription: Record<string, string> = {
-  lite:
-    'CS2 Lite: ESP, bomb flags, radar hints, stream capture for Steam—no aim automation. Review modules here, then open the linked store for your key.',
-  pro:
-    'CS2 Pro adds aim smoothing, trigger delay, recoil assist on Lite ESP for Premier. Read Faceit notes here, then open the external store for pricing.',
-  elite:
-    'CS2 Elite: Faceit-oriented aim and ESP when the portal allows. Confirm HVCI, TPM, secure boot here, then checkout on the linked external store.',
+  'cs2-store':
+    'CS2 cheat modules: ESP, aim, intel, triggers, Faceit notes. Compare here, then open affiliate checkout for keys and pricing.',
   'hwid-spoofer':
     'HWID Spoofer resets disk and MAC IDs when Steam blocks new accounts on one PC. Follow the checklist here, then open the store listing to buy.',
   ugc:
     'UGC organizes VAC and trade-lock appeals with timelines—not a guaranteed unban. Read scope here, then open the store when paperwork fits your case.',
-  'unlock-all':
-    'Skin preview loads knives and gloves locally without changing live Steam inventory. Read limits here, then open the store listing to buy.',
+  'cloud-dma':
+    'Cloud DMA info for CS2: what the add-on is for, cabling and second-PC expectations, plus store checkout. Read here before you buy hardware.',
 };
 
 const defaultAcquisitionSteps: AcquisitionStep[] = [
@@ -115,8 +106,8 @@ const defaultAcquisitionSteps: AcquisitionStep[] = [
   },
   {
     num: '02',
-    title: 'Choose tier or utility',
-    desc: 'Match modules to how you queue: Lite for ESP-only nights, Pro for aim assist, utilities for hardware or appeal work.',
+    title: 'Pick modules on-site',
+    desc: 'Read the CS2 cheat and utility pages here—ESP-only, full combat stack, HWID, appeals, or Cloud DMA—then match checkout to your queue.',
   },
   {
     num: '03',
@@ -168,55 +159,34 @@ const faceitPosition: ProductFeatureGroup = {
   ],
 };
 
-const aimbotGroup: ProductFeatureGroup = {
-  heading: 'Aimbot',
-  items: ['Smooth aim', 'FOV control', 'Bone selection', 'Visible check'],
-};
-
-const visualsGroup: ProductFeatureGroup = {
-  heading: 'Visuals',
-  items: ['Player ESP', 'Skeleton', 'Box', 'Health', 'Radar reinforcement', 'Stream-proof overlay where supported'],
-};
-
-const miscGroup: ProductFeatureGroup = {
-  heading: 'Misc',
-  items: ['Config save / load', 'Hotkeys', 'Cloud profile slots via portal'],
-};
-
-const miscWithTrigger: ProductFeatureGroup = {
-  heading: 'Misc',
-  items: [...miscGroup.items, 'Trigger delay profiles'],
-};
-
-const eliteFeatureGroups: ProductFeatureGroup[] = [
+const storefrontFeatureGroups: ProductFeatureGroup[] = [
+  {
+    heading: 'Intel & ESP',
+    items: [
+      'Player ESP boxes and skeleton toggles',
+      'Bomb carrier and dropped C4 markers',
+      'Defuse kit and radar reinforcement',
+      'Smoke silhouette assist where supported',
+      'Stream and capture hide toggles',
+    ],
+  },
+  {
+    heading: 'Combat assists',
+    items: [
+      'Legit aim with FOV caps and smoothing',
+      'Per-weapon recoil assist',
+      'Trigger delay and hitchance-style gates',
+      'Team damage safeguards and observer-safe presets',
+    ],
+  },
   faceitPosition,
-  aimbotGroup,
-  visualsGroup,
-  miscGroup,
-];
-
-const proFeatureGroups: ProductFeatureGroup[] = [
   {
-    heading: 'Scope',
-    items: ['Steam Premier and Competitive focused—adds aim and trigger on top of full ESP; Faceit needs extra care (see article).'],
-  },
-  aimbotGroup,
-  visualsGroup,
-  miscWithTrigger,
-];
-
-const liteFeatureGroups: ProductFeatureGroup[] = [
-  {
-    heading: 'Scope',
-    items: ['Intel-only tier for Steam CS2—ESP, radar hints, and bomb flags without aim or trigger automation.'],
-  },
-  {
-    heading: 'Visuals',
-    items: ['Player ESP', 'Box and skeleton toggles', 'Bomb and kit markers', 'Radar reinforcement', 'Stream-proof overlay where supported'],
-  },
-  {
-    heading: 'Misc',
-    items: ['Config save / load', 'Hotkeys'],
+    heading: 'Cloud & delivery',
+    items: [
+      'Portal auto updater and status banner',
+      'Cloud profile backup slots',
+      'Optional Cloud DMA add-on from the store (see Cloud DMA utility page)',
+    ],
   },
 ];
 
@@ -302,80 +272,35 @@ function slugFromHref(href: string): string {
   return segment || 'cs2-cheats';
 }
 
-const tierAbout: Record<string, ProductPage['about']> = {
-  lite: [
-    {
-      type: 'p',
-      text: 'CS2 Lite keeps the screen readable: ESP boxes, bomb carrier flags, and radar hints without aim automation. Built for players who want information first.',
-    },
-    { type: 'h2', text: 'Why start with Lite' },
-    {
-      type: 'p',
-      text: 'It skips trigger and aim modules so your clips stay closer to manual aim while you still read executes faster. Pair with conservative colors from the ESP article before Premier.',
-    },
-  ],
-  pro: [
-    {
-      type: 'p',
-      text: 'CS2 Pro adds legit aim smoothing, trigger timing, and recoil assistance on top of every Lite overlay.',
-    },
-    { type: 'h2', text: 'Ranked-minded defaults' },
-    {
-      type: 'p',
-      text: 'Start with wide FOV and slow smoothing, then tighten after a week of demo review—not after one lucky clutch.',
-    },
-  ],
-  elite: [
-    {
-      type: 'p',
-      text: 'CS2 Elite is the Faceit-client-oriented build: full aim, ESP, and misc stack when the portal lists that scope—official Faceit rules still prohibit cheats, so read constraints before you pay only for that path.',
-    },
-    { type: 'h2', text: 'Use Elite with discipline' },
-    {
-      type: 'p',
-      text: 'Elite power needs boring presets first. Test in deathmatch, export configs, add Cloud DMA on the store if required, then queue when the banner shows online.',
-    },
-  ],
-};
+const storefrontAbout: ProductPage['about'] = [
+  {
+    type: 'p',
+    text: 'This page lists what the linked seller bundles: Counter-Strike 2 ESP and wallhack-style intel, aim smoothing, triggers, and Faceit-facing notes when the portal ships that branch.',
+  },
+  { type: 'h2', text: 'How to pick modules' },
+  {
+    type: 'p',
+    text: 'Start conservative: thin ESP, no glow spam, and low smoothing before Premier. Add combat assists only after deathmatch verification and after you read the Faceit constraints article if you queue there.',
+  },
+];
 
-const tierBodies: Record<string, ProductPage['body']> = {
-  lite: [
-    { type: 'h2', text: 'Included overlays' },
-    {
-      type: 'p',
-      text: 'Player ESP with distance, dormant tinting, bomb and kit markers, radar reinforcement, and stream capture toggles. No aim or trigger modules—see [Pro](/products/cs2-cheats/pro/) when you want those.',
-    },
-    { type: 'h2', text: 'Upgrade path' },
-    {
-      type: 'p',
-      text: 'License upgrades run through the portal so you keep cloud backups. Compare modules on the [products hub](/products/cs2-cheats/) before checkout.',
-    },
-  ],
-  pro: [
-    { type: 'h2', text: 'Combat layer' },
-    {
-      type: 'p',
-      text: 'Legit aim with FOV caps, trigger delay modes, and per-weapon recoil curves. Read [aim smoothing](/blog/cs2-aimbot-smoothing-ranked/) before your first ranked session.',
-    },
-    { type: 'h2', text: 'Faceit note' },
-    {
-      type: 'p',
-      text: 'Faceit adds its own client—see [Faceit constraints](/blog/faceit-cs2-cheats-constraints/) and trim glow before you pay solely for that path.',
-    },
-  ],
-  elite: [
-    { type: 'h2', text: 'Full operator set' },
-    {
-      type: 'p',
-      text: 'Everything in Pro plus advanced radar logic, movement assists, and priority support channels. Slots stay limited so rebuilds stay fast.',
-    },
-    { type: 'h2', text: 'Availability' },
-    {
-      type: 'p',
-      text: 'When Elite shows waitlisted on the banner, contact the store or portal with your tier choice—do not buy until a slot clears.',
-    },
-  ],
-};
+const storefrontBody: ProductPage['body'] = [
+  { type: 'h2', text: 'What this page is for' },
+  {
+    type: 'p',
+    text: 'Use it to compare scope before you open affiliate checkout. Exact SKUs, keys, and renewal terms live on the store; this site explains modules and risk.',
+  },
+  { type: 'h2', text: 'Articles before you pay' },
+  {
+    type: 'p',
+    text: 'Read [ESP in clutches](/blog/cs2-esp-settings-clutches/), [aim smoothing](/blog/cs2-aimbot-smoothing-ranked/), and [Faceit constraints](/blog/faceit-cs2-cheats-constraints/) so you buy with realistic expectations.',
+  },
+  { type: 'h2', text: 'Hardware add-ons' },
+  {
+    type: 'p',
+    text: 'Some operators sell Cloud DMA as a separate hardware path—see the [Cloud DMA utility page](/products/cs2-cheats/cloud-dma/) for cabling and second-PC expectations before checkout.',
+  },
+];
 
 const utilityBodies: Record<string, ProductPage['body']> = {
   'hwid-spoofer': [
@@ -402,16 +327,21 @@ const utilityBodies: Record<string, ProductPage['body']> = {
       text: 'Some penalties do not revert. When hardware is suspect, pair paperwork with [HWID Spoofer](/products/cs2-cheats/hwid-spoofer/); when reputation is burned, a new account may be the honest answer.',
     },
   ],
-  'unlock-all': [
-    { type: 'h2', text: 'Local preview only' },
+  'cloud-dma': [
+    { type: 'h2', text: 'What Cloud DMA means here' },
     {
       type: 'p',
-      text: 'Inspect knives, gloves, and stickers on your client for thumbnails and video boards—other players still see your real Steam inventory.',
+      text: 'Cloud DMA is an external hardware and firmware path some sellers bundle beside software cheats—memory is read from another machine so the gaming PC runs fewer risky hooks. Availability and fit depend on what the store lists when you checkout.',
     },
-    { type: 'h2', text: 'Bundled in Elite' },
+    { type: 'h2', text: 'Before you buy' },
     {
       type: 'p',
-      text: 'Elite includes cosmetic preview alongside combat modules. Buy standalone if you only need visuals.',
+      text: 'Confirm cabling, second PC or laptop requirements, and BIOS or IOMMU notes in the seller’s listing. Pair with [installation hygiene](/blog/how-to-install-cs2-cheats/) and never stack mystery drivers.',
+    },
+    { type: 'h2', text: 'Related reading' },
+    {
+      type: 'p',
+      text: 'Faceit and league clients add checks beyond Steam—read [Faceit constraints](/blog/faceit-cs2-cheats-constraints/) before paying only for that path.',
     },
   ],
 };
@@ -429,82 +359,30 @@ const productContent: Record<
     | 'systemRequirements'
   >
 > = {
-  lite: {
-    images: slide('cs2EspPlayers', 'cs2Bomb', 'cs2Radar'),
+  'cs2-store': {
+    images: slide('cs2EspPlayers', 'cs2AimRecoil', 'cs2Trigger', 'cs2Smoke', 'cs2Radar'),
     goodToKnow: sharedGoodToKnow,
     limitations: sharedLimitations,
     systemRequirements: cs2SystemRequirements,
-    featureGroups: liteFeatureGroups,
+    featureGroups: storefrontFeatureGroups,
     fullFeatures: [
-      'Player ESP boxes & skeleton toggle',
-      'Dormant enemy tint',
-      'Bomb carrier & dropped C4 markers',
-      'Defuse kit indicator',
-      'Radar reinforcement overlay',
+      'Player ESP boxes and skeleton',
+      'Bomb and defuse kit markers',
+      'Radar reinforcement',
       'Smoke silhouette assist',
-      'Capture hide toggles',
-      'Distance readouts',
-      'Team color filters',
+      'Legit aim with FOV and smoothing',
+      'Trigger delay profiles',
+      'Recoil assist per weapon',
+      'Stream and capture hide toggles',
       'Cloud profile backup',
-      'Auto updater',
+      'Auto updater and status banner',
+      'Optional Cloud DMA (store listing)',
     ],
     overview: {
-      title: 'Awareness-only CS2 workflow',
+      title: 'Counter-Strike 2 cheat overview',
       paragraphs: [
-        'Lite focuses on Counter-Strike 2 intel—who is swinging, where the bomb sits, and when flanks cross radar—without aim automation.',
-        'Use it when you want faster reads in Premier but plan to keep crosshair movement yours. Upgrade to Pro when you are ready to tune aim curves.',
-      ],
-    },
-  },
-  pro: {
-    images: slide('cs2AimRecoil', 'cs2EspPlayers', 'cs2Trigger'),
-    goodToKnow: sharedGoodToKnow,
-    limitations: sharedLimitations,
-    systemRequirements: cs2SystemRequirements,
-    featureGroups: proFeatureGroups,
-    fullFeatures: [
-      'Everything in Lite',
-      'Legit aim with FOV + smoothing',
-      'Per-weapon recoil assist',
-      'Trigger delay + hitchance-style gates',
-      'Separate ADS profiles',
-      'Anti-team-fire safeguards',
-      'Observer-safe presets',
-      'Deathmatch tuning layout',
-      'Cloud cfg sync',
-      'Discord operator queue',
-    ],
-    overview: {
-      title: 'Combat-ready CS2 workflow',
-      paragraphs: [
-        'Pro layers aim and trigger assists on top of the full Lite ESP stack for ranked and Faceit-style queues—still start soft and review demos weekly.',
-        'Most operators settle here: enough automation to win duels without maxing every slider on day one.',
-      ],
-    },
-  },
-  elite: {
-    images: slide('cs2Smoke', 'cs2Trigger', 'cs2Skin'),
-    goodToKnow: sharedGoodToKnow,
-    limitations: sharedLimitations,
-    systemRequirements: cs2SystemRequirements,
-    featureGroups: eliteFeatureGroups,
-    fullFeatures: [
-      'Everything in Pro',
-      'Advanced radar stacking',
-      'Misc movement assists',
-      'Velocity and strafe helpers',
-      'Elite-only preset packs',
-      'Priority patch queue',
-      'Direct support escalation',
-      'LAN export bundle',
-      'Cosmetic preview module',
-      'Private slot control',
-    ],
-    overview: {
-      title: 'Faceit-client stack',
-      paragraphs: [
-        'Elite targets the full Counter-Strike 2 module set when you need Faceit build notes, Cloud DMA add-ons from the store, and priority rebuilds after Valve maintenance.',
-        'Limited slots keep turnaround predictable—check the banner before you commit; trim overlays before any Faceit queue.',
+        'Compare ESP, aim, wallhack-style overlays, and trigger timing in one place, then open the affiliate checkout when you are ready to buy keys from the linked seller.',
+        'Faceit adds its own client—trim modules and read constraints before you queue there; Steam Premier and scrims are the common fit for most buyers.',
       ],
     },
   },
@@ -565,64 +443,69 @@ const productContent: Record<
       ],
     },
   },
-  'unlock-all': {
-    images: slide('cs2Skin', 'cs2EspPlayers', 'cs2Bomb'),
+  'cloud-dma': {
+    images: slide('cs2EspPlayers', 'cs2Radar', 'cs2Bomb'),
     goodToKnow:
-      'Preview is client-only—matchmaking spectators still see your real inventory. Included in Elite.',
+      'Cloud DMA is hardware-heavy: confirm firmware, cabling, and a stable second PC with the seller before you pay.',
     limitations:
-      'Does not grant Steam Market ownership. Other players cannot see previewed skins in-server.',
-    systemRequirements: cs2SystemRequirements,
+      'Misconfigured DMA or firmware can brick boards or trigger platform bans. League and Faceit rules prohibit cheats—this page is informational only.',
+    systemRequirements: [
+      { icon: 'reqWindows', text: 'Primary gaming PC: 64-bit Windows 10 or 11 with current updates.' },
+      { icon: 'reqCpu', text: 'Second machine or approved FPGA path per the store listing (not optional for most Cloud DMA kits).' },
+      { icon: 'reqWifi', text: 'Stable LAN for portal sync if the operator requires cloud profile pairing.' },
+      { icon: 'reqShieldGuide', text: 'Read seller IOMMU or virtualization notes before changing BIOS settings.' },
+    ],
     fullFeatures: [
-      'Knife & glove preview',
-      'Sticker layering',
-      'Inspect animations locally',
-      'Loadout favorites',
-      'Thumbnail export',
-      'FPS-safe toggles',
+      'External memory read path (seller-dependent)',
+      'Reduced on-PC injection vs pure software builds',
+      'Firmware and cable notes from listing',
+      'Portal pairing when the seller enables it',
+      'Works alongside software tiers when listed',
     ],
     overview: {
-      title: 'Cosmetic preview workflow',
+      title: 'Cloud DMA overview',
       paragraphs: [
-        'Build thumbnails and offline showcases without buying every knife outright.',
-        'Pair with stream-safe capture settings from the dedicated article.',
+        'Use this page to understand what Cloud DMA add-ons are before you add hardware on checkout—exact boards and bundles are defined on the linked store.',
+        'It is not a replacement for reading Faceit or tournament rules; treat it as a high-friction hardware option.',
       ],
     },
   },
 };
 
-function buildTierPages(): ProductPage[] {
-  return t.cheats.items.map((cheat) => {
-    const slug = slugFromHref(cheat.href);
-    const content = productContent[slug];
-    const displayName =
-      cheat.name === 'Lite' ? 'CS2 Lite' : cheat.name === 'Pro' ? 'CS2 Pro' : 'CS2 Elite';
-    return {
-      slug,
-      kind: 'tier',
-      badge: cheat.badge,
-      tier: cheat.tier,
-      name: cheat.name,
-      title: cheat.title,
-      subtitle: cheat.desc,
-      desc: cheat.desc,
-      seoDescription: productPageSeoDescription[slug] ?? cheat.desc,
-      features: cheat.features,
-      more: cheat.more,
-      variant: cheat.variant,
-      buyUrl: checkoutForSlug(slug),
-      images: content.images,
-      overview: content.overview,
-      acquisition: acquisitionFor(displayName),
-      goodToKnow: content.goodToKnow,
-      limitations: content.limitations,
-      fullFeatures: content.fullFeatures,
-      featureGroups: content.featureGroups,
-      systemRequirements: content.systemRequirements,
-      about: tierAbout[slug],
-      body: tierBodies[slug] ?? [],
-      relatedBlogSlugs: productRelatedBlogSlugs[slug] ?? [],
-    };
-  });
+function buildStorefrontPage(): ProductPage {
+  const slug = 'cs2-store';
+  const content = productContent[slug];
+  return {
+    slug,
+    kind: 'tier',
+    badge: 'Store',
+    tier: 'Counter-Strike 2',
+    name: 'CS2',
+    title: 'CS2 cheats',
+    subtitle: 'One linked seller: ESP, aim, triggers, Faceit notes—checkout on the store after you read scope.',
+    desc: content.overview.paragraphs[0],
+    seoDescription: productPageSeoDescription[slug],
+    features: [
+      'ESP and bomb intel',
+      'Aim smoothing + triggers',
+      'Faceit-oriented notes',
+      'Cloud DMA add-on info',
+    ],
+    more: 7,
+    variant: 'popular',
+    buyUrl: checkoutForSlug(slug),
+    images: content.images,
+    overview: content.overview,
+    acquisition: acquisitionFor('CS2 cheats'),
+    goodToKnow: content.goodToKnow,
+    limitations: content.limitations,
+    fullFeatures: content.fullFeatures,
+    featureGroups: content.featureGroups,
+    systemRequirements: content.systemRequirements,
+    about: storefrontAbout,
+    body: storefrontBody,
+    relatedBlogSlugs: productRelatedBlogSlugs[slug] ?? [],
+  };
 }
 
 function buildUtilityPages(): ProductPage[] {
@@ -658,7 +541,7 @@ function buildUtilityPages(): ProductPage[] {
     });
 }
 
-export const productPages: ProductPage[] = [...buildTierPages(), ...buildUtilityPages()];
+export const productPages: ProductPage[] = [buildStorefrontPage(), ...buildUtilityPages()];
 
 export const cheatPages = productPages.filter((p) => p.kind === 'tier');
 
@@ -691,6 +574,6 @@ export const productHub = {
   path: productBase,
   title: t.products.title,
   subtitle: t.products.subtitle,
-  description: 'Counter-Strike 2 cheat tiers, HWID tools, and cosmetic utilities for Steam PC.',
+  description: 'Counter-Strike 2 cheat catalog, HWID tools, UGC appeals, and Cloud DMA info for Steam PC.',
   buyUrl: checkoutPath('cs2'),
 };

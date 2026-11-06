@@ -21,13 +21,11 @@ function link(text: string, href: string): string {
   return `<a href="${normalizeInternalPath(href)}">${text}</a>`;
 }
 
-const elite = link('Elite full-stack cheat tier page', productPath('elite'));
-const lite = link('Lite ESP-only cheat tier page', productPath('lite'));
-const pro = link('Pro tier with ESP plus aim assist', productPath('pro'));
-const productsHub = link('CS2 cheat catalog & tier hub', ROUTES.products);
+const cs2ModulesPage = link('CS2 cheat modules page', productPath('cs2-store'));
+const productsHub = link('CS2 cheat catalog hub', ROUTES.products);
 const hwid = link('CS2 HWID spoofer utility page', productPath('hwid-spoofer'));
 const ugc = link('UGC ban-appeal workspace page', productPath('ugc'));
-const skin = link('Skin preview & loadout utility page', productPath('unlock-all'));
+const cloudDma = link('Cloud DMA info page', productPath('cloud-dma'));
 const faqPage = link('Full CS2 cheat FAQ index', ROUTES.faq);
 const blog = link('CS2 setup & tuning article library', ROUTES.blog);
 
@@ -65,60 +63,60 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'setup',
     icon: 'faqLicenseMove',
     q: 'Can I move my license to a new PC?',
-    a: a('Use the HWID reset in the portal or open a ticket on the linked store with your key. Limits depend on tier.'),
+    a: a('Use the HWID reset in the portal or open a ticket on the linked store with your key. Limits depend on your license type.'),
   },
   {
     id: 'products-page',
     topic: 'products',
     icon: 'faqProductsPage',
-    q: 'Where are tiers and utilities listed?',
-    a: `${productsHub} lists Lite, Pro, Elite, ${hwid}, ${ugc}, and ${skin}. Buy buttons open the external store.`,
+    q: 'Where are products and utilities listed?',
+    a: `${productsHub} lists the ${cs2ModulesPage}, ${hwid}, ${ugc}, and ${cloudDma}. Checkout buttons open the affiliate store.`,
   },
   {
     id: 'what-is-esp',
     topic: 'esp',
     icon: 'faqWhatIsEsp',
     q: 'What is CS2 ESP?',
-    a: `ESP draws players, weapons, and bomb info on your screen. ${lite} focuses on overlays without aim automation.`,
-    scopes: ['lite', 'pro', 'elite'],
+    a: `ESP draws players, weapons, and bomb info on your screen. Start with thin overlays on ${cs2ModulesPage} before you enable aim layers.`,
+    scopes: ['cs2-store'],
   },
   {
     id: 'esp-vs-aim',
     topic: 'esp',
     icon: 'faqEspVsScripts',
     q: 'What is the difference between ESP and aim assist?',
-    a: `ESP is information only. Aim smoothing and trigger timing are combat assists on ${pro} and ${elite}.`,
+    a: `ESP is information only. Aim smoothing and trigger timing are combat assists you enable in the seller’s module stack—read scope on ${cs2ModulesPage} first.`,
   },
   {
     id: 'which-tier-esp',
     topic: 'plans',
     icon: 'faqWhichTierEsp',
-    q: 'Which tier is ESP-only?',
-    a: `${lite} is intel-only: boxes, bomb flags, radar hints—no aim modules. ${pro} adds aim and trigger layers.`,
-    scopes: ['lite'],
+    q: 'Can I run ESP without aim assist?',
+    a: a('Yes—use intel-first presets on the modules page: thin boxes, bomb flags, and radar hints before you enable smoothing or triggers.'),
+    scopes: ['cs2-store'],
   },
   {
     id: 'which-tier-aim',
     topic: 'scripts',
     icon: 'faqWhichTierScripts',
-    q: 'Which tier includes aimbot-style smoothing?',
-    a: `${pro} and ${elite} ship legit aim curves, FOV caps, and trigger timing. ${lite} has none of that.`,
-    scopes: ['pro'],
+    q: 'Where do aim smoothing and triggers show up?',
+    a: `The seller bundles combat assists in the same module stack described on ${cs2ModulesPage}—enable them only after deathmatch tests.`,
+    scopes: ['cs2-store'],
   },
   {
     id: 'rank-lite-vs-pro',
     topic: 'plans',
     icon: 'faqRankTiers',
-    q: 'How do Lite, Pro, and Elite differ?',
-    a: `${lite} = overlays. ${pro} = overlays plus aim and trigger. ${elite} = full stack with priority rebuilds when slots are open.`,
+    q: 'How do cheat modules differ from utilities?',
+    a: `${cs2ModulesPage} covers the cheat loader modules; ${hwid} and ${ugc} are side tools for hardware flags or bans; ${cloudDma} explains optional DMA hardware add-ons.`,
   },
   {
     id: 'elite-slots',
     topic: 'plans',
     icon: 'faqEliteSlots',
-    q: 'Why is Elite limited?',
-    a: a('Limited slots keep patch turnaround predictable. Check the banner before you pay for Elite-specific access.'),
-    scopes: ['elite'],
+    q: 'Why are some builds waitlisted?',
+    a: a('Limited slots keep patch turnaround predictable. Check the banner before you pay for priority or Faceit-oriented branches.'),
+    scopes: ['cs2-store'],
   },
   {
     id: 'stream-proof',
@@ -158,12 +156,12 @@ export const siteFaqs: SiteFaqItem[] = [
     scopes: ['ugc'],
   },
   {
-    id: 'skin-changer',
+    id: 'cloud-dma-what',
     topic: 'products',
     icon: 'faqSkinChanger',
-    q: 'Does skin preview change Steam inventory?',
-    a: `${skin} shows cosmetics locally. Everyone else still sees your real items. Bundled into ${elite} or sold alone.`,
-    scopes: ['unlock-all'],
+    q: 'What is Cloud DMA?',
+    a: `${cloudDma} explains the external memory read path some sellers bundle—second PC, firmware, and cabling vary by listing.`,
+    scopes: ['cloud-dma'],
   },
   {
     id: 'external-loader',
@@ -214,9 +212,9 @@ export function getAllFaqs(): SiteFaqItem[] {
 
 export const SITE_FAQ_SECTION_COPY = {
   eyebrow: 'Help center',
-  title: 'FAQ for cheats, products & articles',
+  title: 'CS2 FAQ for cheats, products & articles',
   subtitle:
-    'Everything about Lite, Pro, Elite tiers, utilities, safety, and on-site articles. Filter tiers, ESP, aim, safety, products, setup, and articles below.',
+    'Everything about CS2 cheat modules, HWID, UGC, Cloud DMA, safety, and on-site articles. Filter plans, ESP, aim, safety, products, setup, and articles below.',
 } as const;
 
 export const SITE_FAQ_FILTER_TOPICS: FaqTopic[] = ['all', 'plans', 'esp', 'scripts', 'safety', 'products', 'blog', 'setup'];
@@ -299,7 +297,7 @@ const defaultBlogFaqs: SiteFaqItem[] = [
     topic: 'blog',
     icon: 'faqBlogDefault1',
     q: 'Are these articles official manuals?',
-    a: `They explain workflows and link to ${productsHub}. Tier pages list modules for checkout decisions.`,
+    a: `They explain workflows and link to ${productsHub}. The CS2 modules page lists scope for checkout decisions.`,
   },
   {
     id: 'blog-default-2',
@@ -319,8 +317,8 @@ export function getBlogFaqs(tag: string, slug: string): SiteFaqItem[] {
       id: 'blog-slug-esp',
       topic: 'esp',
       icon: 'faqBlogSlugEsp',
-      q: 'Which tier matches these ESP tips?',
-      a: `${lite} is ESP-first. ${pro} keeps the same overlays and adds aim layers.`,
+      q: 'Which product page matches these ESP tips?',
+      a: `Start with intel-only presets on ${cs2ModulesPage}, then enable aim layers only after DM tests.`,
     });
   }
   if (slug.includes('aimbot') || slug.includes('trigger')) {
@@ -328,8 +326,8 @@ export function getBlogFaqs(tag: string, slug: string): SiteFaqItem[] {
       id: 'blog-slug-aim',
       topic: 'scripts',
       icon: 'faqBlogSlugScripts',
-      q: 'Where is aim assist included?',
-      a: `${pro} and ${elite} include smoothing and trigger timing—not ${lite}.`,
+      q: 'Where is aim assist documented?',
+      a: `${cs2ModulesPage} lists combat assists in the module stack—enable smoothing and triggers conservatively.`,
     });
   }
   if (slug.includes('hwid') || slug.includes('vac')) {
@@ -357,6 +355,6 @@ export const compareRows = [
   { feature: 'Advanced radar stacking', icon: 'compareAbilityRadius' as const, lite: false, pro: false, elite: true },
   { feature: 'Misc movement assists', icon: 'compareSmokeAlert' as const, lite: false, pro: false, elite: true },
   { feature: 'Priority rebuild queue', icon: 'comparePriorityPatch' as const, lite: false, pro: false, elite: true },
-  { feature: 'Cosmetic preview module', icon: 'compareSkinChanger' as const, lite: false, pro: false, elite: true },
+  { feature: 'Cloud DMA add-on (store)', icon: 'compareSkinChanger' as const, lite: false, pro: false, elite: true },
   { feature: 'Cloud config backup', icon: 'compareCloudBackup' as const, lite: true, pro: true, elite: true },
 ];

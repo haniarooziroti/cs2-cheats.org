@@ -1,5 +1,4 @@
 ---
-import { cheatPages } from '../data/products';
 import { cheatTierIcons } from '../data/sectionIcons';
 import Icon from './icons/Icon.astro';
 import type { IconName } from './icons/types';
@@ -29,12 +28,13 @@ interface Props {
 
 const { rows, highlightSlug } = Astro.props;
 
-const tiers = cheatPages.map((c) => ({
-  slug: c.slug,
-  name: c.name,
-  icon: cheatTierIcons[c.name] ?? 'crosshair',
-  href: productPath(c.slug),
-}));
+/** Module sets are explained on the CS2 cheat modules page — columns link there for the live matrix. */
+const modulesPage = productPath('cs2-store');
+const tiers = [
+  { slug: 'lite', name: 'Lite', icon: cheatTierIcons.Lite ?? 'crosshair', href: modulesPage },
+  { slug: 'pro', name: 'Pro', icon: cheatTierIcons.Pro ?? 'crosshair', href: modulesPage },
+  { slug: 'elite', name: 'Elite', icon: cheatTierIcons.Elite ?? 'crosshair', href: modulesPage },
+];
 
 const tierSlugs = tiers.map((t) => t.slug);
 ---
@@ -42,7 +42,7 @@ const tierSlugs = tiers.map((t) => t.slug);
 <section class="space-y-4" aria-labelledby="compare-heading">
   <header class="section-header">
     <p class="section-header__eyebrow">Compare</p>
-    <h1 id="compare-heading" class="section-header__title">Compare all plans</h1>
+    <h1 id="compare-heading" class="section-header__title">Compare all CS2 plans</h1>
     <p class="section-header__subtitle">Side-by-side look at what each tier includes.</p>
   </header>
 

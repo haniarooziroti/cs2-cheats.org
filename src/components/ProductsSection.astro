@@ -61,6 +61,7 @@ function cardLabel(product: (typeof productPages)[number]) {
                       badge={product.badge}
                       variant={product.variant}
                       buyLabel="Checkout"
+                      viewLabel={product.slug === 'cs2-store' ? 'Open CS2 cheats' : undefined}
                       maxFeatures={5}
                     />
                   </CarouselItem>
