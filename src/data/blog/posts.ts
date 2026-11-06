@@ -16,13 +16,15 @@ export const blogPosts: BlogPostFull[] = [
     slug: 'how-to-install-cs2-cheats',
     image: SEO_MEDIA.sunnyMiddleEasternStreet,
     desc: 'Portal download, SmartScreen, and first-launch order for Counter-Strike 2 cheats on Windows.',
+    seoDescription:
+      'Install CS2 cheats: portal order, Defender paths, first launch checks so SmartScreen and VAC are easier to fix before you inject.',
     date: 'Oct 28, 2025',
     readTime: '7 min read',
     author: 'cs2-cheats.org',
     body: [
       {
         type: 'p',
-        text: 'Buying [CS2 cheats](/products/cs2-cheats/) starts at the external store; installing them correctly starts in the operator portal. This walkthrough mirrors what support asks for when something fails—order email ready, Defender exclusions narrow, and CS2 closed before you inject.',
+        text: 'Buying [paid CS2 cheat access (product hub)](/products/cs2-cheats/) starts at the external store; installing them correctly starts in the operator portal. This walkthrough mirrors what support asks for when something fails—order email ready, Defender exclusions narrow, and CS2 closed before you inject.',
       },
       { type: 'h2', text: 'Before you download anything' },
       {
@@ -44,7 +46,7 @@ export const blogPosts: BlogPostFull[] = [
         items: [
           'Close CS2 and Steam overlay-heavy tools if support tells you to.',
           'Run the loader as administrator only when the portal readme says so.',
-          'Inject after you pick a **Lite** preset if you only need ESP—move to [Pro](/products/cs2-cheats/pro/) curves later.',
+          'Inject after you pick a **Lite** preset if you only need ESP—move to [Pro tier (aim + ESP)](/products/cs2-cheats/pro/) curves later.',
         ],
       },
       storeCta('Ready for a key?', 'Open the store checkout for CS2 Faceit-related access when your setup is clean.'),
@@ -53,9 +55,12 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Features',
     title: 'CS2 ESP settings that stay readable in clutches',
+    pageHeading: 'CS2 cheats ESP settings for readable clutches',
     slug: 'cs2-esp-settings-clutches',
     image: SEO_MEDIA.underpassSmokeGraffiti,
     desc: 'Thickness, glow, and teammate colors for Counter-Strike 2 retakes without blocking your crosshair.',
+    seoDescription:
+      'Tune CS2 ESP glow and team colors for readable wallhack boxes in clutches. Adjust contrast before ranked; pair aim when upgrading from Lite.',
     date: 'Oct 25, 2025',
     readTime: '8 min read',
     body: [
@@ -65,7 +70,7 @@ export const blogPosts: BlogPostFull[] = [
       },
       {
         type: 'p',
-        text: 'Pair this article with [wallhack layout tips](/blog/cs2-wallhack-crosshair-layout/) when clutter still sits dead-center.',
+        text: 'Pair this article with [wallhack crosshair layout guide](/blog/cs2-wallhack-crosshair-layout/) when clutter still sits dead-center.',
       },
       { type: 'h2', text: 'Enemy vs teammate contrast' },
       {
@@ -78,7 +83,7 @@ export const blogPosts: BlogPostFull[] = [
       { type: 'h2', text: 'Box versus skeleton' },
       {
         type: 'p',
-        text: 'Skeletons help prefires but crowd mid duels. Run **boxes only** on execute-heavy rounds; enable skeleton in clutch presets saved as a second profile inside [Lite](/products/cs2-cheats/lite/) or [Pro](/products/cs2-cheats/pro/).',
+        text: 'Skeletons help prefires but crowd mid duels. Run **boxes only** on execute-heavy rounds; enable skeleton in clutch presets saved as a second profile inside [Lite cheat tier (ESP)](/products/cs2-cheats/lite/) or [Pro cheat tier](/products/cs2-cheats/pro/).',
       },
       storeCta('Need ESP without aim?', 'Lite tier keeps overlays only while you test readability.'),
     ],
@@ -86,15 +91,18 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Features',
     title: 'Aimbot smoothing for CS2 ranked queues',
+    pageHeading: 'CS2 cheats: aim smoothing for ranked aimbot use',
     slug: 'cs2-aimbot-smoothing-ranked',
     image: SEO_MEDIA.mediterraneanAlleyRifle,
     desc: 'FOV, bone priority, and smoothing curves that still make sense in Premier demos.',
+    seoDescription:
+      'Dial aimbot smoothing, FOV, bone priority so Premier demos stay believable. Change one slider per session; pair trigger timing before ranked.',
     date: 'Oct 22, 2025',
     readTime: '9 min read',
     body: [
       {
         type: 'p',
-        text: 'Aim assist in Counter-Strike 2 is not a single slider—it is FOV, smoothing, bone priority, and sometimes separate pistol profiles. Start from the Pro tier defaults linked on [products/cs2-cheats/pro/](/products/cs2-cheats/pro/) and move **one** control per session.',
+        text: 'Aim assist in Counter-Strike 2 is not a single slider—it is FOV, smoothing, bone priority, and sometimes separate pistol profiles. Start from the [Pro tier defaults page](/products/cs2-cheats/pro/) and move **one** control per session.',
       },
       { type: 'h2', text: 'FOV guardrails' },
       {
@@ -104,7 +112,7 @@ export const blogPosts: BlogPostFull[] = [
       { type: 'h2', text: 'When demos look stiff' },
       {
         type: 'p',
-        text: 'If a friend says crosshair movement looks “magnetic,” drop smoothing variance slightly and reduce snap on first bullet only. [Trigger timing](/blog/cs2-triggerbot-peek-timing/) pairs with aim smoothing—tune both together.',
+        text: 'If a friend says crosshair movement looks “magnetic,” drop smoothing variance slightly and reduce snap on first bullet only. [Trigger peek timing article](/blog/cs2-triggerbot-peek-timing/) pairs with aim smoothing—tune both together.',
       },
       storeCta('Bundle ESP + aim', 'Pro tier stacks intel layers with legit aim curves.'),
     ],
@@ -115,12 +123,14 @@ export const blogPosts: BlogPostFull[] = [
     slug: 'faceit-cs2-cheats-constraints',
     image: SEO_MEDIA.desertCorridorEsp,
     desc: 'What changes when the Faceit client wraps Counter-Strike 2 and why storefront keywords still mention Faceit.',
+    seoDescription:
+      'How Faceit client changes CS2 cheat overlays vs Steam. Module limits explained—not approval—so you buy tiers with realistic expectations.',
     date: 'Oct 19, 2025',
     readTime: '10 min read',
     body: [
       {
         type: 'p',
-        text: 'Faceit runs additional software with its own expectations. This page is educational: league rules prohibit cheats everywhere we mention them. Buyers who only queue Faceit should read carefully before paying—Steam Premier and scrims are the common fit for our [CS2 lineup](/products/cs2-cheats/).',
+        text: 'Faceit runs additional software with its own expectations. This page is educational: league rules prohibit cheats everywhere we mention them. Buyers who only queue Faceit should read carefully before paying—Steam Premier and scrims are the common fit for our [full CS2 cheat catalog](/products/cs2-cheats/).',
       },
       { type: 'h2', text: 'Why modules behave differently' },
       {
@@ -141,9 +151,12 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Setup',
     title: 'Wallhack-style vision without blocking your crosshair',
+    pageHeading: 'CS2 cheats wallhack view: keep your crosshair clear',
     slug: 'cs2-wallhack-crosshair-layout',
     image: SEO_MEDIA.bananaAlleyBSite,
     desc: 'Layer skeletons, glow, and bomb labels so Counter-Strike 2 wallhack reads stay peripheral.',
+    seoDescription:
+      'Place wallhack ESP, skeletons, bomb labels at screen edges so crosshair gap stays clear. Use smoke tips here before ranked presets.',
     date: 'Oct 15, 2025',
     readTime: '6 min read',
     body: [
@@ -154,7 +167,7 @@ export const blogPosts: BlogPostFull[] = [
       { type: 'h2', text: 'Smoke silhouettes' },
       {
         type: 'p',
-        text: 'When executes flood smokes, drop glow opacity before you remove skeletons—you still want thickness cues for spam-through fights mentioned in the [ESP article](/blog/cs2-esp-settings-clutches/).',
+        text: 'When executes flood smokes, drop glow opacity before you remove skeletons—you still want thickness cues for spam-through fights mentioned in the [ESP clutch settings article](/blog/cs2-esp-settings-clutches/).',
       },
       storeCta('Start with Lite', 'ESP-only tier keeps overlays without aim automation.'),
     ],
@@ -162,9 +175,12 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Features',
     title: 'Triggerbot timing for CS2 duel peeks',
+    pageHeading: 'CS2 cheat trigger timing for duel peeks',
     slug: 'cs2-triggerbot-peek-timing',
     image: SEO_MEDIA.dustyCourtyardAk,
     desc: 'Delay and burst ideas for Ancient door duels and tight prefires—paired with aim smoothing.',
+    seoDescription:
+      'Set trigger delay and burst for duels without looking robotic. Test offline first; sync timings with your aim profile before ranked.',
     date: 'Oct 12, 2025',
     readTime: '7 min read',
     body: [
@@ -183,9 +199,12 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Troubleshooting',
     title: 'VAC error messages after a CS2 patch',
+    pageHeading: 'CS2 cheats after a patch: fixing VAC errors',
     slug: 'cs2-vac-error-after-patch',
     image: SEO_MEDIA.tacticalSmokeOverpass,
     desc: 'Verify game files, restart Steam, and pause cheats until the banner matches Valve’s build.',
+    seoDescription:
+      'Fix VAC after patches: verify files, restart Steam, pause cheats until portal matches build. Send exact error text so support tickets move.',
     date: 'Oct 8, 2025',
     readTime: '6 min read',
     body: [
@@ -214,15 +233,18 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Setup',
     title: 'HWID spoofing before a new CS2 account',
+    pageHeading: 'CS2 cheats & HWID spoofing before a new account',
     slug: 'hwid-spoof-new-cs2-account',
     image: SEO_MEDIA_LEGACY.cs1,
     desc: 'Cold boot checklist when Steam thinks your PC is the problem, not just the account.',
+    seoDescription:
+      'HWID spoof before a fresh account: restore points, cold boots, ID checks when Steam blocks one PC. Use UGC if appeals fit better.',
     date: 'Oct 4, 2025',
     readTime: '8 min read',
     body: [
       {
         type: 'p',
-        text: 'Hardware identifiers tie bans to machines. The [HWID utility](/products/cs2-cheats/hwid-spoofer/) helps when fresh accounts fail instantly on one rig—**not** when the account alone is burned. Pair with [UGC paperwork](/products/cs2-cheats/ugc/) if appeals are the real goal.',
+        text: 'Hardware identifiers tie bans to machines. The [HWID Spoofer product page](/products/cs2-cheats/hwid-spoofer/) helps when fresh accounts fail instantly on one rig—**not** when the account alone is burned. Pair with [UGC appeals workspace](/products/cs2-cheats/ugc/) if appeals are the real goal.',
       },
       { type: 'h2', text: 'Backup first' },
       {
@@ -235,9 +257,12 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Features',
     title: 'CS2 radar hack overlays vs audio',
+    pageHeading: 'CS2 cheat radar overlays versus headphone audio',
     slug: 'cs2-radar-hack-audio',
     image: SEO_MEDIA.mediterraneanVillageBanana,
     desc: 'When reinforced radar dots help rotations—and when headphones should stay primary.',
+    seoDescription:
+      'Balance radar overlays with headset audio on retakes. Bias height on stacked maps; trust sound before you stare at minimap.',
     date: 'Sep 30, 2025',
     readTime: '7 min read',
     body: [
@@ -256,9 +281,12 @@ export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Setup',
     title: 'Stream proof setup for CS2 overlays',
+    pageHeading: 'CS2 cheat overlays with stream proof capture setup',
     slug: 'cs2-stream-proof-overlays',
     image: SEO_MEDIA_LEGACY.css11,
     desc: 'OBS scene stacking so viewers see clean Counter-Strike 2 footage while you keep overlays local.',
+    seoDescription:
+      'Hide overlays from OBS with stream proof toggles and flat scenes. Record locally first—nested browser sources can leak menus.',
     date: 'Sep 26, 2025',
     readTime: '6 min read',
     body: [

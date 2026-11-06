@@ -14,6 +14,12 @@ export interface ForumPost {
   categoryTone: 'purple' | 'blue' | 'green' | 'orange';
   title: string;
   excerpt: string;
+  /** Meta description (120–155 chars). */
+  seoDescription: string;
+  /** H1: include “cheats”, not identical to thread title. */
+  pageHeading: string;
+  /** Social share title (passed to ShareLinks). */
+  shareTitle?: string;
   author: string;
   age: string;
   commentsCount: number;
@@ -36,6 +42,9 @@ function thread(input: {
   slug: string;
   title: string;
   excerpt: string;
+  seoDescription: string;
+  pageHeading: string;
+  shareTitle?: string;
   category: string;
   categoryTone: ForumPost['categoryTone'];
   flair?: string;
@@ -59,6 +68,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'aimbot-settings-what-level-buy-risk',
     title: 'Aimbot settings: what level should I run so I do not look blatant?',
     excerpt: 'Trading FOV for trust in Premier—what worked and what got me roasted in downloaded replays.',
+    seoDescription:
+      'Forum thread on CS2 cheat aimbot FOV for Premier—buyers compare presets, demo reviews, and what looks blatant before you pay for a tier.',
+    pageHeading: 'CS2 cheats forum: aimbot FOV without looking blatant',
     category: 'General',
     categoryTone: 'purple',
     flair: 'Purchase intent',
@@ -104,6 +116,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'how-to-install-loader-first-boot',
     title: 'Loader first boot: what did you turn off in antivirus?',
     excerpt: 'Windows Security kept quarantining the DLL—want to know what folders people excluded without nuking whole drives.',
+    seoDescription:
+      'Q&A on first CS2 cheat loader boot—Defender exclusions, safe folder paths, and what to avoid so antivirus does not eat your DLL on Windows.',
+    pageHeading: 'CS2 cheats loader thread: antivirus exclusions on first boot',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     flair: 'Setup',
@@ -130,6 +145,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'faceit-client-worth-extra-price',
     title: 'Faceit + CS2 cheats: is the extra client honestly worth paying for?',
     excerpt: 'VAC scares me less than league software—did anyone stay subscribed mainly for Faceit?',
+    seoDescription:
+      'Debate on CS2 cheats with Faceit client risk vs Steam—threads weigh cost, ESP limits, and when league queue is worth the extra client.',
+    pageHeading: 'CS2 cheats on Faceit: is the extra client worth paying for?',
     category: 'Faceit & leagues',
     categoryTone: 'green',
     flair: 'Faceit',
@@ -152,6 +170,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'esp-clutter-smoke-sites',
     title: 'ESP clutter on execute-heavy maps—how do you keep smokes readable?',
     excerpt: 'Mirage A execs flood my screen; looking for layout ideas from the wallhack article.',
+    seoDescription:
+      'CS2 cheat ESP clutter on execute maps—buyers share box-only presets, glow tweaks, and layouts so overlays stay readable mid-round on Mirage-style hits.',
+    pageHeading: 'CS2 cheats ESP clutter: readable overlays on execute maps',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 141,
@@ -171,6 +192,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'trigger-delay-duel-tips',
     title: 'Trigger delay for pistol duels—ms ranges people swear by?',
     excerpt: 'Ancient doorway jiggle wars—article mentions delay vs burst; need numbers from humans.',
+    seoDescription:
+      'CS2 cheat trigger delay for pistol duels—posts compare millisecond ranges, ping scaling, and when to disable trigger for calmer, more manual play.',
+    pageHeading: 'CS2 cheats forum: trigger delay settings for pistol duels',
     category: 'General',
     categoryTone: 'purple',
     upvotes: 96,
@@ -191,6 +215,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'vac-error-after-patch-stories',
     title: 'VAC pop-up after patch—did verify actually fix it for you?',
     excerpt: 'Following the VAC article but Steam still complains intermittently.',
+    seoDescription:
+      'After-patch VAC errors with CS2 cheats—stories on verify, reboot timing, and when to pause injections until Steam clears the banner safely.',
+    pageHeading: 'CS2 cheats after patches: fixing intermittent VAC pop-ups',
     category: 'Patch & VAC',
     categoryTone: 'orange',
     upvotes: 88,
@@ -210,6 +237,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'hwid-spoof-order-matters',
     title: 'HWID spoof order: restore point first or driver wipe first?',
     excerpt: 'New Steam account kept dying until I cold rebooted—compare notes with the HWID article.',
+    seoDescription:
+      'HWID spoof order for CS2 buyers—restore vs driver wipe, cold reboot tips, and laptop BIOS caveats before you bind a new Steam account.',
+    pageHeading: 'CS2 cheats HWID spoof thread: restore point vs driver order',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 74,
@@ -229,6 +259,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'radar-or-ears-primary',
     title: 'Radar assist vs headphone audio—which do you lean on?',
     excerpt: 'Trying not to stare at minimap during executes—talking about the radar/audio article.',
+    seoDescription:
+      'CS2 cheat radar vs audio—players debate minimap assist vs headset-first habits and how to avoid staring at overlays on fast executes.',
+    pageHeading: 'CS2 cheats discussion: radar assist vs headphone-first play',
     category: 'General',
     categoryTone: 'purple',
     upvotes: 63,
@@ -248,6 +281,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'stream-proof-obs-nightmare',
     title: 'Stream proof mode still leaked once in OBS—anyone else?',
     excerpt: 'Followed stream article but Browser Source pickoff caught a menu flicker.',
+    seoDescription:
+      'Stream proof CS2 overlays leaking in OBS—nested scenes and browser sources with fixes from buyers who reproduced capture slips on stream.',
+    pageHeading: 'CS2 cheats stream proof thread: OBS and capture leaks',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 112,
@@ -268,6 +304,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'elite-slot-wait-real',
     title: 'Elite slot wait—how long did approvals actually take?',
     excerpt: 'Trying to decide if priority rebuild queue hype is real.',
+    seoDescription:
+      'CS2 cheat Elite wait times—buyers share real approval hours, patch-week queues, and when support banners spike after checkout.',
+    pageHeading: 'CS2 cheats forum: Elite tier slot and approval wait times',
     category: 'General',
     categoryTone: 'purple',
     flair: 'Commercial',
@@ -286,6 +325,9 @@ export const forumPosts: ForumPost[] = [
     slug: 'esp-colors-colorblind',
     title: 'ESP colors for colorblind modes—any presets worth copying?',
     excerpt: 'Using the ESP clutch article palette but reds/greens still blend.',
+    seoDescription:
+      'Colorblind CS2 cheat ESP palettes—cyan and mustard presets, Inferno contrast tips, and mod ideas when stock red and green enemy colors blend.',
+    pageHeading: 'CS2 cheats ESP colors for colorblind-readable overlays',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 47,

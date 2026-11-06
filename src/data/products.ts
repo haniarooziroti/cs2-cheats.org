@@ -46,7 +46,10 @@ export interface ProductPage {
   name: string;
   title: string;
   subtitle: string;
+  /** Short catalog blurb (cards, body). */
   desc: string;
+  /** Meta description for `<meta name="description">` (120–155 chars). */
+  seoDescription: string;
   features: string[];
   more: number;
   variant?: 'essential' | 'popular' | 'limited';
@@ -87,6 +90,22 @@ export const productRelatedBlogSlugs: Record<string, string[]> = {
 };
 
 const productBase = PRODUCT_BASE;
+
+/** SERP snippets for product detail pages (`npm run seo:check` enforces length). */
+const productPageSeoDescription: Record<string, string> = {
+  lite:
+    'CS2 Lite: ESP, bomb flags, radar hints, stream capture for Steam—no aim automation. Review modules here, then open the linked store for your key.',
+  pro:
+    'CS2 Pro adds aim smoothing, trigger delay, recoil assist on Lite ESP for Premier. Read Faceit notes here, then open the external store for pricing.',
+  elite:
+    'CS2 Elite: Faceit-oriented aim and ESP when the portal allows. Confirm HVCI, TPM, secure boot here, then checkout on the linked external store.',
+  'hwid-spoofer':
+    'HWID Spoofer resets disk and MAC IDs when Steam blocks new accounts on one PC. Follow the checklist here, then open the store listing to buy.',
+  ugc:
+    'UGC organizes VAC and trade-lock appeals with timelines—not a guaranteed unban. Read scope here, then open the store when paperwork fits your case.',
+  'unlock-all':
+    'Skin preview loads knives and gloves locally without changing live Steam inventory. Read limits here, then open the store listing to buy.',
+};
 
 const defaultAcquisitionSteps: AcquisitionStep[] = [
   {
@@ -586,6 +605,7 @@ function buildTierPages(): ProductPage[] {
       title: cheat.title,
       subtitle: cheat.desc,
       desc: cheat.desc,
+      seoDescription: productPageSeoDescription[slug] ?? cheat.desc,
       features: cheat.features,
       more: cheat.more,
       variant: cheat.variant,
@@ -620,6 +640,7 @@ function buildUtilityPages(): ProductPage[] {
         title: product.title,
         subtitle: product.subtitle,
         desc: product.desc,
+        seoDescription: productPageSeoDescription[slug] ?? product.desc,
         features: product.features,
         more: product.more,
         buyUrl: checkoutForSlug(slug),

@@ -3,7 +3,7 @@ import '../../styles/blog-pages.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { t } from '../../i18n';
 import { getAllBlogSlugs, getBlogPost, getRelatedBlogPosts } from '../../data/blog';
-import { pageTitle } from '../../config/seo';
+import { canonicalUrl, pageTitle } from '../../config/seo';
 import {
   articleSchema,
   breadcrumbSchema,
@@ -22,6 +22,7 @@ import { Badge } from '@/components/starwind/badge';
 import { Button } from '@/components/starwind/button';
 import { Prose } from '@/components/starwind/prose';
 import BlogPostCta from '../../components/BlogPostCta.astro';
+import ShareLinks from '../../components/ShareLinks.astro';
 import { normalizeInternalPath, ROUTES } from '../../utils/path';
 
 export function getStaticPaths() {
@@ -58,11 +59,14 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, '');
 }
 const published = parseBlogDate(post.date);
+const metaDesc = post.seoDescription ?? post.desc;
+const pageHeading = post.pageHeading ?? post.title;
+const sharePageUrl = canonicalUrl(postPath);
 ---
 
 <BaseLayout
   title={pageTitle(post.title)}
-  description={post.desc}
+  description={metaDesc}
   ogType="article"
   ogImage={post.image}
   ogImageAlt={post.title}
@@ -103,7 +107,7 @@ const published = parseBlogDate(post.date);
           </figure>
 
           <header class="blog-article__header">
-            <h1 class="blog-article__title">{post.title}</h1>
+            <h1 class="blog-article__title">{pageHeading}</h1>
             <p class="blog-article__lead">{post.desc}</p>
             {
               post.author && (
@@ -180,16 +184,18 @@ const published = parseBlogDate(post.date);
             })}
           </Prose>
 
+          <ShareLinks url={sharePageUrl} title={post.shareTitle ?? post.title} />
+
           <nav class="blog-article__actions" aria-label="Continue reading">
             <Button as="a" href={checkoutPath('cs2')} variant="primary" aria-label={t.ui.checkoutAria}>
-              Open store
+              Affiliate store checkout
               <Icon name="arrowRight" size={17} />
             </Button>
             <Button as="a" href={ROUTES.products} variant="outline">
-              View products
+              CS2 cheat catalog hub
             </Button>
             <Button as="a" href={ROUTES.blog} variant="outline">
-              More articles
+              Back to article index
               <Icon name="arrowRight" size={17} />
             </Button>
           </nav>

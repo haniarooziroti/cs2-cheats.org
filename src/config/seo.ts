@@ -1,5 +1,6 @@
+import type { ProductPage } from '../data/products';
 import { t } from '../i18n';
-import { SITE_DOMAIN } from './site';
+import { SITE_DOMAIN, SITE_URL } from './site';
 import { getPageSeoEntry } from './pageSeo';
 import { DEFAULT_OG_IMAGE_ABSOLUTE } from './media';
 
@@ -8,14 +9,10 @@ function normalizeOrigin(url: string): string {
 }
 
 /**
- * Canonical origin for absolute URLs (OG, JSON-LD, RSS, canonical link).
- * Set PUBLIC_SITE_ORIGIN at build time to your live host (e.g. Cloudflare Workers preview);
- * default is the production domain so cs2-cheats.org builds stay unchanged.
+ * Canonical / OG / hreflang base URL — always production (cs2-cheats.org).
+ * Preview hosts must not leak into canonicals or sitemap-facing meta.
  */
-const rawOrigin =
-  (import.meta.env.PUBLIC_SITE_ORIGIN as string | undefined)?.trim() || `https://${SITE_DOMAIN}`;
-
-export const SITE_ORIGIN = normalizeOrigin(rawOrigin);
+export const SITE_ORIGIN = normalizeOrigin(SITE_URL);
 
 /** Hostname only — IndexNow key file location must match this host when deploying. */
 export const SITE_HOSTNAME = (() => {
@@ -66,12 +63,42 @@ export function resolvePageSeo(pathname: string): { title: string; description: 
   return { title: t.site.title, description: t.site.description };
 }
 
+const TITLE_MIN = 50;
+const TITLE_MAX = 60;
+
+/** Brand suffix for `<title>` when building from a keyword phrase. */
+export function titleBrandSuffix(): string {
+  return ` | ${t.site.domain}`;
+}
+
+/** Article / thread titles: keyword + brand, trimmed to 50–60 characters total. */
 export function pageTitle(keyword: string, suffixSite = t.site.domain): string {
   const suffix = ` | ${suffixSite}`;
-  const max = 60;
-  if (`${keyword}${suffix}`.length <= max) return `${keyword}${suffix}`;
-  const trimmed = keyword.slice(0, Math.max(20, max - suffix.length - 1)).trim();
-  return `${trimmed}${suffix}`;
+  const maxKeyword = TITLE_MAX - suffix.length;
+  let k = keyword.replace(/\s+/g, ' ').trim();
+  if (k.length > maxKeyword) {
+    k = k.slice(0, maxKeyword);
+    const lastSpace = k.lastIndexOf(' ');
+    if (lastSpace > 12) k = k.slice(0, lastSpace);
+    k = k.trim();
+  }
+  let out = `${k}${suffix}`;
+  if (out.length < TITLE_MIN) {
+    const pad = ' — CS2 cheats';
+    k = `${k}${pad}`.slice(0, maxKeyword).trim();
+    out = `${k}${suffix}`;
+    if (out.length > TITLE_MAX) out = out.slice(0, TITLE_MAX);
+  }
+  return out;
+}
+
+/** Product detail `<title>` — 50–60 chars with tier vs utility phrasing. */
+export function productPageTitle(product: Pick<ProductPage, 'title' | 'kind'>): string {
+  const phrase =
+    product.kind === 'tier'
+      ? `${product.title}: cheat tier modules & scope`
+      : `${product.title}: CS2 cheat utility overview`;
+  return pageTitle(phrase);
 }
 
 export const DEFAULT_OG_IMAGE_WIDTH = 1200;

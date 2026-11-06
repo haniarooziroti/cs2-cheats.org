@@ -1,5 +1,6 @@
 /**
  * Central titles/descriptions for high-traffic routes.
+ * Titles: 50–60 chars; descriptions: 120–155 chars (see scripts/seo-check.mjs).
  */
 
 export interface PageSeoEntry {
@@ -9,59 +10,59 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    title: 'Counter-Strike 2 Cheats & Hacks | CS2 Aimbot & ESP',
+    title: 'CS2 Cheats: ESP, Aim, Wallhack for Steam | cs2-cheats.org',
     description:
-      'CS2 cheats with aimbot, ESP, wallhack-style overlays, and radar for PC—Premier and Competitive on Steam. Faceit’s client adds its own checks. Compare modules on cs2-cheats.org, then open the linked store for access.',
+      'Compare CS2 cheats with ESP, aim, and wallhack-style overlays for Steam. Read modules here, then open the linked store checkout when you want paid access.',
   },
   '/products/cs2-cheats/': {
-    title: 'CS2 Cheats | Faceit-Ready ESP, Aimbot & More',
+    title: 'CS2 Cheat Shop: ESP, Aim Tiers One Page | cs2-cheats.org',
     description:
-      'Paid CS2 cheat tiers for Steam: ESP, aimbot, radar hack, triggerbot, and optional skin changer utility. Subscription-style access depends on the store—review each card, then checkout.',
+      'Browse CS2 cheat tiers with ESP, aim, radar, triggers in one catalog. Pick a queue, then open the external store for pricing, keys, delivery.',
   },
   '/products/cs2-cheats/elite/': {
-    title: 'CS2 Elite Cheats | Full ESP & Aimbot Suite',
+    title: 'CS2 Elite Cheats: Full Aim and ESP Stack | cs2-cheats.org',
     description:
-      'Elite CS2 build with full ESP, aimbot tuning, radar, trigger assist, and priority loader updates.',
+      'Elite stacks ESP, aim, radar, and priority loader updates. Read Faceit limits here, then use the store checkout when the portal shows open slots.',
   },
   '/products/cs2-cheats/utilities/': {
-    title: 'CS2 Utilities | HWID & Companion Tools',
+    title: 'CS2 Utilities: HWID, UGC, Skin Preview | cs2-cheats.org',
     description:
-      'CS2 cheat utilities: HWID tools, appeals workspace, and a local skin changer preview—pair with the main loader subscription from the product hub.',
+      'Compare HWID spoofing, UGC appeals, and local skin previews beside the loader. Match each add-on to your issue here, then open the store listing to buy.',
   },
   '/blog/': {
-    title: 'CS2 Cheat Articles | ESP, Aimbot & Setup',
+    title: 'CS2 Guides: ESP, Aim, Loader Articles | cs2-cheats.org',
     description:
-      'CS2 hack and cheat guides: ESP, aimbot, wallhack layout, radar hack vs audio, triggerbot timing, Premier queues, and Faceit client caveats.',
+      'Guides on CS2 ESP tuning, aim smoothing, wallhack layout, Faceit caveats, and loader steps. Filter topics, read posts, then open the product hub to buy.',
   },
   '/forum/': {
-    title: 'CS2 Cheat Forums | Setup & Feature Talk',
+    title: 'CS2 Forums: Loader Tips, Buyer Threads | cs2-cheats.org',
     description:
-      'CS2 cheats forum: loader first boot, aimbot levels, ESP clutter, paid tier questions, Faceit vs Premier play, and subscription or key handoffs.',
+      'Threads on loaders, aim, ESP clutter, Faceit notes, and VAC after patches—text only. Open a thread or follow article links when you need more context.',
   },
   '/faq/': {
-    title: 'FAQ | CS2 Cheats, Loader & Checkout',
+    title: 'CS2 Cheat FAQ: Risk, Tiers, Checkout | cs2-cheats.org',
     description:
-      'FAQ on CS2 cheats: VAC is never “safe”—we explain risk, paid access, cheat loader problems, ESP and aimbot scope, and how to buy CS2 cheats through the store.',
+      'FAQ on cheat risk, VAC rules, tier picks, HWID tools, and linked store checkout. Scan answers first, then open support or articles before you buy.',
   },
   '/terms/': {
-    title: 'Terms | cs2-cheats.org',
+    title: 'Site Terms: Content, Store Links, Liability | cs2-cheats.org',
     description:
-      'Terms of use, checkout disclaimers, and refund policy for visitors of cs2-cheats.org.',
+      'Terms for cs2-cheats.org, affiliate disclaimers, liability caps. Read before guides; seller sets refunds and access after payment.',
   },
   '/privacy/': {
-    title: 'Privacy | cs2-cheats.org',
+    title: 'Privacy: Analytics, Cookies on cs2-cheats.org | cs2-cheats',
     description:
-      'How cs2-cheats.org uses analytics and cookies when you browse, and how store-side tickets work after purchase.',
+      'How we use cookies and analytics while you browse, and how to ask data questions. Checkout data is handled by the linked seller under their policy.',
   },
   '/about/': {
-    title: 'About | Counter-Strike 2 Cheat Resource',
+    title: 'About: CS2 Guides and Product Catalog | cs2-cheats.org',
     description:
-      'What cs2-cheats.org covers: CS2 ESP, aimbot, wallhack-style overlays, utilities, and articles—no unrelated games.',
+      'We explain CS2 cheat modules, publish setup articles, host buyer forums—checkout stays on the linked store. Read scope before you follow buy links.',
   },
   '/support/': {
-    title: 'Support | cs2-cheats.org',
+    title: 'CS2 Support: FAQ, Articles, Store Help | cs2-cheats.org',
     description:
-      'Contact support for loader, checkout, or HWID questions related to CS2 cheat access from cs2-cheats.org.',
+      'Paths for buyers: FAQ, guides, forums, and store tickets after purchase. Gather receipt email, Windows build, and error text before you message support.',
   },
 };
 

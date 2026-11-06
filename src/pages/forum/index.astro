@@ -5,10 +5,12 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/icons/Icon.astro';
 import { forumCategories, forumPosts } from '../../data/forum';
 import { blogPosts, getBlogPostTimestamp } from '../../data/blog';
-import { resolvePageSeo } from '../../config/seo';
+import { canonicalUrl, resolvePageSeo } from '../../config/seo';
+import ShareLinks from '../../components/ShareLinks.astro';
 import { breadcrumbSchema, collectionPageSchema } from '../../utils/schema';
 
 const seo = resolvePageSeo('/forum/');
+const sharePageUrl = canonicalUrl('/forum/');
 const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Forum', path: '/forum/' }];
 const categoryKey = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '');
 const sourceTimestamp = (path?: string) => {
@@ -31,7 +33,7 @@ const sourceTimestamp = (path?: string) => {
           <h1>CS2 cheat forums</h1>
           <p class="forum-hero__copy">Loader tips, aimbot and ESP tuning, Faceit caveats, and purchase threads—text only, no image dumps.</p>
         </div>
-        <a class="forum-create" href="/blog/"><Icon name="navBlog" size={17} /> Read related articles</a>
+        <a class="forum-create" href="/blog/"><Icon name="navBlog" size={17} /> CS2 cheat guides from the article hub</a>
       </header>
 
       <div class="forum-layout">
@@ -76,14 +78,15 @@ const sourceTimestamp = (path?: string) => {
                   {post.sourceTitle && post.sourcePath && <p class="forum-source">Related article: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}
                   <div class="forum-post-actions">
                     {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
-                    <a href={`/forum/${post.slug}/`}><Icon name="messageCircle" size={15} /> {post.commentsCount} comments</a>
-                    <a href={`/forum/${post.slug}/`}><Icon name="arrowRight" size={15} /> Read discussion</a>
+                    <a href={`/forum/${post.slug}/`}><Icon name="messageCircle" size={15} /> {post.commentsCount} replies on this thread</a>
+                    <a href={`/forum/${post.slug}/`}><Icon name="arrowRight" size={15} /> Open full thread: {post.title.slice(0, 42)}{post.title.length > 42 ? '…' : ''}</a>
                   </div>
                 </div>
               </article>
             ))}
           </div>
           <p class="forum-empty" data-forum-empty hidden>No discussions match. Try another search or topic.</p>
+          <ShareLinks url={sharePageUrl} title={seo.title} class="mt-8" />
           <nav class="forum-pagination" aria-label="Discussion pages" data-forum-pagination hidden>
             <button type="button" data-page-previous aria-label="Previous page">Previous</button>
             <div class="forum-pagination__pages" data-page-buttons></div>
@@ -99,22 +102,22 @@ const sourceTimestamp = (path?: string) => {
               <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/logo.svg" alt="CS2 cheats hub mark" width="34" height="34" /></span><h2>CS2 cheat talk</h2></div>
               <p>Buyer threads on loaders, ESP clutter, aim curves, and league rules—kept separate from the article library.</p>
               <div class="forum-stats"><span><b>{forumPosts.length}</b> threads</span><span><b>{forumCategories.length}</b> topics</span></div>
-              <a class="forum-join" href="/blog/">Open the article library</a>
+              <a class="forum-join" href="/blog/">CS2 cheat article library (setup & features)</a>
             </div>
           </section>
           <section class="forum-side-card" id="communities">
             <h2 class="forum-side-heading">Communities</h2>
             <ul class="forum-community-list">
               {forumCategories.map((category, index) => (
-                <li><a href={`/forum/?category=${categoryKey(category.name)}`}><span class={`forum-community-avatar tone-${category.tone}`} aria-hidden="true"><Icon name={category.icon} size={15} /></span><span><b>{category.name}</b><small>Browse related Q&amp;A</small></span><Icon name="chevronRight" size={15} /></a></li>
+                <li><a href={`/forum/?category=${categoryKey(category.name)}`}><span class={`forum-community-avatar tone-${category.tone}`} aria-hidden="true"><Icon name={category.icon} size={15} /></span><span><b>{category.name}</b><small>Filter forum by {category.name}</small></span><Icon name="chevronRight" size={15} /></a></li>
               ))}
             </ul>
-            <a class="forum-text-link" href="#communities">Browse all communities <Icon name="arrowRight" size={14} /></a>
+            <a class="forum-text-link" href="#communities">Jump to community filters <Icon name="arrowRight" size={14} /></a>
           </section>
           <section class="forum-side-card forum-rules">
             <h2 class="forum-side-heading">Community guidelines</h2>
             <ol><li>Keep it friendly and constructive</li><li>Stay on topic and add context</li><li>Mark spoilers and sensitive content</li></ol>
-            <a href="#community-guidelines">Read the full guidelines <Icon name="arrowRight" size={14} /></a>
+            <a href="#community-guidelines">Open community guidelines at top <Icon name="arrowRight" size={14} /></a>
           </section>
           <p class="forum-sidebar-foot">About · Guidelines · Privacy · Terms<br />© {new Date().getFullYear()} cs2-cheats.org</p>
         </aside>

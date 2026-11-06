@@ -53,6 +53,10 @@ export interface BlogPost {
   slug: string;
   image: string;
   desc: string;
+  /** 120–155 chars for `<meta name="description">`; defaults to `desc` if omitted */
+  seoDescription?: string;
+  /** Shorter line for share dialogs (optional) */
+  shareTitle?: string;
   date: string;
   readTime: string;
 }

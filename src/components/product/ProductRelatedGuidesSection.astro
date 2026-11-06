@@ -20,7 +20,7 @@ const { posts, productName } = Astro.props;
       <div class="mx-auto max-w-6xl px-5">
         <SectionHeader
           eyebrow="Articles"
-          title={`Learn more about ${productName}`}
+          title={`Guides that pair with ${productName}`}
           desc="Curated articles for setup, tuning, and patch-day checks that match this product."
           titleId="related-articles-heading"
         />
@@ -33,7 +33,7 @@ const { posts, productName } = Astro.props;
 
         <div class="mt-12 flex justify-start lg:justify-center">
           <Button as="a" href={ROUTES.blog} variant="outline" class="rounded-full">
-            Browse all articles
+            Browse every CS2 cheat article
             <Icon name="arrowRight" size={17} />
           </Button>
         </div>

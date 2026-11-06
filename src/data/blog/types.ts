@@ -10,5 +10,7 @@ export type BlogBlock =
 export interface BlogPostFull extends BlogPost {
   featured?: boolean;
   author?: string;
+  /** Optional H1 when it should differ from `title` (SEO: include “cheats” without duplicating title). */
+  pageHeading?: string;
   body: BlogBlock[];
 }

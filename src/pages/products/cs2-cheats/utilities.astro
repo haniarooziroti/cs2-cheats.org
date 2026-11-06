@@ -55,7 +55,7 @@ const utilityUseCases: Record<string, string> = {
       <Breadcrumbs items={breadcrumbs} />
 
       <header class="mt-6 max-w-3xl space-y-3">
-        <h1 class="text-3xl font-bold uppercase md:text-4xl">Compare utilities</h1>
+        <h1 class="text-3xl font-bold uppercase md:text-4xl">CS2 cheat utilities compared</h1>
         <p class="text-lg text-muted-foreground">
           HWID Spoofer, UGC, and Skin Changer solve different problems. Match the tool to your situation before checkout.
         </p>
@@ -77,7 +77,7 @@ const utilityUseCases: Record<string, string> = {
                 <TableCell class="text-muted-foreground">{utilityUseCases[product.slug] ?? product.desc}</TableCell>
                 <TableCell>
                   <a href={productPath(product.slug)} class="text-primary hover:underline">
-                    View {product.category ?? 'details'}
+                    Open {product.title} specs and checkout
                   </a>
                 </TableCell>
               </TableRow>
@@ -109,7 +109,7 @@ const utilityUseCases: Record<string, string> = {
       </ul>
 
       <div class="mt-10">
-        <Button as="a" href={productHub.path} variant="outline">Back to products</Button>
+        <Button as="a" href={productHub.path} variant="outline">Return to CS2 cheat catalog hub</Button>
       </div>
     </div>
   </section>

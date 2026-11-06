@@ -21,15 +21,15 @@ function link(text: string, href: string): string {
   return `<a href="${normalizeInternalPath(href)}">${text}</a>`;
 }
 
-const elite = link('CS2 Elite', productPath('elite'));
-const lite = link('Lite tier (ESP & intel)', ROUTES.products);
-const pro = link('Pro tier (aim + ESP)', ROUTES.products);
-const productsHub = link('CS2 products hub', ROUTES.products);
-const hwid = link('HWID Spoofer', productPath('hwid-spoofer'));
-const ugc = link('UGC appeals', productPath('ugc'));
-const skin = link('Skin preview utility', productPath('unlock-all'));
-const faqPage = link('full FAQ', ROUTES.faq);
-const blog = link('articles', ROUTES.blog);
+const elite = link('Elite full-stack cheat tier page', productPath('elite'));
+const lite = link('Lite ESP-only cheat tier page', productPath('lite'));
+const pro = link('Pro tier with ESP plus aim assist', productPath('pro'));
+const productsHub = link('CS2 cheat catalog & tier hub', ROUTES.products);
+const hwid = link('CS2 HWID spoofer utility page', productPath('hwid-spoofer'));
+const ugc = link('UGC ban-appeal workspace page', productPath('ugc'));
+const skin = link('Skin preview & loadout utility page', productPath('unlock-all'));
+const faqPage = link('Full CS2 cheat FAQ index', ROUTES.faq);
+const blog = link('CS2 setup & tuning article library', ROUTES.blog);
 
 export const siteFaqs: SiteFaqItem[] = [
   {
@@ -177,7 +177,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'safety',
     icon: 'faqVacUpdate',
     q: 'What about Faceit?',
-    a: `The Faceit client adds checks beyond Steam. Read ${link('Faceit constraints article', '/blog/faceit-cs2-cheats-constraints/')} before paying only for that use case.`,
+    a: `The Faceit client adds checks beyond Steam. Read ${link('FACEIT CS2 cheats constraints guide', '/blog/faceit-cs2-cheats-constraints/')} before paying only for that use case.`,
   },
   {
     id: 'vac-update',

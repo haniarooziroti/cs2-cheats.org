@@ -38,10 +38,12 @@ const {
   badge,
   variant,
   buyLabel = 'Buy now',
-  viewLabel = 'View details',
+  viewLabel,
   maxFeatures = 10,
   class: className,
 } = Astro.props;
+
+const detailCta = viewLabel ?? `Open ${title} page`;
 
 const displayFeatures = features.slice(0, maxFeatures);
 
@@ -108,7 +110,7 @@ const statusBadgeIcon = (text: string): IconName => {
       <Icon name="arrowRight" size={17} />
     </Button>
     <Button as="a" href={href} variant="outline" size="sm" class="w-full sm:flex-1">
-      {viewLabel}
+      {detailCta}
       <Icon name="arrowRight" size={17} />
     </Button>
   </CardFooter>

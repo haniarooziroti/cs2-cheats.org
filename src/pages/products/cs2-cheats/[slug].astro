@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getAllProductSlugs, getProductPage, productHub } from '../../../data/products';
-import { pageTitle } from '../../../config/seo';
+import { productPageTitle } from '../../../config/seo';
 import { breadcrumbSchema, productSchema } from '../../../utils/schema';
 import ProductDetail from '../../../components/ProductDetail.astro';
 
@@ -25,8 +25,8 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title={pageTitle(product.title)}
-  description={product.desc}
+  title={productPageTitle(product)}
+  description={product.seoDescription}
   jsonLd={[
     productSchema({
       name: product.title,
