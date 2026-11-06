@@ -115,38 +115,60 @@ export function itemListSchema(items: { name: string; url: string }[]) {
 
 function offerUrl(path: string): string {
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  return canonicalUrl(path);
+  const href = path.startsWith('/') ? path : `/${path}`;
+  return `${SITE_ORIGIN}${href}`;
+}
+
+/** Real checkout offer only — omit unless a numeric price exists in product data. */
+export interface ProductOfferInput {
+  url: string;
+  price: string;
+  priceCurrency: string;
+  priceValidUntil?: string;
+  availability?: string;
+}
+
+function toOfferNode(offer: ProductOfferInput) {
+  return {
+    '@type': 'Offer' as const,
+    url: offerUrl(offer.url),
+    price: offer.price,
+    priceCurrency: offer.priceCurrency,
+    ...(offer.priceValidUntil ? { priceValidUntil: offer.priceValidUntil } : {}),
+    ...(offer.availability ? { availability: offer.availability } : {}),
+  };
 }
 
 export function productSchema(input: {
   name: string;
   description: string;
   url: string;
-  offerUrl: string;
   image?: string;
   sku?: string;
+  /** Present only when `src/data/productPricing.ts` (or similar) has a real price. */
+  offers?: ProductOfferInput | ProductOfferInput[];
 }) {
+  const offerList = input.offers == null ? [] : Array.isArray(input.offers) ? input.offers : [input.offers];
+  const offers =
+    offerList.length === 0
+      ? undefined
+      : offerList.length === 1
+        ? toOfferNode(offerList[0]!)
+        : offerList.map(toOfferNode);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: input.name,
     description: input.description,
+    url: canonicalUrl(input.url),
     sku: input.sku ?? input.url.replace(/\//g, '-'),
     brand: {
       '@type': 'Brand',
       name: 'cs2-cheats.org',
     },
     ...(input.image ? { image: absoluteAssetUrl(input.image) } : {}),
-    offers: {
-      '@type': 'Offer',
-      url: offerUrl(input.offerUrl),
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      seller: {
-        '@type': 'Organization',
-        name: 'cs2-cheats.org',
-      },
-    },
+    ...(offers ? { offers } : {}),
   };
 }
 
@@ -156,15 +178,9 @@ export function softwareApplicationSchema(input: {
   description: string;
   url: string;
   image?: string;
-  offerUrl?: string;
+  offers?: ProductOfferInput | ProductOfferInput[];
 }) {
-  return productSchema({
-    name: input.name,
-    description: input.description,
-    url: input.url,
-    offerUrl: input.offerUrl ?? input.url,
-    image: input.image,
-  });
+  return productSchema(input);
 }
 
 export function articleSchema(input: {

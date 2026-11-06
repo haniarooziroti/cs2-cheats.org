@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getAllProductSlugs, getProductPage, productHub } from '../../../data/products';
 import { productPageTitle, resolvePageSeo } from '../../../config/seo';
 import { breadcrumbSchema, productSchema } from '../../../utils/schema';
+import { checkoutUrlWithPlan, getProductPlans } from '../../../data/productPricing';
 import ProductDetail from '../../../components/ProductDetail.astro';
 
 export function getStaticPaths() {
@@ -34,9 +35,13 @@ const breadcrumbs = [
       name: product.title,
       description: product.desc,
       url: pagePath,
-      offerUrl: product.buyUrl,
       image: product.images[0]?.src,
       sku: product.slug,
+      offers: getProductPlans(product.slug).map((plan) => ({
+        url: checkoutUrlWithPlan(product.buyUrl, plan.id),
+        price: String(plan.priceUsd),
+        priceCurrency: 'USD',
+      })),
     }),
     breadcrumbSchema(breadcrumbs),
   ]}
