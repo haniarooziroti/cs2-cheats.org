@@ -1,7 +1,37 @@
 export type { BlogBlock, BlogPostFull } from './blog/types';
-export { blogPosts } from './blog/posts';
+import type { BlogBlock, BlogPostFull } from './blog/types';
+import { blogPosts as authoredPosts } from './blog/posts';
 
-import { blogPosts } from './blog/posts';
+export function countBlogWords(body: BlogBlock[]): number {
+  const chunks: string[] = [];
+  for (const block of body) {
+    if (block.type === 'p' || block.type === 'h2' || block.type === 'h3') {
+      chunks.push(block.text);
+    } else if (block.type === 'ul' || block.type === 'ol') {
+      chunks.push(...block.items);
+    } else if (block.type === 'table') {
+      chunks.push(...block.headers, ...block.rows.flat());
+    } else if (block.type === 'cta') {
+      chunks.push(block.title, block.text);
+    }
+  }
+  return chunks
+    .join(' ')
+    .replace(/\[[^\]]+\]\([^)]+\)/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
+/** Visible “N min read” label at ~200 words per minute. */
+export function formatBlogReadTime(body: BlogBlock[]): string {
+  const minutes = Math.max(1, Math.round(countBlogWords(body) / 200));
+  return `${minutes} min read`;
+}
+
+export const blogPosts: BlogPostFull[] = authoredPosts.map((post) => ({
+  ...post,
+  readTime: formatBlogReadTime(post.body),
+}));
 
 export function getBlogPost(slug: string) {
   return blogPosts.find((p) => p.slug === slug);

@@ -311,7 +311,7 @@ export const en: Translations = {
         image: SEO_MEDIA.sunnyMiddleEasternStreet,
         desc: 'Download, verify, and first-launch steps for Counter-Strike 2 cheats without cluttering your overlay.',
         date: 'Oct 28, 2025',
-        readTime: '7 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Features',
@@ -320,7 +320,7 @@ export const en: Translations = {
         image: SEO_MEDIA.underpassSmokeGraffiti,
         desc: 'Box thickness, glow, and teammate colors for Mirage and Inferno retakes.',
         date: 'Oct 25, 2025',
-        readTime: '8 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Features',
@@ -329,7 +329,7 @@ export const en: Translations = {
         image: SEO_MEDIA.mediterraneanAlleyRifle,
         desc: 'FOV, bone priority, and delay knobs that keep aim assist subtle in Premier.',
         date: 'Oct 22, 2025',
-        readTime: '9 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Faceit',
@@ -338,7 +338,7 @@ export const en: Translations = {
         image: SEO_MEDIA.desertCorridorEsp,
         desc: 'What the Faceit client adds on top of Steam VAC and how operators adjust modules.',
         date: 'Oct 19, 2025',
-        readTime: '10 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Setup',
@@ -347,7 +347,7 @@ export const en: Translations = {
         image: SEO_MEDIA.bananaAlleyBSite,
         desc: 'Layer skeletons under glow, push bomb intel to corners, keep center screen clean.',
         date: 'Oct 15, 2025',
-        readTime: '6 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Features',
@@ -356,7 +356,7 @@ export const en: Translations = {
         image: SEO_MEDIA.dustyCourtyardAk,
         desc: 'Delay vs burst modes for close-angle duels on Ancient and Anubis.',
         date: 'Oct 12, 2025',
-        readTime: '7 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Troubleshooting',
@@ -365,7 +365,7 @@ export const en: Translations = {
         image: SEO_MEDIA.tacticalSmokeOverpass,
         desc: 'Verify files through Steam, restart if errors persist, and pause cheats until the banner clears.',
         date: 'Oct 8, 2025',
-        readTime: '6 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Setup',
@@ -374,7 +374,7 @@ export const en: Translations = {
         image: SEO_MEDIA_LEGACY.cs1,
         desc: 'Cold boot checklist when hardware is tied to an old restriction.',
         date: 'Oct 4, 2025',
-        readTime: '8 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Features',
@@ -383,7 +383,7 @@ export const en: Translations = {
         image: SEO_MEDIA.mediterraneanVillageBanana,
         desc: 'When to lean on radar dots and when headphones should stay primary.',
         date: 'Sep 30, 2025',
-        readTime: '7 min read',
+        readTime: '5 min read',
       },
       {
         tag: 'Setup',
@@ -392,7 +392,7 @@ export const en: Translations = {
         image: SEO_MEDIA_LEGACY.css11,
         desc: 'OBS scene testing so viewers see clean gameplay while you keep intel.',
         date: 'Sep 26, 2025',
-        readTime: '6 min read',
+        readTime: '5 min read',
       },
     ],
   },
