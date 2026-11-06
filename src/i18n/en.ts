@@ -492,7 +492,7 @@ export const en: Translations = {
         icon: 'users',
         title: 'Before checkout',
         desc: 'Questions about modules or tiers.',
-        linkLabel: 'Affiliate store checkout',
+        linkLabel: 'Checkout',
         href: PRIMARY_CHECKOUT_PATH,
       },
       {
@@ -669,10 +669,10 @@ export const en: Translations = {
   },
   ui: {
     skipLink: 'Skip to main content',
-    browseCheats: 'Affiliate Zadeyo checkout',
-    browseCheatsMobile: 'Affiliate Zadeyo checkout',
+    browseCheats: 'Checkout',
+    browseCheatsMobile: 'Checkout',
     homeAria: 'cs2-cheats.org home',
-    checkoutAria: 'Open the external affiliate store checkout',
+    checkoutAria: 'Open store checkout',
     discordAria: 'Open the affiliate store in a new tab',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',

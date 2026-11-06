@@ -37,13 +37,13 @@ const {
   icon = 'package',
   badge,
   variant,
-  buyLabel = 'Buy now',
+  buyLabel = 'Checkout',
   viewLabel,
   maxFeatures = 10,
   class: className,
 } = Astro.props;
 
-const detailCta = viewLabel ?? `Open ${title} page`;
+const detailCta = viewLabel ?? `Open ${title}`;
 
 const displayFeatures = features.slice(0, maxFeatures);
 
@@ -104,14 +104,26 @@ const statusBadgeIcon = (text: string): IconName => {
       {more > 0 && <li class="text-xs text-muted-foreground">+{more} more features</li>}
     </ul>
   </CardContent>
-  <CardFooter class="flex flex-col gap-2 sm:flex-row">
-    <Button as="a" href={buyUrl} variant="primary" size="sm" class="w-full sm:flex-1">
+  <CardFooter class="flex min-w-0 flex-col gap-2">
+    <Button
+      as="a"
+      href={buyUrl}
+      variant="primary"
+      size="sm"
+      class="min-w-0 w-full justify-center gap-2 whitespace-normal text-center sm:whitespace-nowrap"
+    >
       {buyLabel}
-      <Icon name="arrowRight" size={17} />
+      <Icon name="arrowRight" size={17} class="shrink-0" />
     </Button>
-    <Button as="a" href={href} variant="outline" size="sm" class="w-full sm:flex-1">
+    <Button
+      as="a"
+      href={href}
+      variant="outline"
+      size="sm"
+      class="min-w-0 w-full justify-center gap-2 whitespace-normal text-center sm:whitespace-nowrap"
+    >
       {detailCta}
-      <Icon name="arrowRight" size={17} />
+      <Icon name="arrowRight" size={17} class="shrink-0" />
     </Button>
   </CardFooter>
 </Card>
