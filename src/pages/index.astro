@@ -21,7 +21,6 @@ const shareUrl = canonicalUrl('/');
 <BaseLayout
   title={seo.title}
   description={seo.description}
-  keywords={seo.keywords}
   jsonLd={[websiteSchema(), organizationSchema(), faqPageSchema(homeFaqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') })))]}
 >
   <link

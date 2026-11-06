@@ -6,8 +6,6 @@
 export interface PageSeoEntry {
   title: string;
   description: string;
-  /** Optional comma-separated keywords for high-traffic templates. */
-  keywords?: string;
 }
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
@@ -15,28 +13,21 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'CS2 cheats: ESP, aim, radar overview | cs2-cheats.org',
     description:
       'CS2 cheats overview: ESP, aim, radar, and wallhack-style intel for Steam. Read modules here, then open the catalog for pricing and subscription plans.',
-    keywords:
-      'cs2 cheats, counter strike 2 cheats, cs2 esp, cs2 aimbot, cs2 wallhack, cs2 radar hack, cs2 triggerbot, cs2 hack, steam cs2 cheats',
   },
   '/products/cs2-cheats/': {
     title: 'Buy CS2 cheats: pricing and plans | cs2-cheats.org',
     description:
       'Buy CS2 cheats: compare pricing, subscription plans, HWID tools, UGC, and Cloud DMA notes, then open affiliate checkout when you are ready to pay.',
-    keywords:
-      'buy cs2 cheats, cs2 cheat pricing, cs2 cheat subscription, cloud dma cs2, hwid spoofer cs2, cs2 cheat catalog',
   },
   '/products/cs2-cheats/cs2-store/': {
     title: 'CS2 cheat modules: ESP, aim, checkout | cs2-cheats.org',
     description:
       'CS2 cheat modules: ESP, aim, triggers, Faceit notes. Read scope on this page, then open affiliate checkout for store pricing and keys.',
-    keywords:
-      'cs2 cheat modules, cs2 esp, cs2 aim assist, cs2 wallhack, cs2 triggerbot, faceit cs2 cheat, zadeyo cs2',
   },
   '/products/cs2-cheats/cloud-dma/': {
     title: 'CS2 Cloud DMA add-on: hardware notes | cs2-cheats.org',
     description:
       'Cloud DMA basics for CS2: second PC, firmware, cabling expectations. Read risks here before you add hardware on the linked affiliate store checkout.',
-    keywords: 'cloud dma cs2, dma cheat cs2, external dma cs2, cs2 dma hardware, cs2 second pc dma',
   },
   '/products/cs2-cheats/utilities/': {
     title: 'CS2 utilities: HWID spoofer and UGC | cs2-cheats.org',

@@ -50,7 +50,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'Editorial CS2 cheat loader first-boot notes: Defender exclusion paths, restore-from-quarantine order, and what to send if the DLL still vanishes.',
     pageHeading: 'CS2 cheats loader thread: antivirus exclusions on first boot',
-    seoTitle: 'CS2 loader first boot: antivirus exclusions | cs2-cheats.org',
+    seoTitle: 'CS2 loader: antivirus exclusions first boot | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     flair: 'Setup',

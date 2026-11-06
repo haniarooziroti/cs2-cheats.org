@@ -3,6 +3,8 @@ import { blogPosts } from '../data/blog';
 import { parseBlogDate } from '../utils/schema';
 
 const buildDate = new Date().toISOString();
+/** Stable lastmod for static hub/legal pages (blog keeps real post dates). */
+const STATIC_HUB_LASTMOD = '2025-11-01';
 
 const blogLastmod = new Map(
   blogPosts.map((post) => [`/blog/${post.slug}/`, parseBlogDate(post.date)] as const),
@@ -33,15 +35,15 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
     return undefined;
   }
 
-  item.lastmod = buildDate;
-
   if (path === '/') {
+    item.lastmod = STATIC_HUB_LASTMOD;
     item.priority = 1;
     item.changefreq = 'weekly';
     return item;
   }
 
   if (path === '/blog/') {
+    item.lastmod = STATIC_HUB_LASTMOD;
     item.priority = 0.9;
     item.changefreq = 'weekly';
     return item;
@@ -55,6 +57,7 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
   }
 
   if (path.startsWith('/products/')) {
+    item.lastmod = STATIC_HUB_LASTMOD;
     item.priority = 0.8;
     item.changefreq = 'weekly';
     return item;
@@ -67,11 +70,13 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
     path === '/terms/' ||
     path === '/faq/'
   ) {
+    item.lastmod = STATIC_HUB_LASTMOD;
     item.priority = 0.5;
     item.changefreq = 'yearly';
     return item;
   }
 
+  item.lastmod = STATIC_HUB_LASTMOD;
   item.priority = 0.6;
   item.changefreq = 'monthly';
   return item;

@@ -75,7 +75,8 @@ const sharePageUrl = canonicalUrl(postPath);
   articleModifiedTime={published}
   jsonLd={[
     articleSchema({
-      name: post.title,
+      name: post.seoTitle ?? pageTitle(post.title),
+      headline: pageHeading,
       description: post.desc,
       url: postPath,
       image: post.image,

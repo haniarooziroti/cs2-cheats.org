@@ -1,3 +1,8 @@
+# Canonical host and HTTPS (apex and legacy www).
+http://cs2-cheats.org/* https://cs2-cheats.org/:splat 301
+http://www.cs2-cheats.org/* https://cs2-cheats.org/:splat 301
+https://www.cs2-cheats.org/* https://cs2-cheats.org/:splat 301
+
 # Affiliate checkout — 302 hop to Zadeyo (must match src/config/checkout-redirects.mjs).
 /go/cs2 https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 /go/cs2/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302

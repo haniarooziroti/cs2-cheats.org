@@ -19,8 +19,6 @@ import JsonLd from '../components/JsonLd.astro';
 interface Props {
   title?: string;
   description?: string;
-  /** Comma-separated keywords for `<meta name="keywords">` (limited SEO value; kept for legacy crawlers). */
-  keywords?: string;
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: 'website' | 'article';
@@ -35,7 +33,6 @@ interface Props {
 const {
   title = t.site.title,
   description = t.site.description,
-  keywords,
   ogImage = DEFAULT_OG_IMAGE,
   ogImageAlt = title,
   ogType = 'website',
@@ -72,7 +69,6 @@ const robotsContent =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {keywords && <meta name="keywords" content={keywords} />}
     <meta name="author" content={t.site.name} />
     <meta name="robots" content={robotsContent} />
     <meta name="googlebot" content={robotsContent} />

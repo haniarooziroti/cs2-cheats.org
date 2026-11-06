@@ -1,5 +1,6 @@
 import type { FaqItem } from '../i18n/types';
 import { SITE_ORIGIN, absoluteAssetUrl, canonicalUrl, getOrganizationSameAs } from '../config/seo';
+import { DISCORD_URL } from '../config/site';
 
 export interface BreadcrumbItem {
   name: string;
@@ -32,7 +33,9 @@ export function websiteSchema() {
 }
 
 export function organizationSchema() {
-  const sameAs = getOrganizationSameAs();
+  const envSameAs = getOrganizationSameAs();
+  const fallback = DISCORD_URL ? [DISCORD_URL] : [];
+  const sameAs = [...new Set([...envSameAs, ...fallback])];
 
   return {
     '@context': 'https://schema.org',
@@ -143,18 +146,21 @@ export function productSchema(input: {
   name: string;
   description: string;
   url: string;
+  /** Product detail page path for Offer.url (canonical product URL). Checkout CTAs stay on /go/ in the UI. */
+  offerPagePath?: string;
   image?: string;
   sku?: string;
   /** Present only when `src/data/productPricing.ts` (or similar) has a real price. */
   offers?: ProductOfferInput | ProductOfferInput[];
 }) {
   const offerList = input.offers == null ? [] : Array.isArray(input.offers) ? input.offers : [input.offers];
+  const offerPage = input.offerPagePath ?? input.url;
   const offers =
     offerList.length === 0
       ? undefined
       : offerList.length === 1
-        ? toOfferNode(offerList[0]!)
-        : offerList.map(toOfferNode);
+        ? toOfferNode({ ...offerList[0]!, url: offerPage })
+        : offerList.map((o) => toOfferNode({ ...o, url: offerPage }));
 
   return {
     '@context': 'https://schema.org',
@@ -184,17 +190,22 @@ export function softwareApplicationSchema(input: {
 }
 
 export function articleSchema(input: {
+  /** `<title>` / SEO title — kept in sync with the visible document title. */
   name: string;
+  /** Primary on-page heading — used for JSON-LD `headline` when provided. */
+  headline?: string;
   description: string;
   url: string;
   image: string;
   datePublished: string;
   dateModified?: string;
 }) {
+  const headline = input.headline?.trim() || input.name;
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    headline: input.name,
+    name: input.name,
+    headline,
     description: input.description,
     url: canonicalUrl(input.url),
     image: absoluteAssetUrl(input.image),
