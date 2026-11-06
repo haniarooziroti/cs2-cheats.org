@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { resolveDistRoot } from './dist-root.mjs';
 
 const root = process.cwd();
-const dist = path.join(root, 'dist');
+const dist = resolveDistRoot(root);
 
 const siteOrigin = (
   process.env.PUBLIC_SITE_ORIGIN ? String(process.env.PUBLIC_SITE_ORIGIN).trim().replace(/\/$/, '') : ''
@@ -10,7 +11,8 @@ const siteOrigin = (
 const source = path.join(dist, 'sitemap-0.xml');
 
 if (!fs.existsSync(source)) {
-  console.error('finalize-sitemap: dist/sitemap-0.xml not found — run astro build first.');
+  const rel = path.relative(root, source) || 'sitemap-0.xml';
+  console.error(`finalize-sitemap: ${rel} not found — run astro build first.`);
   process.exit(1);
 }
 
@@ -64,5 +66,6 @@ Sitemap: ${siteOrigin}/sitemap.xml
 `;
 fs.writeFileSync(path.join(dist, 'robots.txt'), robotsTxt, 'utf8');
 
-console.log(`Sitemap finalized: ${urlCount} URLs → dist/sitemap.xml`);
+const outRel = path.relative(root, path.join(dist, 'sitemap.xml')) || 'dist/sitemap.xml';
+console.log(`Sitemap finalized: ${urlCount} URLs → ${outRel}`);
 console.log(`robots.txt sitemap line → ${siteOrigin}/sitemap.xml`);

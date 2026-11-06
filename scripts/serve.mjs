@@ -4,9 +4,10 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { resolvePathRedirect } from './redirects.mjs';
 import { resolveCheckoutPathRedirect } from '../src/config/checkout-redirects.mjs';
+import { resolveDistRoot } from './dist-root.mjs';
 
 const CANONICAL_HOST = 'cs2-cheats.org';
-const distDir = path.resolve('dist');
+const distDir = resolveDistRoot();
 const port = Number(process.env.PORT) || 3000;
 
 const MIME = {
