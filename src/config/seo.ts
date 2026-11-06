@@ -70,36 +70,34 @@ export function titleBrandSuffix(): string {
   return ` | ${t.site.domain}`;
 }
 
-/** Article / thread titles: keyword + brand, trimmed to 50–60 characters total. */
+/** Article / thread titles: complete 50–60 character phrase. Never cut mid-sentence. */
 export function pageTitle(keyword: string, suffixSite = t.site.domain): string {
   const suffix = ` | ${suffixSite}`;
-  const maxKeyword = TITLE_MAX - suffix.length;
-  let k = keyword.replace(/\s+/g, ' ').trim();
-  if (k.length > maxKeyword) {
-    k = k.slice(0, maxKeyword);
-    const lastSpace = k.lastIndexOf(' ');
-    if (lastSpace > 12) k = k.slice(0, lastSpace);
-    k = k.trim();
-  }
-  let out = `${k}${suffix}`;
-  if (out.length < TITLE_MIN) {
-    const pad = ' — CS2 cheats';
-    k = `${k}${pad}`.slice(0, maxKeyword).trim();
-    out = `${k}${suffix}`;
-    if (out.length > TITLE_MAX) out = out.slice(0, TITLE_MAX);
-  }
-  return out;
+  const k = keyword.replace(/\s+/g, ' ').trim();
+  const withBrand = `${k}${suffix}`;
+  if (withBrand.length >= TITLE_MIN && withBrand.length <= TITLE_MAX) return withBrand;
+  if (k.length >= TITLE_MIN && k.length <= TITLE_MAX) return k;
+  return withBrand.length < TITLE_MIN ? withBrand : k;
 }
 
 /** Product detail `<title>` — 50–60 chars with main cheat page vs utility phrasing. */
 export function productPageTitle(product: Pick<ProductPage, 'title' | 'kind' | 'slug'>): string {
   if (product.slug === 'cs2-store') {
-    return pageTitle('CS2 cheats: ESP, aim modules & checkout');
+    return pageTitle('CS2 cheat modules: ESP, aim, checkout');
+  }
+  if (product.slug === 'cloud-dma') {
+    return pageTitle('CS2 Cloud DMA add-on: hardware notes');
+  }
+  if (product.slug === 'hwid-spoofer') {
+    return pageTitle('CS2 HWID spoofer: utility overview');
+  }
+  if (product.slug === 'ugc') {
+    return pageTitle('CS2 UGC appeals: paperwork overview');
   }
   const phrase =
     product.kind === 'tier'
       ? `${product.title}: CS2 cheat modules`
-      : `${product.title}: CS2 cheat utility overview`;
+      : `${product.title}: CS2 cheat utility`;
   return pageTitle(phrase);
 }
 

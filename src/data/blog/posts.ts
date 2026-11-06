@@ -15,6 +15,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'How to install CS2 cheats from the portal',
     pageHeading: 'Counter-Strike 2 cheats: install from the portal',
     slug: 'how-to-install-cs2-cheats',
+    seoTitle: 'How to install CS2 cheats from the portal | cs2-cheats.org',
     image: SEO_MEDIA.sunnyMiddleEasternStreet,
     desc: 'Portal download, SmartScreen, and first-launch order for Counter-Strike 2 cheats on Windows.',
     seoDescription:
@@ -58,6 +59,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'CS2 ESP settings that stay readable in clutches',
     pageHeading: 'CS2 cheats ESP settings for readable clutches',
     slug: 'cs2-esp-settings-clutches',
+    seoTitle: 'CS2 ESP settings for readable clutches | cs2-cheats.org',
     image: SEO_MEDIA.underpassSmokeGraffiti,
     desc: 'Thickness, glow, and teammate colors for Counter-Strike 2 retakes without blocking your crosshair.',
     seoDescription:
@@ -94,6 +96,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'Aimbot smoothing for CS2 ranked queues',
     pageHeading: 'CS2 cheats: aim smoothing for ranked aimbot use',
     slug: 'cs2-aimbot-smoothing-ranked',
+    seoTitle: 'Aimbot smoothing for CS2 ranked queues | cs2-cheats.org',
     image: SEO_MEDIA.mediterraneanAlleyRifle,
     desc: 'FOV, bone priority, and smoothing curves that still make sense in Premier demos.',
     seoDescription:
@@ -123,6 +126,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'Faceit CS2 cheats: client constraints to know',
     pageHeading: 'Counter-Strike 2 cheats on Faceit: client constraints',
     slug: 'faceit-cs2-cheats-constraints',
+    seoTitle: 'Faceit CS2 cheats: client constraints | cs2-cheats.org',
     image: SEO_MEDIA.desertCorridorEsp,
     desc: 'What changes when the Faceit client wraps Counter-Strike 2 and why module listings still mention Faceit.',
     seoDescription:
@@ -155,6 +159,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'Wallhack-style vision without blocking your crosshair',
     pageHeading: 'CS2 cheats wallhack view: keep your crosshair clear',
     slug: 'cs2-wallhack-crosshair-layout',
+    seoTitle: 'CS2 wallhack layout: keep crosshair clear | cs2-cheats.org',
     image: SEO_MEDIA.bananaAlleyBSite,
     desc: 'Layer skeletons, glow, and bomb labels so Counter-Strike 2 wallhack reads stay peripheral.',
     seoDescription:
@@ -179,6 +184,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'Triggerbot timing for CS2 duel peeks',
     pageHeading: 'CS2 cheat trigger timing for duel peeks',
     slug: 'cs2-triggerbot-peek-timing',
+    seoTitle: 'Triggerbot timing for CS2 duel peeks | cs2-cheats.org',
     image: SEO_MEDIA.dustyCourtyardAk,
     desc: 'Delay and burst ideas for Ancient door duels and tight prefires—paired with aim smoothing.',
     seoDescription:
@@ -203,6 +209,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'VAC error messages after a CS2 patch',
     pageHeading: 'CS2 cheats after a patch: fixing VAC errors',
     slug: 'cs2-vac-error-after-patch',
+    seoTitle: 'VAC error messages after a CS2 patch | cs2-cheats.org',
     image: SEO_MEDIA.tacticalSmokeOverpass,
     desc: 'Verify game files, restart Steam, and pause cheats until the banner matches Valve’s build.',
     seoDescription:
@@ -237,6 +244,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'HWID spoofing before a new CS2 account',
     pageHeading: 'CS2 cheats & HWID spoofing before a new account',
     slug: 'hwid-spoof-new-cs2-account',
+    seoTitle: 'HWID spoofing before a new CS2 account | cs2-cheats.org',
     image: SEO_MEDIA_LEGACY.cs1,
     desc: 'Cold boot checklist when Steam thinks your PC is the problem, not just the account.',
     seoDescription:
@@ -261,6 +269,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'CS2 radar hack overlays vs audio',
     pageHeading: 'CS2 cheat radar overlays versus headphone audio',
     slug: 'cs2-radar-hack-audio',
+    seoTitle: 'CS2 radar hack overlays vs audio cues | cs2-cheats.org',
     image: SEO_MEDIA.mediterraneanVillageBanana,
     desc: 'When reinforced radar dots help rotations—and when headphones should stay primary.',
     seoDescription:
@@ -285,6 +294,7 @@ export const blogPosts: BlogPostFull[] = [
     title: 'Stream proof setup for CS2 overlays',
     pageHeading: 'CS2 cheat overlays with stream proof capture setup',
     slug: 'cs2-stream-proof-overlays',
+    seoTitle: 'Stream proof setup for CS2 overlays | cs2-cheats.org',
     image: SEO_MEDIA_LEGACY.css11,
     desc: 'OBS scene stacking so viewers see clean Counter-Strike 2 footage while you keep overlays local.',
     seoDescription:

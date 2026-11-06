@@ -18,6 +18,8 @@ export interface ForumPost {
   seoDescription: string;
   /** H1: include “cheats”, not identical to thread title. */
   pageHeading: string;
+  /** Complete 50–60 character `<title>`. */
+  seoTitle: string;
   /** Social share title (passed to ShareButtons). */
   shareTitle?: string;
   author: string;
@@ -44,6 +46,7 @@ function thread(input: {
   excerpt: string;
   seoDescription: string;
   pageHeading: string;
+  seoTitle: string;
   shareTitle?: string;
   category: string;
   categoryTone: ForumPost['categoryTone'];
@@ -71,6 +74,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'Forum thread on CS2 cheat aimbot FOV for Premier—buyers compare presets, demo reviews, and what looks blatant before you pay for a tier.',
     pageHeading: 'CS2 cheats forum: aimbot FOV without looking blatant',
+    seoTitle: 'CS2 aimbot FOV without looking blatant | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
     flair: 'Purchase intent',
@@ -119,6 +123,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'Q&A on first CS2 cheat loader boot—Defender exclusions, safe folder paths, and what to avoid so antivirus does not eat your DLL on Windows.',
     pageHeading: 'CS2 cheats loader thread: antivirus exclusions on first boot',
+    seoTitle: 'CS2 loader first boot: antivirus exclusions | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     flair: 'Setup',
@@ -148,6 +153,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'Debate on CS2 cheats with Faceit client risk vs Steam—threads weigh cost, ESP limits, and when league queue is worth the extra client.',
     pageHeading: 'CS2 cheats on Faceit: is the extra client worth paying for?',
+    seoTitle: 'Faceit CS2 extra client: worth paying for | cs2-cheats.org',
     category: 'Faceit & leagues',
     categoryTone: 'green',
     flair: 'Faceit',
@@ -173,6 +179,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'CS2 cheat ESP clutter on execute maps—buyers share box-only presets, glow tweaks, and layouts so overlays stay readable mid-round on Mirage-style hits.',
     pageHeading: 'CS2 cheats ESP clutter: readable overlays on execute maps',
+    seoTitle: 'CS2 ESP clutter on execute-heavy maps | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 141,
@@ -195,6 +202,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'CS2 cheat trigger delay for pistol duels—posts compare millisecond ranges, ping scaling, and when to disable trigger for calmer, more manual play.',
     pageHeading: 'CS2 cheats forum: trigger delay settings for pistol duels',
+    seoTitle: 'CS2 trigger delay for pistol duels | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
     upvotes: 96,
@@ -218,6 +226,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'After-patch VAC errors with CS2 cheats—stories on verify, reboot timing, and when to pause injections until Steam clears the banner safely.',
     pageHeading: 'CS2 cheats after patches: fixing intermittent VAC pop-ups',
+    seoTitle: 'CS2 VAC pop-ups after a game patch | cs2-cheats.org',
     category: 'Patch & VAC',
     categoryTone: 'orange',
     upvotes: 88,
@@ -240,6 +249,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'HWID spoof order for CS2 buyers—restore vs driver wipe, cold reboot tips, and laptop BIOS caveats before you bind a new Steam account.',
     pageHeading: 'CS2 cheats HWID spoof thread: restore point vs driver order',
+    seoTitle: 'CS2 HWID spoof order: restore vs wipe | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 74,
@@ -262,6 +272,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'CS2 cheat radar vs audio—players debate minimap assist vs headset-first habits and how to avoid staring at overlays on fast executes.',
     pageHeading: 'CS2 cheats discussion: radar assist vs headphone-first play',
+    seoTitle: 'CS2 radar assist vs headphone audio | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
     upvotes: 63,
@@ -284,6 +295,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'Stream proof CS2 overlays leaking in OBS—nested scenes and browser sources with fixes from buyers who reproduced capture slips on stream.',
     pageHeading: 'CS2 cheats stream proof thread: OBS and capture leaks',
+    seoTitle: 'CS2 stream proof leaks in OBS capture | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 112,
@@ -307,6 +319,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'CS2 cheat Elite wait times—buyers share real approval hours, patch-week queues, and when support banners spike after checkout.',
     pageHeading: 'CS2 cheats forum: Elite tier slot and approval wait times',
+    seoTitle: 'CS2 Elite slot wait after checkout | cs2-cheats.org',
     category: 'General',
     categoryTone: 'purple',
     flair: 'Commercial',
@@ -328,6 +341,7 @@ export const forumPosts: ForumPost[] = [
     seoDescription:
       'Colorblind CS2 cheat ESP palettes—cyan and mustard presets, Inferno contrast tips, and mod ideas when stock red and green enemy colors blend.',
     pageHeading: 'CS2 cheats ESP colors for colorblind-readable overlays',
+    seoTitle: 'CS2 ESP colors for colorblind modes | cs2-cheats.org',
     category: 'Setup & loaders',
     categoryTone: 'blue',
     upvotes: 47,

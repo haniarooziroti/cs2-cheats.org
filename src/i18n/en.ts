@@ -9,10 +9,10 @@ export const en: Translations = {
   site: {
     name: 'CS2 cheats',
     domain: 'cs2-cheats.org',
-    title: 'CS2 Cheats: ESP, Aim & Wallhack | cs2-cheats.org',
+    title: 'CS2 cheats: ESP, aim, radar overview | cs2-cheats.org',
     description:
-      'CS2 cheats for Steam: ESP, aim, wallhack overlays, radar cues for Premier. Compare modules on-site, then follow the store link for paid cheat access.',
-    discord: PRIMARY_CHECKOUT_PATH,
+      'CS2 cheats overview: ESP, aim, radar, and wallhack-style intel for Steam. Read modules here, then open the catalog for pricing and subscription plans.',
+    discord: '',
     brandMarkAlt: 'cs2-cheats.org',
   },
   nav: [
@@ -25,19 +25,19 @@ export const en: Translations = {
   hero: {
     status: 'Counter-Strike 2 — loader online',
     eyebrow: '',
-    titleLine1: 'CS2',
-    titleLine2: 'CHEATS',
+    titleLine1: 'CS2 cheats:',
+    titleLine2: 'ESP, aim, radar overview',
     subtitle:
       'CS2 ESP, aim tuning, wallhack-style intel, radar hack hints, and trigger timing for Steam matches—Premier and Competitive presets included. See modules here; paid subscription terms are on the store when you buy CS2 cheats.',
-    ctaPrimary: 'See CS2 cheat modules',
+    ctaPrimary: 'See CS2 cheat pricing and plans',
     ctaDiscord: 'Join Discord',
     modesLabel: 'CS2 modes',
     modes: ['Premier', 'Competitive', 'Wingman', 'Deathmatch'],
     metrics: [
-      { label: 'Reviews', strong: '100+' },
+      { label: 'Guides', strong: 'Articles' },
       { label: 'Patch focus', strong: 'CS2' },
       { label: 'Platform', strong: 'Win64' },
-      { label: 'Support', strong: '24/7' },
+      { label: 'Help', strong: 'FAQ' },
     ],
   },
   features: {
@@ -148,14 +148,14 @@ export const en: Translations = {
         desc: 'Target window after disruptive CS2 patches—check status before queue.',
       },
       {
-        value: '24/7',
-        title: 'Staff coverage',
-        desc: 'Round-the-clock chat for loader errors and checkout handoffs.',
+        value: 'FAQ',
+        title: 'On-site help',
+        desc: 'Loader and checkout questions start on the FAQ and support pages on this site.',
       },
       {
-        value: '100+',
-        title: 'Published reviews',
-        desc: 'Operators who left feedback after purchase—mixed ratings, mirrored in forums.',
+        value: '10',
+        title: 'Setup articles',
+        desc: 'Guides on ESP, aim, loaders, and patches published on this site.',
       },
     ],
   },

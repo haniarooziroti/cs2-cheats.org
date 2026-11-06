@@ -24,7 +24,7 @@ const relatedPosts = [
 ].slice(0, 3);
 ---
 
-<BaseLayout title={pageTitle(post.title)} description={post.seoDescription} jsonLd={[
+<BaseLayout title={post.seoTitle ?? pageTitle(post.title)} description={post.seoDescription} jsonLd={[
   discussionForumPostingSchema({ name: post.title, text: post.body.join('\n\n'), url: path, author: post.author, comments: post.commentsCount }),
   breadcrumbSchema(breadcrumbs),
 ]}>

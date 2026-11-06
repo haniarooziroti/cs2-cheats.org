@@ -66,6 +66,8 @@ export interface BlogPost {
   shareTitle?: string;
   date: string;
   readTime: string;
+  /** Complete 50–60 character `<title>` when the post title plus brand would truncate. */
+  seoTitle?: string;
 }
 
 export interface FaqItem {

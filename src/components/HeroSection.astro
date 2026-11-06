@@ -1,7 +1,5 @@
 ---
 import { t } from '../i18n';
-import { DISCORD_INVITE_URL } from '../config/discord';
-import { PRIMARY_CHECKOUT_PATH } from '../config/checkout';
 import { ROUTES } from '../utils/path';
 import { heroSlides } from '../data/products';
 import { compatibilityIcons, heroStatIcons, heroStatusPills } from '../data/sectionIcons';
@@ -21,9 +19,6 @@ const heroMarqueePills = [
   })),
 ];
 
-const discordHref = DISCORD_INVITE_URL || PRIMARY_CHECKOUT_PATH;
-const discordRel = DISCORD_INVITE_URL ? 'noopener noreferrer' : undefined;
-const discordTarget = DISCORD_INVITE_URL ? '_blank' : undefined;
 ---
 
 <section
@@ -48,25 +43,12 @@ const discordTarget = DISCORD_INVITE_URL ? '_blank' : undefined;
           <Button
             as="a"
             href={ROUTES.products}
-            data-scroll-target="products"
             variant="primary"
             size="lg"
             class="shrink-0 rounded-xl text-sm sm:text-base"
           >
             {h.ctaPrimary}
             <Icon name="arrowRight" size={18} />
-          </Button>
-          <Button
-            as="a"
-            href={discordHref}
-            target={discordTarget}
-            rel={discordRel}
-            variant="secondary"
-            size="lg"
-            class="shrink-0 rounded-xl text-sm sm:text-base"
-          >
-            <Icon name="messageCircle" size={18} />
-            {h.ctaDiscord}
           </Button>
         </div>
       </div>

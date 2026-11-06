@@ -50,7 +50,7 @@ export const heroStatusPills: { icon: IconName; label: string }[] = [
   { icon: 'noRecoil', label: 'Recoil assist' },
   { icon: 'streamProof', label: 'Capture-aware' },
   { icon: 'skeletonEsp', label: 'Skeleton ESP' },
-  { icon: 'support247', label: '24/7 support' },
+  { icon: 'support247', label: 'FAQ support' },
   { icon: 'instantDelivery', label: 'Fast delivery' },
   { icon: 'triggerBot', label: 'Trigger assist' },
   { icon: 'boneSelect', label: 'Bone select' },

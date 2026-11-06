@@ -67,7 +67,7 @@ const sharePageUrl = canonicalUrl(postPath);
 ---
 
 <BaseLayout
-  title={pageTitle(post.title)}
+  title={post.seoTitle ?? pageTitle(post.title)}
   description={metaDesc}
   ogType="article"
   ogImageAlt={post.title}
