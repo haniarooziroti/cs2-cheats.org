@@ -5,8 +5,5 @@
 /go/store https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 /go/store/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 
-# Legacy product URLs → current pages (match astro.config.mjs + middleware)
-/products/cs2-cheats/lite/ /products/cs2-cheats/cs2-store/ 302
-/products/cs2-cheats/pro/ /products/cs2-cheats/cs2-store/ 302
-/products/cs2-cheats/elite/ /products/cs2-cheats/cs2-store/ 302
-/products/cs2-cheats/unlock-all/ /products/cs2-cheats/cloud-dma/ 302
+# Legacy /products/cs2-cheats/{lite,pro,elite,unlock-all}/ rules live in astro.config.mjs
+# (and middleware) so Cloudflare does not see duplicate _redirects entries.
