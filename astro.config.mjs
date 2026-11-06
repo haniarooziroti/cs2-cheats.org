@@ -10,19 +10,7 @@ const site = resolveSiteOrigin();
 export default defineConfig({
   site,
   trailingSlash: 'always',
-  redirects: {
-    '/cheats/': '/products/cs2-cheats/',
-    '/cheats/lite/': '/products/cs2-cheats/cs2-store/',
-    '/cheats/pro/': '/products/cs2-cheats/cs2-store/',
-    '/cheats/elite/': '/products/cs2-cheats/cs2-store/',
-    '/products/cs2-cheats/lite/': '/products/cs2-cheats/cs2-store/',
-    '/products/cs2-cheats/pro/': '/products/cs2-cheats/cs2-store/',
-    '/products/cs2-cheats/elite/': '/products/cs2-cheats/cs2-store/',
-    '/products/cs2-cheats/unlock-all/': '/products/cs2-cheats/cloud-dma/',
-    '/products/dota-2-cheats/': '/products/cs2-cheats/',
-    '/products/dota-2-cheats/utilities/': '/products/cs2-cheats/utilities/',
-    '/contact/': '/support/',
-  },
+  // Legacy 301s live in public/_redirects so static hosts emit HTTP redirects, not HTML stubs.
   compressHTML: true,
   prefetch: {
     prefetchAll: false,
@@ -33,7 +21,16 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404') && !page.includes('/go/'),
+      filter: (page) =>
+        !page.includes('/404') &&
+        !page.includes('/go/') &&
+        !page.includes('/cheats/') &&
+        !page.includes('/contact/') &&
+        !page.includes('/dota-2-cheats/') &&
+        !page.includes('/products/cs2-cheats/lite/') &&
+        !page.includes('/products/cs2-cheats/pro/') &&
+        !page.includes('/products/cs2-cheats/elite/') &&
+        !page.includes('/products/cs2-cheats/unlock-all/'),
       serialize: sitemapSerialize,
     }),
   ],

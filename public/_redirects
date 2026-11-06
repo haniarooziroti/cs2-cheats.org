@@ -1,9 +1,33 @@
-# Affiliate checkout — must match src/config/checkout-redirects.mjs (local dev + middleware).
-# Static hosts (e.g. Cloudflare Pages) apply these when no server runs middleware.ts.
+# Affiliate checkout — 302 hop to Zadeyo (must match src/config/checkout-redirects.mjs).
 /go/cs2 https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 /go/cs2/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 /go/store https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 /go/store/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
 
-# Legacy /products/cs2-cheats/{lite,pro,elite,unlock-all}/ rules live in astro.config.mjs
-# (and middleware) so Cloudflare does not see duplicate _redirects entries.
+# Legacy product and site paths — HTTP 301 (not HTML meta-refresh).
+/cheats /products/cs2-cheats/ 301
+/cheats/ /products/cs2-cheats/ 301
+/cheats/lite /products/cs2-cheats/cs2-store/ 301
+/cheats/lite/ /products/cs2-cheats/cs2-store/ 301
+/cheats/pro /products/cs2-cheats/cs2-store/ 301
+/cheats/pro/ /products/cs2-cheats/cs2-store/ 301
+/cheats/elite /products/cs2-cheats/cs2-store/ 301
+/cheats/elite/ /products/cs2-cheats/cs2-store/ 301
+/cheats/compare /blog/cs2-esp-settings-clutches/ 301
+/cheats/compare/ /blog/cs2-esp-settings-clutches/ 301
+/products/cs2-cheats/lite /products/cs2-cheats/cs2-store/ 301
+/products/cs2-cheats/lite/ /products/cs2-cheats/cs2-store/ 301
+/products/cs2-cheats/pro /products/cs2-cheats/cs2-store/ 301
+/products/cs2-cheats/pro/ /products/cs2-cheats/cs2-store/ 301
+/products/cs2-cheats/elite /products/cs2-cheats/cs2-store/ 301
+/products/cs2-cheats/elite/ /products/cs2-cheats/cs2-store/ 301
+/products/cs2-cheats/unlock-all /products/cs2-cheats/cloud-dma/ 301
+/products/cs2-cheats/unlock-all/ /products/cs2-cheats/cloud-dma/ 301
+/products/dota-2-cheats /products/cs2-cheats/ 301
+/products/dota-2-cheats/ /products/cs2-cheats/ 301
+/products/dota-2-cheats/utilities /products/cs2-cheats/utilities/ 301
+/products/dota-2-cheats/utilities/ /products/cs2-cheats/utilities/ 301
+/products/dota-2-cheats/account-recovery /products/cs2-cheats/ugc/ 301
+/products/dota-2-cheats/account-recovery/ /products/cs2-cheats/ugc/ 301
+/contact /support/ 301
+/contact/ /support/ 301

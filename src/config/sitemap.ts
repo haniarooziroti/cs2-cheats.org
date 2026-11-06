@@ -16,7 +16,18 @@ function pathnameFromUrl(url: string): string {
 export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
   const path = pathnameFromUrl(item.url);
 
-  if (path.includes('/404') || path.startsWith('/go/') || path.includes('/rss.xml')) {
+  if (
+    path.includes('/404') ||
+    path.startsWith('/go/') ||
+    path.includes('/rss.xml') ||
+    path.startsWith('/cheats/') ||
+    path === '/contact/' ||
+    path.startsWith('/products/dota-2-cheats/') ||
+    path === '/products/cs2-cheats/lite/' ||
+    path === '/products/cs2-cheats/pro/' ||
+    path === '/products/cs2-cheats/elite/' ||
+    path === '/products/cs2-cheats/unlock-all/'
+  ) {
     return undefined;
   }
 

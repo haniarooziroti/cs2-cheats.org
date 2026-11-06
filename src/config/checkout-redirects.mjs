@@ -12,7 +12,7 @@ export const CHECKOUT_PATH_REDIRECTS = new Map([
   ['/go/store/', CHECKOUT_URLS.cs2],
 ]);
 
-/** Old product slugs → current paths (302). Keys must match trailingSlash: 'always' URLs. */
+/** Old product slugs → current paths (301). Keys must match trailingSlash: 'always' URLs. */
 export const LEGACY_PRODUCT_REDIRECTS = new Map([
   ['/products/cs2-cheats/lite/', '/products/cs2-cheats/cs2-store/'],
   ['/products/cs2-cheats/pro/', '/products/cs2-cheats/cs2-store/'],
