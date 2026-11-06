@@ -1,6 +1,8 @@
 ---
 import type { ProductPage } from '../../data/products';
 import { checkoutPath } from '../../config/checkout';
+import { AFFILIATE_REL } from '../../config/affiliate';
+import AffiliateDisclosure from '../AffiliateDisclosure.astro';
 import { productPath } from '../../utils/path';
 import {
   checkoutUrlWithPlan,
@@ -78,6 +80,7 @@ const spooferPage = productPath('hwid-spoofer');
       <Button
         as="a"
         href={checkoutUrlWithPlan(product.buyUrl, defaultPlan.id)}
+        rel={AFFILIATE_REL}
         variant="primary"
         size="lg"
         class="w-full rounded-xl"
@@ -86,12 +89,13 @@ const spooferPage = productPath('hwid-spoofer');
         Buy now
         <Icon name="arrowRight" size={17} />
       </Button>
+      <AffiliateDisclosure />
 
       {
         showDmaSpooferRow && (
           <div class="space-y-3 border-t border-border pt-4">
             <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Add-ons</p>
-            <Button as="a" href={storePath} variant="outline" size="sm" class="w-full justify-between rounded-xl">
+            <Button as="a" href={storePath} rel={AFFILIATE_REL} variant="outline" size="sm" class="w-full justify-between rounded-xl">
               <span class="truncate">Add Cloud DMA</span>
               <Icon name="compareCloudBackup" size={17} />
             </Button>

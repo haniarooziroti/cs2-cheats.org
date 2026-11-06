@@ -1,5 +1,6 @@
 ---
 import { t } from '../i18n';
+import AffiliateDisclosure from './AffiliateDisclosure.astro';
 import { Separator } from '@/components/starwind/separator';
 import { ROUTES } from '../utils/path';
 
@@ -73,6 +74,7 @@ const legalLinks = [
     </div>
 
     <Separator class="my-8" />
+    <AffiliateDisclosure variant="long" class="mb-4 max-w-3xl" />
     <p class="text-left text-sm text-muted-foreground">
       &copy; {new Date().getFullYear()} {t.site.name} · {t.site.domain}
     </p>

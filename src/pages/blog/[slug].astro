@@ -10,6 +10,7 @@ import {
   parseBlogDate,
 } from '../../utils/schema';
 import { checkoutPath, resolveCheckoutHref } from '../../config/checkout';
+import { AFFILIATE_REL, isAffiliateHref } from '../../config/affiliate';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ResponsiveImage from '../../components/ResponsiveImage.astro';
 import BlogSidebar from '../../components/BlogSidebar.astro';
@@ -48,7 +49,8 @@ const related = getRelatedBlogPosts(post.slug, 3);
 function linkify(text: string): string {
   return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label: string, href: string) => {
     const normalized = normalizeInternalPath(href);
-    return `<a href="${normalized}">${label}</a>`;
+    const rel = isAffiliateHref(normalized) ? ' rel="sponsored nofollow noopener"' : '';
+    return `<a href="${normalized}"${rel}>${label}</a>`;
   });
 }
 
@@ -184,7 +186,7 @@ const sharePageUrl = canonicalUrl(postPath);
           </Prose>
 
           <nav class="blog-article__actions" aria-label="Continue reading">
-            <Button as="a" href={checkoutPath('cs2')} variant="primary" aria-label={t.ui.checkoutAria}>
+            <Button as="a" href={checkoutPath('cs2')} rel={AFFILIATE_REL} variant="primary" aria-label={t.ui.checkoutAria}>
               Checkout
               <Icon name="arrowRight" size={17} />
             </Button>

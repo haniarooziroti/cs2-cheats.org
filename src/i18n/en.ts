@@ -663,6 +663,13 @@ export const en: Translations = {
             'Digital access follows the store’s refund rules. cs2-cheats.org does not process card refunds directly.',
           ],
         },
+        {
+          heading: 'Affiliate links',
+          paragraphs: [
+            'Checkout links on cs2-cheats.org use an affiliate path to the linked store. We may earn a commission if you buy through those links. Prices, license keys, refunds, and post-purchase tickets are set and handled by that store, not by this site.',
+            'On-page product copy is editorial. It is not the store’s checkout contract. Read the seller’s listing before you pay.',
+          ],
+        },
       ],
     },
     support: {

@@ -1,6 +1,7 @@
 ---
 import type { IconName } from './icons/types';
 import Icon from './icons/Icon.astro';
+import { affiliateRel } from '../config/affiliate';
 import { Badge } from '@/components/starwind/badge';
 import { Button } from '@/components/starwind/button';
 import {
@@ -119,6 +120,7 @@ const statusBadgeIcon = (text: string): IconName => {
     <Button
       as="a"
       href={buyUrl}
+      rel={affiliateRel(buyUrl)}
       variant="primary"
       size="sm"
       class="min-w-0 w-full justify-center gap-2 whitespace-normal text-center sm:whitespace-nowrap"

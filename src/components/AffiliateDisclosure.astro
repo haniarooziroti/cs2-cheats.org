@@ -1,0 +1,13 @@
+---
+import { AFFILIATE_DISCLOSURE_LONG, AFFILIATE_DISCLOSURE_SHORT } from '../config/affiliate';
+
+interface Props {
+  variant?: 'short' | 'long';
+  class?: string;
+}
+
+const { variant = 'short', class: className } = Astro.props;
+const text = variant === 'long' ? AFFILIATE_DISCLOSURE_LONG : AFFILIATE_DISCLOSURE_SHORT;
+---
+
+<p class:list={['text-xs leading-relaxed text-muted-foreground', className]}>{text}</p>

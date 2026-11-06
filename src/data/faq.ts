@@ -1,4 +1,5 @@
 import type { IconName } from '../components/icons/types';
+import { isAffiliateHref } from '../config/affiliate';
 import { normalizeInternalPath, productPath, ROUTES } from '../utils/path';
 
 export type FaqTopic = 'all' | 'plans' | 'esp' | 'scripts' | 'safety' | 'products' | 'blog' | 'setup';
@@ -18,7 +19,9 @@ function a(text: string): string {
 }
 
 function link(text: string, href: string): string {
-  return `<a href="${normalizeInternalPath(href)}">${text}</a>`;
+  const normalized = normalizeInternalPath(href);
+  const rel = isAffiliateHref(normalized) ? ' rel="sponsored nofollow noopener"' : '';
+  return `<a href="${normalized}"${rel}>${text}</a>`;
 }
 
 const cs2ModulesPage = link('CS2 cheat modules page', productPath('cs2-store'));
