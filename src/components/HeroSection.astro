@@ -1,5 +1,6 @@
 ---
 import { t } from '../i18n';
+import { DISCORD_URL } from '../config/site';
 import { ROUTES } from '../utils/path';
 import { heroSlides } from '../data/products';
 import { compatibilityIcons, heroStatIcons, heroStatusPills } from '../data/sectionIcons';
@@ -49,6 +50,19 @@ const heroMarqueePills = [
           >
             {h.ctaPrimary}
             <Icon name="arrowRight" size={18} />
+          </Button>
+          <Button
+            as="a"
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Join our Discord server"
+            variant="outline"
+            size="lg"
+            class="shrink-0 rounded-xl text-sm sm:text-base"
+          >
+            {h.ctaDiscord}
+            <Icon name="compatDiscord" size={18} />
           </Button>
         </div>
       </div>

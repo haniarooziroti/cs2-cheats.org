@@ -1,5 +1,6 @@
 import type { IconName } from '../components/icons/types';
 import { isAffiliateHref } from '../config/affiliate';
+import { DISCORD_URL } from '../config/site';
 import { normalizeInternalPath, productPath, ROUTES } from '../utils/path';
 
 export type FaqTopic = 'all' | 'plans' | 'esp' | 'scripts' | 'safety' | 'products' | 'blog' | 'setup';
@@ -24,6 +25,12 @@ function link(text: string, href: string): string {
   return `<a href="${normalized}"${rel}>${text}</a>`;
 }
 
+function externalCommunityLink(text: string, href: string, ariaLabel: string): string {
+  const safe = href.replace(/"/g, '&quot;');
+  const label = ariaLabel.replace(/"/g, '&quot;');
+  return `<a href="${safe}" target="_blank" rel="noopener noreferrer" aria-label="${label}">${text}</a>`;
+}
+
 const cs2ModulesPage = link('CS2 cheat modules page', productPath('cs2-store'));
 const productsHub = link('CS2 cheat catalog hub', ROUTES.products);
 const hwid = link('CS2 HWID spoofer utility page', productPath('hwid-spoofer'));
@@ -31,6 +38,7 @@ const ugc = link('UGC ban-appeal workspace page', productPath('ugc'));
 const cloudDma = link('Cloud DMA info page', productPath('cloud-dma'));
 const faqPage = link('Full CS2 cheat FAQ index', ROUTES.faq);
 const blog = link('CS2 setup & tuning article library', ROUTES.blog);
+const discordCommunity = externalCommunityLink('Discord', DISCORD_URL, 'Join our Discord server');
 
 export const siteFaqs: SiteFaqItem[] = [
   {
@@ -192,7 +200,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'setup',
     icon: 'faqDiscordHelp',
     q: 'How do I get install help?',
-    a: a('Open a ticket on the linked store with your order address, Windows build, and CS2 version. Avoid posting keys in public threads.'),
+    a: `For community setup readouts and operator availability, use ${discordCommunity}. For billing and keys, open a ticket on the linked store with your order address, Windows build, and CS2 version—avoid posting keys in public channels or threads.`,
   },
   {
     id: 'faq-more',

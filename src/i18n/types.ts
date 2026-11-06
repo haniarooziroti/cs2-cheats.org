@@ -3,7 +3,6 @@ export interface SiteConfig {
   domain: string;
   title: string;
   description: string;
-  discord: string;
   /** Short alt for favicon / mark in header and footer */
   brandMarkAlt: string;
 }
@@ -99,6 +98,8 @@ export interface WorkflowItem {
 export interface WhyCompareRow {
   title: string;
   desc: string;
+  /** When set, the first segment is followed by a Discord community link, then the second segment */
+  descParts?: [string, string];
 }
 
 export interface WhyMetric {
@@ -222,6 +223,8 @@ export interface Translations {
       desc: string;
       linkLabel: string;
       href: string;
+      /** Accessible name for the CTA (e.g. external community links) */
+      channelAriaLabel?: string;
     }[];
     ticketTitle: string;
     ticketItems: { title: string; desc: string }[];

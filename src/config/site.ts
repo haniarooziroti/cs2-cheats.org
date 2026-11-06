@@ -9,3 +9,6 @@ export const SITE_DOMAIN = 'cs2-cheats.org';
 export const SITE_URL = 'https://cs2-cheats.org';
 export const PRODUCT_BASE = '/products/cs2-cheats/';
 export const TITLE_PREFIX = '[CS2] Cheats';
+
+/** Public community invite (external). Single source of truth for UI + FAQ copy—not an affiliate link. */
+export const DISCORD_URL = 'https://discord.com/invite/Vu85F8auQS';

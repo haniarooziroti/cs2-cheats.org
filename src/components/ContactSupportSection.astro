@@ -1,7 +1,7 @@
 ---
 import '../styles/support-section.css';
 import { t } from '../i18n';
-import { affiliateRel } from '../config/affiliate';
+import { isAffiliateHref } from '../config/affiliate';
 import Icon from './icons/Icon.astro';
 import type { IconName } from './icons/types';
 import { Button } from '@/components/starwind/button';
@@ -53,7 +53,11 @@ const c = t.support;
                 <Button
                   as="a"
                   href={channel.href}
-                  rel={affiliateRel(channel.href)}
+                  {...(channel.href.startsWith('http')
+                    ? { target: '_blank', rel: 'noopener noreferrer', 'aria-label': channel.channelAriaLabel ?? channel.linkLabel }
+                    : isAffiliateHref(channel.href)
+                      ? { rel: 'sponsored nofollow noopener' }
+                      : {})}
                   variant="outline"
                   size="sm"
                   class="w-full"

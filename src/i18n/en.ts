@@ -1,6 +1,6 @@
 import type { Translations } from './types';
 import { PRIMARY_CHECKOUT_PATH } from '../config/checkout';
-import { PRODUCT_BASE } from '../config/site';
+import { DISCORD_URL, PRODUCT_BASE } from '../config/site';
 import { SEO_MEDIA, SEO_MEDIA_LEGACY } from '../config/media';
 
 const productBase = PRODUCT_BASE;
@@ -12,7 +12,6 @@ export const en: Translations = {
     title: 'CS2 cheats: ESP, aim, radar overview | cs2-cheats.org',
     description:
       'CS2 cheats overview: ESP, aim, radar, and wallhack-style intel for Steam. Read modules here, then open the catalog for pricing and subscription plans.',
-    discord: '',
     brandMarkAlt: 'cs2-cheats.org',
   },
   nav: [
@@ -126,7 +125,8 @@ export const en: Translations = {
       },
       {
         title: 'Discord operators on shift',
-        desc: 'Humans for HWID resets and Faceit questions—not copy-paste bots.',
+        desc: 'Humans on Discord for HWID resets and Faceit questions—not copy-paste bots.',
+        descParts: ['Humans on ', ' for HWID resets and Faceit questions—not copy-paste bots.'],
       },
       {
         title: 'ESP layering discipline',
@@ -489,8 +489,17 @@ export const en: Translations = {
   support: {
     eyebrow: 'Support',
     title: 'CS2 help with loaders & keys',
-    subtitle: 'Use the linked store for post-purchase tickets and keys—this page keeps only on-site resources.',
+    subtitle:
+      'Use the linked store for post-purchase tickets and keys. Community setup help and operator shifts run on Discord.',
     channels: [
+      {
+        icon: 'compatDiscord',
+        title: 'Discord community',
+        desc: 'Setup questions, patch-day readouts, and operator availability—avoid posting license keys in public channels.',
+        linkLabel: 'Join Discord',
+        href: DISCORD_URL,
+        channelAriaLabel: 'Join our Discord server',
+      },
       {
         icon: 'users',
         title: 'Before checkout',
@@ -683,7 +692,7 @@ export const en: Translations = {
     browseCheatsMobile: 'Checkout',
     homeAria: 'cs2-cheats.org home',
     checkoutAria: 'Open store checkout',
-    discordAria: 'Join the CS2 community Discord (opens in a new tab)',
+    discordAria: 'Join our Discord server',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     themeLight: 'Switch to light mode',

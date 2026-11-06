@@ -1,4 +1,5 @@
 ---
+import { DISCORD_URL } from "../config/site";
 import { t } from "../i18n";
 import { setupStepIcons } from "../data/sectionIcons";
 import Icon from "./icons/Icon.astro";
@@ -47,7 +48,23 @@ const lastRowIndex = why.rows.length - 1;
                   {row.title}
                 </h3>
                 <p class="text-sm leading-relaxed text-muted-foreground">
-                  {row.desc}
+                  {row.descParts ? (
+                    <>
+                      {row.descParts[0]}
+                      <a
+                        href={DISCORD_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-primary underline-offset-4 hover:underline"
+                        aria-label="Join our Discord server"
+                      >
+                        Discord
+                      </a>
+                      {row.descParts[1]}
+                    </>
+                  ) : (
+                    row.desc
+                  )}
                 </p>
               </div>
             ))
@@ -135,7 +152,23 @@ const lastRowIndex = why.rows.length - 1;
               </CardHeader>
               <CardContent class="pb-4 pt-4">
                 <p class="text-sm leading-relaxed text-muted-foreground">
-                  {row.desc}
+                  {row.descParts ? (
+                    <>
+                      {row.descParts[0]}
+                      <a
+                        href={DISCORD_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-primary underline-offset-4 hover:underline"
+                        aria-label="Join our Discord server"
+                      >
+                        Discord
+                      </a>
+                      {row.descParts[1]}
+                    </>
+                  ) : (
+                    row.desc
+                  )}
                 </p>
               </CardContent>
               <CardFooter class="flex flex-wrap items-center justify-between gap-3">

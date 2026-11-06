@@ -1,5 +1,6 @@
 ---
 import type { ProductAcquisition } from '../data/products';
+import { DISCORD_URL } from '../config/site';
 import { acquisitionStepIcons } from '../data/sectionIcons';
 import Icon from './icons/Icon.astro';
 import { Badge } from '@/components/starwind/badge';
@@ -44,7 +45,19 @@ const hasMeta = Boolean(badge || tier || category || variant);
           Buy Now
           <Icon name="arrowRight" size={17} />
         </Button>
-        <p class="text-center text-xs text-muted-foreground">Instant access · Discord setup support</p>
+        <p class="flex flex-wrap items-center justify-center gap-x-1 text-center text-xs text-muted-foreground">
+          <span>Instant access ·</span>
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary underline-offset-4 hover:underline"
+            aria-label="Join our Discord server"
+          >
+            Discord
+          </a>
+          <span>setup support</span>
+        </p>
       </CardContent>
     </Card>
   </div>
