@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { resolveDistRoot } from './dist-root.mjs';
+import { SITE_DOMAIN, resolveSiteOrigin } from './site-origin.mjs';
+
+resolveSiteOrigin();
 
 const root = process.cwd();
 const dist = resolveDistRoot(root);
@@ -8,8 +11,11 @@ const key = process.env.INDEXNOW_KEY?.trim();
 
 function resolveIndexNowHost() {
   const explicit = process.env.INDEXNOW_HOST?.trim();
+  if (explicit && explicit.includes('workers.dev')) {
+    throw new Error('INDEXNOW_HOST must not contain workers.dev. Use cs2-cheats.org.');
+  }
   if (explicit) return explicit;
-  return 'cs2-cheats.org';
+  return SITE_DOMAIN;
 }
 
 const host = resolveIndexNowHost();

@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
+import { resolveSiteOrigin } from './scripts/site-origin.mjs';
 
 /** Production origin only — previews use Workers host but must not affect sitemap/SEO output. */
-const site = 'https://cs2-cheats.org';
+const site = resolveSiteOrigin();
 
 export default defineConfig({
   site,

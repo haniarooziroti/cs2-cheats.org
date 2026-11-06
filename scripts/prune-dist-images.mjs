@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { resolveDistRoot } from './dist-root.mjs';
+import { resolveSiteOrigin } from './site-origin.mjs';
+
+resolveSiteOrigin();
 
 /** Drop source PNGs from dist — pages serve WebP variants only. */
 const distImages = path.join(resolveDistRoot(), 'images');

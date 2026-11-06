@@ -6,8 +6,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { resolveDistRoot } from './dist-root.mjs';
+import { SITE_ORIGIN, resolveSiteOrigin } from './site-origin.mjs';
 
-const SITE_ORIGIN = 'https://cs2-cheats.org';
+resolveSiteOrigin();
 const TITLE_MIN = 50;
 const TITLE_MAX = 60;
 const DESC_MIN = 120;

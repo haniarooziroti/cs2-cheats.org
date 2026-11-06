@@ -1,3 +1,7 @@
+import { resolveSiteOrigin } from './site-origin.mjs';
+
+resolveSiteOrigin();
+
 /** Must match PRODUCT_BASE in src/config/site.ts */
 const PRODUCT_BASE = '/products/cs2-cheats/';
 const productsBase = PRODUCT_BASE.replace(/\/$/, '');

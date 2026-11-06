@@ -5,8 +5,11 @@ import zlib from 'node:zlib';
 import { resolvePathRedirect } from './redirects.mjs';
 import { resolveCheckoutPathRedirect } from '../src/config/checkout-redirects.mjs';
 import { resolveDistRoot } from './dist-root.mjs';
+import { SITE_DOMAIN, resolveSiteOrigin } from './site-origin.mjs';
 
-const CANONICAL_HOST = 'cs2-cheats.org';
+resolveSiteOrigin();
+
+const CANONICAL_HOST = SITE_DOMAIN;
 const distDir = resolveDistRoot();
 const port = Number(process.env.PORT) || 3000;
 

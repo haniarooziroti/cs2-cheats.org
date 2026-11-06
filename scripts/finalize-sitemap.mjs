@@ -1,11 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { resolveDistRoot } from './dist-root.mjs';
+import { resolveSiteOrigin } from './site-origin.mjs';
 
 const root = process.cwd();
 const dist = resolveDistRoot(root);
 
-const siteOrigin = 'https://cs2-cheats.org';
+const siteOrigin = resolveSiteOrigin();
 const source = path.join(dist, 'sitemap-0.xml');
 
 if (!fs.existsSync(source)) {

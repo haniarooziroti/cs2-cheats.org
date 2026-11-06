@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
+import { resolveSiteOrigin } from './site-origin.mjs';
+
+resolveSiteOrigin();
 
 const root = process.cwd();
 const widths = [320, 400, 512, 640, 960];
