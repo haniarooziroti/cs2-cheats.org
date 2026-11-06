@@ -1,0 +1,6 @@
+# Affiliate checkout — must match src/config/checkout-redirects.mjs (local dev + middleware).
+# Static hosts (e.g. Cloudflare Pages) apply these when no server runs middleware.ts.
+/go/cs2 https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
+/go/cs2/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
+/go/store https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
+/go/store/ https://zadeyo.com/go/HANIA?to=%2Fproducts%2Fcs2-faceit 302
