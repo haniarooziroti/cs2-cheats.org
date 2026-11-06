@@ -24,6 +24,8 @@ interface Props {
   buyLabel?: string;
   viewLabel?: string;
   maxFeatures?: number;
+  /** Extra outline pills after primary badge + variant chips (e.g. Intel, Faceit build) */
+  extraBadges?: string[];
   class?: string;
 }
 
@@ -40,6 +42,7 @@ const {
   buyLabel = 'Checkout',
   viewLabel,
   maxFeatures = 10,
+  extraBadges = [],
   class: className,
 } = Astro.props;
 
@@ -90,6 +93,14 @@ const statusBadgeIcon = (text: string): IconName => {
             Limited
           </Badge>
         )
+      }
+      {
+        extraBadges.map((text) => (
+          <Badge tone="neutral" appearance="outline" size="sm" class="catalog-card__badge gap-1">
+            <Icon name="check" size={12} class="shrink-0" />
+            {text}
+          </Badge>
+        ))
       }
     </div>
   </CardHeader>

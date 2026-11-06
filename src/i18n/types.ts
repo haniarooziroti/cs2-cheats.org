@@ -4,6 +4,8 @@ export interface SiteConfig {
   title: string;
   description: string;
   discord: string;
+  /** Short alt for favicon / mark in header and footer */
+  brandMarkAlt: string;
 }
 
 export interface NavLink {
@@ -25,8 +27,11 @@ export interface FeatureItem {
 }
 
 export interface TierCard {
+  /** Secondary status pill (e.g. Intel / Faceit note) */
   badge: string;
+  /** Primary tier label (shown in first pill with tier icon) */
   tier: string;
+  /** Maps to cheatTierIcons (Lite | Pro | Elite) */
   name: string;
   title: string;
   desc: string;
@@ -34,6 +39,8 @@ export interface TierCard {
   more: number;
   href: string;
   variant: 'essential' | 'popular' | 'limited';
+  /** Optional extra outline pills after badge + variant chips */
+  extraBadges?: string[];
 }
 
 export interface ProductCard {

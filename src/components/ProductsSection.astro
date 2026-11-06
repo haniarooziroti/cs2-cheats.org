@@ -15,6 +15,8 @@ import {
 } from '@/components/starwind/carousel';
 
 const s = t.products;
+/** Home: show HWID, UGC, Cloud DMA — tier cards live in CheatsSection. */
+const catalogProducts = productPages.filter((p) => p.kind === 'utility');
 
 function cardIcon(product: (typeof productPages)[number]) {
   if (product.kind === 'tier') {
@@ -47,7 +49,7 @@ function cardLabel(product: (typeof productPages)[number]) {
           <div class="products-carousel__viewport">
             <CarouselContent class="products-carousel__track">
               {
-                productPages.map((product) => (
+                catalogProducts.map((product) => (
                   <CarouselItem class="products-carousel__slide">
                     <CatalogCard
                       class="catalog-card--carousel"

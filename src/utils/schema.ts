@@ -39,7 +39,7 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: 'cs2-cheats.org',
     url: `${SITE_ORIGIN}/`,
-    logo: `${SITE_ORIGIN}/logo.svg`,
+    logo: `${SITE_ORIGIN}/favicon-32.png`,
     ...(sameAs.length > 0 ? { sameAs } : {}),
     contactPoint: [
       {
@@ -213,7 +213,7 @@ export function articleSchema(input: {
       name: 'cs2-cheats.org',
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/logo.svg`,
+        url: `${SITE_ORIGIN}/favicon-32.png`,
       },
     },
     mainEntityOfPage: {
